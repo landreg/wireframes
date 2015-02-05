@@ -1,0 +1,93 @@
+b <html>
+<head>
+<link rel="stylesheet" type="text/css" href="hotdrop.css">
+</head>
+<body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '770137453034827',
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+Design is about exploring and communicating ideas and solution. Always remenber working code is the fundemental objective NOT documentation. Documentation is a necessary evil. However it is not the most effective method of exploring or communicating. For instance face to face conversations (especially round a whiteboard) is often a better medium. Executable code or tests can also be very effective.
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
+<div id="container"> 
+<section id="hotdrop">
+<div><input type="checkbox" id="check-1" />
+	<label for="check-1"><strong>Principles and Practices</strong></label>
+	<article>
+	<ul>
+		<li><strong>Travel light</strong>. Think about what you are doing. At the beginning ask yourself what you think you're going to need based on the nature of your project. Some documentation is needed - too much is a burden. Use the analogy of hiking - imagine crossing a desert with insufficient water, you're traveling too light, or trying to cross the same desert with a 100-pound pack strapped to your back, now you're traveling too heavy.</li>
+		<li><strong>Each project has its own unique needs.</strong> Many processes and templates try to cater for every situation and capture all information that potentially might be useful. These should be tailored to focus on what is critical for the project, make sure the benefits outweigh the costs.</li>
+		<li><strong>Focus on longer term value.</strong> Documentation is good for remembering things at the individual, team and organisational levels. It may not be the most effective method of whilst things are not stable.</li>
+		<li><strong>Focus on a specific purpose and audience.</strong> Documentation that does not fulfil its purpose is a waste of time, effort and expense. Documents that are confused about their purpose and audience or try to satisfy too many needs are likely to be ineffective. A larger number of smaller focussed documents are also easier to create and maintain.</li>
+		<li><strong>Work with the customer</strong> as you develop the document to make sure it satisfies the need (and no more). This means you need to carefully define the purpose and audience (customer) for the document.</li>
+		<li><strong>Just good enough for its purpose.</strong> Documentation is expensive to create and maintain. This cost rapidly escalates the more detailed the documentation is whilst the law of diminishing returns sets in rapidly as people are reluctant to read lengthy documentation and the more detailed documentation is the less likely it is to be maintained or accurate. Keep things simple and consise, don't strive for absolute perfection (or even accuracy). Make sure the benefits of the documentation outweigh its costs of writing.</li>
+		<li><strong>Single source information.</strong> Duplication of the same information in multiple documents is a waste.</li>
+		<li><strong>Document continuously.</strong> There is a conflict between capturing information before it is lost and the extra effort that is required to maintain documentation on unstable information.</li>
+		<li><strong>Comment the code</strong> - Documentation of the code is best done with comments in the code. Seperate documents should be reserved for higher level issues.</li>
+	</ul>
+	</article>
+</div>
+<div>
+	<input type="checkbox" id="check-2" />
+	<label for="check-2"><strong>Why its important to document</strong></label>
+	<article>
+	<ul>
+			<li><strong>Memory.</strong> Documentation is very effective at recording information that would otherwise be forgotten</li>
+			<li><strong>Exploration of Ideas.</strong> Writing documents may be a powerful mechanism for testing new ideas.</li>
+			<li><strong>Remote team members</strong> may have no other effective mechanism for communication</li>
+			<li><strong>Project stakeholders</strong> may require it.</li>
+			<li><strong>Contractual agreements</strong> may rely on it</li>
+			<li><strong>Audit.</strong> Documentation provides evidence that a valid process has been followed</li>
+	   </ul>
+	   </article>
+</div>
+<div>
+	<input type="checkbox" id="check-3" />
+	<label for="check-3"> <strong>What it is Important to document </strong> </label>
+	<article>
+	<ul>
+		<li><strong>A Specification</strong> - Its extremely unlikely that any software development project will succeed without a specification. However there is little disadvantage from starting with a overview and allowing the detail to evolve over time.</li>
+		<li><strong>The Big Picture</strong> - It is extremely difficult to manage without an overview of the system being built. This overview will be much more stable than individual sub-system descriptions and will provide the structure to navigate these documents aiding consistency, helping with integration and preventing duplication. Big picture documents often provide the basis for face-to-face conversations and can form the bridge between these conversations and written documentation.</li>
+	</ul>
+	</article>
+</div>
+<div>
+	<input type="checkbox" id="check-4" />
+	<label for="check-4"> <strong>Structuring Documents </strong> </label>
+	<article>
+	 <ul>
+		<li><strong>Landscape -</strong> There's no point in producing documents if no one knows they exist. Producing a index of documents (especially if this is pictorial) can help stakeholders find the documents they need.</li>
+		<li><strong>Structure -</strong> Structuring a document with sections, paragraphs, tables etc make it easy for readers to digest and find information. Remember some readers will go from begining to end, others will be looking for something specific.
+		Diagrams can facilitate face-to-face conversations
+		Meta-data (scope, purpose etc) can help readers decide if the document is for them.</li>
+	</ul>
+	</article>
+</div>
+<div>
+<input type="checkbox" id="check-5" />
+<label for="check-5"> <strong>References </strong> </label>
+<article>
+Scott Ambler - Agile Modeling
+Agile Documentation @ Andreas Ruping
+</section>
+</div>
+</body>
+</html>

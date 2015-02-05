@@ -1,0 +1,287 @@
+			header, section, footer, aside, nav, article, figure, figcaption {
+				display: block;}
+				
+			body {
+				color: black;
+				background-color: white;
+				font-family: Georgia, Times, serif;
+				padding: 0px 0px 0px 0px;
+				margin: 0px 0px 0px 0px;
+				height: 100%;
+				}	
+				
+			.container {
+				min-height: 100%;
+				background-color: white;
+				margin: 0 0 -5em 0; /*negative margin to pull footer to overlap*/			
+			}	
+				
+			p {
+				padding: 0px 0px 0px 0px;
+				margin: 0px 0px 0px 0px;
+			}	
+				
+			header {
+			    /*position:fixed;
+				top: 0px;
+				left: 0px;*/
+				height: 5em;
+				width: 100%;
+				background-color: green;}
+			
+			.headerimage{
+				height: 90%;
+				float: left;
+				}
+			
+			.headertext{
+				float: left;
+				color: white;
+				font-size: 150%;
+				/*position:relative;
+				top: -50% ;*/
+				}
+			.searchbar{
+				float: right;
+				}
+				
+			
+			footer {
+				clear: both;
+				color: #ffffff;
+				background-color: #aeaca8;
+				height: 5em;
+ 				font-size: 100%;
+				width: 100%;
+				}
+			
+			#copyright{
+				max-width = 50%;
+				float: left;
+			}
+			#contact{
+				max-width = 50%;
+				text-align = right;
+				float: right;
+			}
+			
+			
+			
+/* Landing */				
+					
+			.home{
+				background-color: white;
+				padding-top: 20%;
+				font-size : 150%;
+				color: black;
+				width:100%;
+			}	
+			
+			
+			.home form {
+				padding: 0px 0px 0px 0px;
+				margin: 0px 0px 0px 0px;
+			}
+			
+			.homesearch{
+				text-align: center;
+			}
+			
+			.buttonbar{
+				text-align: center;
+			}
+
+/*content*/			
+			.knowledge{
+				background-color: white;
+				padding: 0 0 5em 0;
+				width:100%;
+			}	
+			
+			
+			.content{
+				width: 60%;
+				float: left;
+				background-color: white;
+			}
+
+/* ... onwards navigation */			
+			
+			aside.onwards{
+				background-color: #f7f7f7;
+				color: black;
+				width:25%;
+				float:Right;
+				margin: 0%;
+				top: 0px;
+				bottom:0px;
+				padding: 0px 0px 0px 0px;
+
+				border-left: thin solid black;
+				}	
+
+			.curated_internal_links{
+				border-botton: thin solid black;
+			}
+				
+			.curated_internal_links{
+				border-botton: thin solid black;
+			}	
+			
+			.facet_links{
+				border-botton: thin solid black;
+			}
+			
+/* Results */
+
+			.result_container{
+				width=100%;
+				background-color: white;
+				margin: 0%;
+				padding: 0px 0px 5em 0px;
+			}			/* main panel */
+
+			
+/* facet filter */			
+			aside.facets{
+				background-color: #E8E8E8;
+				color: black;
+				width:20%;
+				float:left;
+				padding: 0px 0px 0px 0px;
+				border-right: 2px solid black; 
+				}		
+				
+			.facet_name{
+				font-weight: bold;
+			}	
+
+			.facets ul {
+					list-style-type: none;
+					padding: 0px;
+					padding-left: 10px;
+			}				
+			.facets ul li {
+					list-style-type: none;
+					padding-left: 0px;
+			}	
+
+					}
+			
+
+/* .. results */
+			.results{
+				background-color: green;
+			}	
+		
+				
+/* ... results bar */				
+			.results_bar{
+				background-color: white;
+				border-bottom: thin solid black;
+				width: 100%;
+				height: 3em;
+			}
+				
+			.search_rank{
+				float: left;
+				padding: 0 0 0 5%;
+				width: 25%;
+			}
+			.results_quantity{
+				float: right;
+				width: 25%;
+			} 
+				
+	
+	 
+/* Search Results*/ 				
+
+	 		.result_list{
+				background-color: white;
+				width: 78%;
+				float: right;
+
+			}	
+				
+			.result{
+				width: 100%;
+				background-color: white;
+			}
+			.result_link{
+				font-size: 150%;
+				font-weight: bold;
+				color: blue;
+				padding-top: 10px;
+				padding-bottom: 5px;
+			}
+	 
+			.result_desc	{
+				color: black;
+				padding: 0;
+				margin: 0;
+			
+			}
+
+			.version_metadata{
+				color: black;
+				}
+  
+			.content_metadata{
+				color: black;
+				}	
+
+
+			
+
+
+
+			
+#hotdrop input {
+	display: none;
+}
+
+#hotdrop label {
+	background: #eee;
+	color: black;
+	border-radius: .25em;
+	display: inline;
+	font-size: 80%;
+	font-weight: bold;
+}
+#hotdrop label:hover {
+	background: #ccc;
+}
+
+#hotdrop input:checked + label {
+	background: #ccc;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	color: white;
+	padding-bottom: 0;
+}
+#hotdrop  .result_metadata{
+	background: #f7f7f7;
+	color: black;
+	z-index:10;
+/*	border-bottom-left-radius: .25em;
+	border-bottom-right-radius: .25em;*/
+	height: 0px;
+	overflow:hidden;
+/*	padding-bottom: .125em;*/
+}
+#hotdrop input:checked ~ .result_metadata {
+	background: #f7f7f7;
+	height: auto;
+	z-index:10;
+}
+	
+			
+			
+				
+				
+			@media only screen and (max-width: 800px) {
+					aside.facets{width: 0%;}
+					aside.onward{width: 0%;}
+					.content{width: 100%;}
+					}

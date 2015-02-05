@@ -1,0 +1,295 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="guidance.css">
+
+</head>
+<body>
+<div class="container">
+	<header>
+	<img class="headerimage" src="images/Land-Registry.png"/>
+	<p class="headertext">Casework Guidance Knowledge Base</p>
+	<div class="searchbar">
+		<form id="searchform" action="results.html" method="get">
+			<p class="searchbox">
+				<select name="facet">
+					<option value="all">All</option>
+					<option value="registration">Registration</option>
+					<option value="information">Information</option>
+					<option value="customer">Customer</option>
+				</select>	
+				<input type="search" name="searchphrase"/>
+				<button type="submit" form="searchform" value="Search">Search</button>
+			</p>
+		</form>	
+	</div>	
+	</header>
+
+	<div class="result_container">
+	
+		<aside class="facets">
+			<button type="submit" form="facet_form" value="Search">Refresh</button>
+			<form class="facet_form">
+			<div class="facet_single" id="purpose">
+				<h1 class="facet_name">Purpose</h1>			
+					<input type="radio" name="purpose" class="ss" value="info"/>Get Info <br>
+					<input type="radio" name="purpose" class="ss" value="doc"/>Get Doc <br>
+					<input type="radio" name="purpose" class="ss" value="register"/>Create Register <br>
+					<input type="radio" name="purpose" class="ss" value="entry"/>Make Entry <br>
+			</div>
+			<div class="facet_multiple">
+				<h1 class="facet_name" id="agent">Agent</h1>
+					<input type="checkbox" name="agent" class="ss" value="internal"/>Internal<br>
+					<input type="checkbox" name="agent" class="ss" value="professional"/>Professional<br>	
+					<input type="checkbox" name="agent" class="ss" value="citizen"/>Citizen<br>						
+			</div>
+			
+			<div class="facet_tree">
+			<h1 class="facet_name">Service</h1>
+			<ul class="facet_tree">
+				<li class="top_node"><input type="radio" name="service" class="tree" value="registration"/>Registration</li>
+					<ul class="node">
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="FR"/>FR</li>
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="TP"/>TP</li>
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="DFL"/>DFL</li>						
+					</ul>
+				<li class="top_node"><input type="radio" name="service" class="tree" value="Information"/>Information</li>
+					<ul class="node">
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="DEV"/>DEV</li>
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="EBA"/>EBA</li>
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="EPA"/>EPA</li>	
+					</ul>
+				<li class="top_node"><input type="radio" name="service" class="tree" value="Customer"/>Customer</li>
+					<ul class="node">
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="Customer"/>Customer</li>	
+					</ul>						
+			</ul>	
+			</div>
+			</form>
+		</aside>
+		
+		<div class="results">
+			<div class="results_bar">
+				<div class="search_rank">
+					<p>Sort Order</p> 
+					<form id="ranking" class="form_rank">
+						<select name="rank">
+							<option value="helpful">Most Helpful</option>
+							<option value="relevant">Most Relevant</option>
+							<option value="latest">Latest</option>
+						</select>
+					</form>
+				</div>
+
+			
+				<div class="results_quantity">
+					<p>results per page</p>
+					<form id="quantity" class="form_auantity">
+						<select name="quantity">
+							<option value="5">5</option>
+							<option value="10">10</option>
+							<option value="100">100</option>
+						</select>
+					</form>
+				</div>
+			</div>
+			
+			<div class="result_list">
+				<div class="result">
+					<div class="result_link">
+					<p>
+					<a href="content.html"> <span >Bankruptcy - applications for Form J restrictions</span> </a>
+					</p>
+					</div>
+					<div class="result_desc">
+						<p>Where one or more of joint registered proprietors is subject to a petition in bankruptcy or bankruptcy order, neither a bankruptcy notice nor a bankruptcy restriction will be entered. However, the Official Receiver or trustee in bankruptcy may apply in form RX1 for a Form J restriction once the bankruptcy order has been made.</p>
+					</div>
+					<div id="hotdrop">
+						<div><input type="checkbox" id="drop-1" />
+						<label for="drop-1"> More... </label>
+							<div class="result_metadata">
+								<div class="content_metadata">
+									<p><strong>Content MetaData</strong></label>
+									<ul>
+										<li>keyword 1</li>
+										<li>Keyword 2</li>
+									</ul>	
+								</div>
+			
+								<div class="version_metadata">
+									<p><strong>Version MetaData</strong></label>
+									<table>
+										<tr>
+											<th scope="col">Attribute</th>
+											<th scope="col">Value</th>
+										</tr>
+										<tr>
+											<td>Author</td>
+											<td>Joe Bloggs</td>
+										</tr>
+										<tr>
+											<td>Version</td>
+											<td>1.1</td>
+										</tr>				
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>				
+				</div>
+
+<!-- result -->	
+				<div class="result">
+					<div class="result_link">
+					<p>
+					<a href="content.html"> <span >Where the applicant already has a caution for the same interest</span> </a>
+					</p>
+					</div>
+					<div class="result_desc">
+						<p>If the applicant already has a caution to protect the same interest, they must apply to withdraw the caution at the same time.</p>
+					</div>
+					<div id="hotdrop">
+						<div><input type="checkbox" id="drop-2" />
+						<label for="drop-2"> More... </label>
+							<div class="result_metadata">
+								<div class="content_metadata">
+									<p><strong>Content MetaData</strong></label>
+									<ul>
+										<li>keyword 1</li>
+										<li>Keyword 2</li>
+									</ul>	
+								</div>
+			
+								<div class="version_metadata">
+									<p><strong>Version MetaData</strong></label>
+									<table>
+										<tr>
+											<th scope="col">Attribute</th>
+											<th scope="col">Value</th>
+										</tr>
+										<tr>
+											<td>Author</td>
+											<td>Joe Bloggs</td>
+										</tr>
+										<tr>
+											<td>Version</td>
+											<td>1.1</td>
+										</tr>				
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>					
+				</div>	
+<!-- end of result -->				
+				
+				<!-- result -->	
+				<div class="result">
+					<div class="result_link">
+					<p>
+					<a href="content.html"> <span > Form RX1</span> </a>
+					</p>
+					</div>
+					<div class="result_desc">
+						<p>Form RX1 may be used to apply for both standard and non-standard restrictions, as well as applications made with or without the registered proprietor's consent.</p>
+					</div>
+					<div id="hotdrop">
+						<div><input type="checkbox" id="drop-3" />
+						<label for="drop-3"> More... </label>
+							<div class="result_metadata">
+								<div class="content_metadata">
+									<p><strong>Content MetaData</strong></label>
+									<ul>
+										<li>keyword 1</li>
+										<li>Keyword 2</li>
+									</ul>	
+								</div>
+			
+								<div class="version_metadata">
+									<p><strong>Version MetaData</strong></label>
+									<table>
+										<tr>
+											<th scope="col">Attribute</th>
+											<th scope="col">Value</th>
+										</tr>
+										<tr>
+											<td>Author</td>
+											<td>Joe Bloggs</td>
+										</tr>
+										<tr>
+											<td>Version</td>
+											<td>1.1</td>
+										</tr>				
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>					
+				</div>	
+<!-- end of result -->			
+
+
+<!-- result -->	
+				<div class="result">
+					<div class="result_link">
+					<p>
+					<a href="content.html"> <span >Form J - Trustee in bankruptcy and beneficial interest - certificate required</span> </a>
+					</p>
+					</div>
+					<div class="result_desc">
+						<p>No disposition of the [choose whichever bulleted clause is appropriate] registered estate, other than a disposition by the proprietor of any registered charge registered before the entry of this restriction, registered charge dated [date] [in favour of name] referred to above, other than a disposition by the proprietor of any registered sub-charge of that charge registered before the entry of this restriction, is to be registered without a certificate signed by the applicant for registration or their conveyancer that written notice of the disposition was given to [name of trustee in bankruptcy] (the trustee in bankruptcy of [name of bankrupt person]) at [address for service].</p>
+					</div>
+					<div id="hotdrop">
+						<div><input type="checkbox" id="drop-4" />
+						<label for="drop-4"> More... </label>
+							<div class="result_metadata">
+								<div class="content_metadata">
+									<p><strong>Content MetaData</strong></label>
+									<ul>
+										<li>keyword 1</li>
+										<li>Keyword 2</li>
+									</ul>	
+								</div>
+			
+								<div class="version_metadata">
+									<p><strong>Version MetaData</strong></label>
+									<table>
+										<tr>
+											<th scope="col">Attribute</th>
+											<th scope="col">Value</th>
+										</tr>
+										<tr>
+											<td>Author</td>
+											<td>Joe Bloggs</td>
+										</tr>
+										<tr>
+											<td>Version</td>
+											<td>1.1</td>
+										</tr>				
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>					
+				</div>	
+<!-- end of result -->		
+	
+			</div> <!-- result_list -->
+		</div>
+
+	</div>
+	
+</div> <!-- container -->	
+	<footer>
+		<p id="copyright">&copy; Land Registry 2015</p>
+		<a id="contact" href="http://contact.html">Contact Us</a>
+	</footer>
+
+</body>
+</html>
