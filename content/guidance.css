@@ -9,6 +9,10 @@
 				margin: 0px 0px 0px 0px;
 				height: 100%;
 				}	
+			
+			p {
+				margin: 0.5em 0 0em 0;
+			}
 				
 			.container {
 				min-height: 100%;
@@ -16,10 +20,6 @@
 				margin: 0 0 -5em 0; /*negative margin to pull footer to overlap*/			
 			}	
 				
-			p {
-				padding: 0px 0px 0px 0px;
-				margin: 0px 0px 0px 0px;
-			}	
 				
 			header {
 			    /*position:fixed;
@@ -92,13 +92,12 @@
 			}
 
 /*content*/			
-			.knowledge{
+			.content_container{
 				background-color: white;
 				padding: 0 0 5em 0;
 				width:100%;
 			}	
-			
-			
+/* ..content */			
 			.content{
 				width: 60%;
 				float: left;
@@ -212,8 +211,8 @@
 				font-size: 150%;
 				font-weight: bold;
 				color: blue;
-				padding-top: 10px;
-				padding-bottom: 5px;
+				padding-top: 0;
+				padding-bottom: 0;
 			}
 	 
 			.result_desc	{
@@ -260,7 +259,7 @@
 	color: white;
 	padding-bottom: 0;
 }
-#hotdrop  .result_metadata{
+#hotdrop  .droptext{
 	background: #f7f7f7;
 	color: black;
 	z-index:10;
@@ -270,18 +269,24 @@
 	overflow:hidden;
 /*	padding-bottom: .125em;*/
 }
-#hotdrop input:checked ~ .result_metadata {
+#hotdrop input:checked ~ .droptext{
 	background: #f7f7f7;
 	height: auto;
 	z-index:10;
 }
 	
-			
-			
 				
 				
 			@media only screen and (max-width: 800px) {
-					aside.facets{width: 0%;}
-					aside.onward{width: 0%;}
-					.content{width: 100%;}
+					aside.facets{width: 0%;
+								display: none;
 					}
+					aside.onward{width: 0%;
+								display: none;
+					}
+					.content{width: 100%;}
+					.result_list{width: 100%;}
+					
+					}
+					
+					
