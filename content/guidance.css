@@ -236,11 +236,11 @@
 
 
 			
-#hotdrop input {
+.hotdrop input {
 	display: none;
 }
 
-#hotdrop label {
+.hotdrop label {
 	background: #eee;
 	color: black;
 	border-radius: .25em;
@@ -248,18 +248,25 @@
 	font-size: 80%;
 	font-weight: bold;
 }
-#hotdrop label:hover {
+
+.hotdrop .sub_head{
+	margin: 0 0 1em;
+	display: block;
+	width: 100%;
+}
+
+.hotdrop label:hover {
 	background: #ccc;
 }
 
-#hotdrop input:checked + label {
+.hotdrop input:checked + label {
 	background: #ccc;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 	color: white;
-	padding-bottom: 0;
+	padding-bottom: 1em;
 }
-#hotdrop  .droptext{
+.hotdrop  .droptext{
 	background: #f7f7f7;
 	color: black;
 	z-index:10;
@@ -269,7 +276,7 @@
 	overflow:hidden;
 /*	padding-bottom: .125em;*/
 }
-#hotdrop input:checked ~ .droptext{
+.hotdrop input:checked ~ .droptext{
 	background: #f7f7f7;
 	height: auto;
 	z-index:10;
