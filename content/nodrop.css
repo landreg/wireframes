@@ -5,20 +5,20 @@
 }
 
 .hotdrop label {
-	background: #eee;
+	background: white;
 	color: black;
 	border-radius: .25em;
 	display: inline;
-	font-size: 80%;
+	font-size: 120%;
 	font-weight: bold;
 }
 
 .hotdrop .sub_head{
-	margin: 0 0 1em;
+	margin: 0 0 0.5em;
 	display: block;
 	width: 100%;
 }
-
+/*
 .hotdrop label:hover {
 	background: #ccc;
 }
@@ -30,18 +30,21 @@
 	color: white;
 	padding-bottom: 1em;
 }
+*/
 .hotdrop  .droptext{
-	background: #f7f7f7;
+	background: white;
+	margin: 0 0 1em;
 	color: black;
-	z-index:10;
-/*	border-bottom-left-radius: .25em;
+/*	z-index:10;
+	border-bottom-left-radius: .25em;
 	border-bottom-right-radius: .25em;*/
-	height: 0px;
-	overflow:hidden;
+	height: auto;
 /*	padding-bottom: .125em;*/
 }
+/*
 .hotdrop input:checked ~ .droptext{
 	background: #f7f7f7;
 	height: auto;
 	z-index:10;
 }
+*/
