@@ -71,14 +71,14 @@
 					
 			.home{
 				background-color: white;
-				padding-top: 20%;
-				font-size : 150%;
+				padding-top: 2em;
+				font-size : 250%;
 				color: black;
 				width:100%;
 			}	
 			
 			
-			.home form {
+			.buttonbar form {
 				padding: 0px 0px 0px 0px;
 				margin: 0px 0px 0px 0px;
 			}
@@ -90,6 +90,10 @@
 			.buttonbar{
 				text-align: right;
 			}
+			
+			.searchbox input{
+				font-size : 50%;
+				}
 
 /*content*/			
 			.content_container{
@@ -140,6 +144,9 @@
 				padding: 0px 0px 5em 0px;
 			}			/* main panel */
 
+			.container .searchbar{
+				margin: 1em 3% 0 0;
+			}
 			
 /* facet filter */			
 			aside.facets{
@@ -150,7 +157,12 @@
 				padding: 0px 0px 0px 0px;
 				border-right: 2px solid black; 
 				}		
-				
+		
+			#refine_button{
+				margin: 1em auto 0 auto;
+				text-align: center;
+			}
+		
 			.facet_name{
 				font-weight: bold;
 			}	
@@ -165,7 +177,10 @@
 					padding-left: 0px;
 			}	
 
-					}
+			.facets h2 {
+				font-size: 100%;
+				font-weight:80%;
+			}
 			
 
 /* .. results */
@@ -245,6 +260,7 @@
 					aside.onward{width: 0%;
 								display: none;
 					}
+					.headertext{font-size: 75%;}
 					.content{width: 100%;}
 					.result_list{width: 100%;}
 					

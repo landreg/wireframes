@@ -19,16 +19,23 @@
 			</form>
 	</div>
 	
+	<div class="buttonbar">
+		<form name="homebuttons" method="get"> 
+		<button name="changes" fromaction="http://www.google.co.uk">Recent Changes</button>
+		<button name="changes" fromaction="http://www.google.co.uk">Hot Topics</button>
+		</form>
+	</div>
+	
 	<div class="home">
 		<div class="homesearch">
 			<p id="GuidanceInvite">Search Guidance</p> 
 			<form id="searchform" action="results.html" method="get"> 
 				<div class="searchbox">
 					<select name="facet">
-						<option value="all">All!</option>
+						<option value="all">All</option>
 						<option value="registration">Registration</option>
-						<option value="information">Information</option>
-						<option value="customer">Customer</option>
+						<option value="information">Info Services</option>
+						<option value="customer">Cust handling</option>
 					</select>	
 					<input type="search" name="searchphrase"/>
 					<button type="submit" form="searchform" value="Search">Search</button>
