@@ -45,3 +45,19 @@
 	height: auto;
 	z-index:10;
 }
+
+.hotdrop  .dropselect input{
+	display: inline;
+	}
+
+.hotdrop  .dropselect{
+ 	z-index:10;
+ 	height: 0px;
+	overflow:hidden;
+ 
+}
+.hotdrop input:checked ~ .dropselect{
+	height: auto;
+	z-index:10;
+}
+

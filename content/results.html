@@ -27,47 +27,84 @@
 	<div class="result_container">
 	
 		<aside class="facets">
-			<button type="submit" form="facet_form" value="Search">Refresh</button>
+			<button id="refine_button" type="submit" form="facet_form" value="Search">Refresh</button>
 			<form class="facet_form">
+			<h1>Show Results For</h1>
+					<input type="radio" name="service" class="ss" value="All"/>All <br>
+					<input type="radio" name="service" class="ss" value="Registration"/>Registration<br>
+					<input type="radio" name="service" class="ss" value="Info Services"/>Information Services<br>
+					<input type="radio" name="service" class="ss" value="Cust Handling"/>Customer Handling<br>
+			<h1>Refine By</h1>
 			<div class="facet_single" id="purpose">
-				<h1 class="facet_name">Purpose</h1>			
-					<input type="radio" name="purpose" class="ss" value="info"/>Get Info <br>
-					<input type="radio" name="purpose" class="ss" value="doc"/>Get Doc <br>
-					<input type="radio" name="purpose" class="ss" value="register"/>Create Register <br>
-					<input type="radio" name="purpose" class="ss" value="entry"/>Make Entry <br>
+				<h2 class="facet_name">Purpose/Goal</h2>			
+					<input type="radio" name="purpose" class="ss" value="info"/>Obtain information <br>
+					<input type="radio" name="purpose" class="ss" value="doc"/>Obtain document<br>
+					<input type="radio" name="purpose" class="ss" value="register"/>Create new registration<br>
+					<div class="hotdrop">
+						<div><input type="checkbox" id="drop_purpose" />
+						<label for="drop_purpose"> more... </label>
+							<div class="dropselect">
+							<input type="radio" name="purpose" class="ss" value="entry"/>Create new register entry<br>
+							<input type="radio" name="purpose" class="ss" value="entry"/>Considering/accounting for existing register entry<br>
+							<input type="radio" name="purpose" class="ss" value="entry"/>Amend register entry<br>
+							<input type="radio" name="purpose" class="ss" value="entry"/>Remove register entry<br>
+							</div>
+						</div>	
+					</div> <!-- hotdrop -->	
 			</div>
+ 
 			<div class="facet_multiple">
-				<h1 class="facet_name" id="agent">Agent</h1>
-					<input type="checkbox" name="agent" class="ss" value="internal"/>Internal<br>
-					<input type="checkbox" name="agent" class="ss" value="professional"/>Professional<br>	
-					<input type="checkbox" name="agent" class="ss" value="citizen"/>Citizen<br>						
+				<h2 class="facet_name" id="agent">Person/Agent</h2>
+				<input type="checkbox" name="agent" class="ss" value="citizen"/>Registered proprietor<br>		
+				<input type="checkbox" name="agent" class="ss" value="citizen"/>Third party<br>		
+				<input type="checkbox" name="agent" class="ss" value="citizen"/>Conveyancer<br>	
+				<div class="hotdrop">
+					<div><input type="checkbox" id="drop_agent" />
+					<label for="drop_agent"> more... </label>
+						<div class="dropselect">
+							<input type="checkbox" name="agent" class="ss" value="internal"/>Caseworker<br>
+							<input type="checkbox" name="agent" class="ss" value="professional"/>Company<br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Overseas company<br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>LLP<br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Corporation<br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Receiver<br>
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Administrator<br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Liquidator<br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Insolvency practitioner/supervisor<br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Trustee in bankruptcy<br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Creditor<br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Attorney<br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Deputy (MHA)<br>						
+						</div>
+					</div>	
+				</div> <!-- hotdrop -->						
 			</div>
 			
 			<div class="facet_tree">
-			<h1 class="facet_name">Service</h1>
+			<h2 class="facet_name">Subject Matter</h2>
 			<ul class="facet_tree">
-				<li class="top_node"><input type="radio" name="service" class="tree" value="registration"/>Registration</li>
+				<li class="top_node"><input type="radio" name="service" class="tree" value="registration"/>Adverse possession</li>
 					<ul class="node">
 						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="FR"/>FR</li>
+							<input type="radio" name="service" class="tree" value="FR"/>Registered land</li>
 						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="TP"/>TP</li>
-						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="DFL"/>DFL</li>						
+							<input type="radio" name="service" class="tree" value="TP"/>Unregistered land</li>				
 					</ul>
-				<li class="top_node"><input type="radio" name="service" class="tree" value="Information"/>Information</li>
+				<li class="top_node"><input type="radio" name="service" class="tree" value="Information"/>Objection and dispute</li>
+				<li class="top_node"><input type="radio" name="service" class="tree" value="Information"/>Indemnity</li>
+ 				<li class="top_node"><input type="radio" name="service" class="tree" value="Information"/>Charges </li>				
 					<ul class="node">
 						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="DEV"/>DEV</li>
+							<input type="radio" name="service" class="tree" value="DEV"/>Registration of charge</li>
 						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="EBA"/>EBA</li>
+							<input type="radio" name="service" class="tree" value="EBA"/>Variation of charge</li>
 						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="EPA"/>EPA</li>	
+							<input type="radio" name="service" class="tree" value="EPA"/>Postponement of charge</li>	
 					</ul>
-				<li class="top_node"><input type="radio" name="service" class="tree" value="Customer"/>Customer</li>
+				<li class="top_node"><input type="radio" name="service" class="tree" value="Customer"/>Easements</li>
 					<ul class="node">
 						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="Customer"/>Customer</li>	
+							<input type="radio" name="service" class="tree" value="Customer"/>Registration of easements</li>	
 					</ul>						
 			</ul>	
 			</div>
