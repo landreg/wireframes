@@ -135,11 +135,50 @@
 				border-botton: thin solid black;
 			}
 			
+			.onwards a:hover {
+ 				position:relative;
+			}
+			
+			.onwards a[tooltip]:hover:after {
+				  content: attr(tooltip);
+				  color: black;
+				  background-color: yellow;
+				  position: absolute;
+				  left:0;
+				  width:200%;
+				  z-index=9999;	
+		
+			}
+			
+			.tagcloud a{
+				float: left;
+				background: grey;
+				margin: 3px 3px 3px 3px;
+				padding: 5px 5px 5px 5px;
+				border-radius: 10px;
+			}
+			.tagcloud li{
+				list-style-type: none;
+
+			
+			}
+			
+			.tagcloud a.tag1 { font-size: 30%; font-weight: 100; } 
+			.tagcloud a.tag2 { font-size: 50%; font-weight: 200; } 
+			.tagcloud a.tag3 { font-size: 65%; font-weight: 300; } 
+			.tagcloud a.tag4 { font-size: 80%; font-weight: 400; } 
+			.tagcloud a.tag5 { font-size: 95%; font-weight: 500; } 
+			.tagcloud a.tag6 { font-size: 110%; font-weight: 600; } 
+			.tagcloud a.tag7 { font-size: 130%; font-weight: 700; } 
+			.tagcloud a.tag8 { font-size: 150%; font-weight: 800; } 
+			.tagcloud a.tag9 { font-size: 170%; font-weight: 900; } 
+			.tagcloud a.tag10 { font-size: 190%; font-weight: 900; }
+			
 /* Results */
 
 			.result_container{
-				width=100%;
-				background-color: white;
+				width: 100%;
+				background-color: #E8E8E8;
 				margin: 0%;
 				padding: 0px 0px 5em 0px;
 			}			/* main panel */
