@@ -95,6 +95,149 @@
 				font-size : 50%;
 				}
 
+
+			
+/* Results */
+
+			.result_container{
+				width: 100%;
+				background-color: white;
+				margin: 0%;
+				padding: 0px 0px 5em 0px;
+			}			/* main panel */
+
+			.container .searchbar{
+				margin: 1em 3% 0 0;
+			}
+			
+/* facet filter */			
+			aside.facets{
+				background-color: #E8E8E8;
+				color: black;
+				width:20%;
+				float:left;
+				padding: 0px 0px 0px .5em;
+				border-right: 2px solid black; 
+				}		
+		
+			#refine_button{
+				margin: 1em auto 0 auto;
+				text-align: center;
+			}
+ 
+		
+			.facet_name{
+				font-weight: bold;
+			}	
+
+			.facets ul {
+					list-style-type: none;
+					padding: 0px;
+					padding-left: 10px;
+			}				
+			.facets ul li {
+					list-style-type: none;
+					padding-left: 0px;
+			}	
+
+			.facets h2 {
+				font-size: 100%;
+				font-weight:80%;
+			}
+			
+
+/* .. results */
+			.results{
+				background-color: white;
+			}	
+		
+		    .search_data{
+					font-size: 80%; 
+					font-weight: lighter;
+			}
+			
+			.suggested_search{
+				color: red;
+				font-size: 120%;
+				padding: 0 0 0 1em;
+			}
+				
+/* ... results bar */				
+			.results_bar{
+				background-color: white;
+				border-bottom: thin solid black;
+				width: 100%;
+				height: 3em;
+			}
+				
+			.search_rank{
+				float: left;
+				padding: 0 0 0 .5em;
+				width: 50%;
+			}
+			.search_rank input {
+				display: none;
+			}
+			.search_rank input:checked + .rank_select{
+				color: red;
+				text-decoration: underline;
+			}
+
+			.rank_select{
+				background-color: #E8E8E8;
+				margin: 0 .5em 0 .5em;
+			}
+			
+			.rank_select:hover { 
+				background-color: #99CCFF;
+			}
+			
+ 
+			
+			.results_quantity{
+				float: right;
+				width: 15%;
+			} 
+				
+	
+	 
+/* Search Results*/ 				
+
+	 		.result_list{
+				background-color: white;
+				width: 78%;
+				float: right;
+
+			}	
+				
+			.result{
+				width: 100%;
+				background-color: white;
+			}
+			.result_link{
+				font-size: 150%;
+				font-weight: bold;
+				color: blue;
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+	 
+			.result_desc	{
+				color: black;
+				padding: 0;
+				margin: 0;
+			
+			}
+
+			.version_metadata{
+				color: black;
+				}
+  
+			.content_metadata{
+				color: black;
+				}	
+
+
 /*content*/			
 			.content_container{
 				background-color: white;
@@ -108,6 +251,22 @@
 				background-color: white;
 			}
 
+			.km_title{
+				text-align: center;
+				font-size: 200%;
+				font-weight: bold;
+				padding: 0 0 1em 0;
+			}
+			
+			.km_glossary{
+				background-color: yellow;
+			}
+			
+			.km_snippet{
+
+			}
+			
+			
 /* ... onwards navigation */			
 			
 			aside.onwards{
@@ -172,134 +331,7 @@
 			.tagcloud a.tag7 { font-size: 130%; font-weight: 700; background: #33BB33;} 
 			.tagcloud a.tag8 { font-size: 150%; font-weight: 800; background: #22DD33;} 
 			.tagcloud a.tag9 { font-size: 170%; font-weight: 900; background: #11EE33;} 
-			.tagcloud a.tag10 { font-size: 190%; font-weight: 900; background: #00FF33;}
-			
-/* Results */
-
-			.result_container{
-				width: 100%;
-				background-color: #E8E8E8;
-				margin: 0%;
-				padding: 0px 0px 5em 0px;
-			}			/* main panel */
-
-			.container .searchbar{
-				margin: 1em 3% 0 0;
-			}
-			
-/* facet filter */			
-			aside.facets{
-				background-color: #E8E8E8;
-				color: black;
-				width:20%;
-				float:left;
-				padding: 0px 0px 0px 0px;
-				border-right: 2px solid black; 
-				}		
-		
-			#refine_button{
-				margin: 1em auto 0 auto;
-				text-align: center;
-			}
-		
-			.facet_name{
-				font-weight: bold;
-			}	
-
-			.facets ul {
-					list-style-type: none;
-					padding: 0px;
-					padding-left: 10px;
-			}				
-			.facets ul li {
-					list-style-type: none;
-					padding-left: 0px;
-			}	
-
-			.facets h2 {
-				font-size: 100%;
-				font-weight:80%;
-			}
-			
-
-/* .. results */
-			.results{
-				background-color: green;
-			}	
-		
-				
-/* ... results bar */				
-			.results_bar{
-				background-color: white;
-				border-bottom: thin solid black;
-				width: 100%;
-				height: 3em;
-			}
-				
-			.search_rank{
-				float: left;
-				padding: 0 0 0 5%;
-				width: 50%;
-			}
-			.search_rank input {
-				display: none;
-			}
-			.search_rank input:checked + .rank_select{
-				color: red;
-				text-decoration: underline;
-			}
-
-			.rank_select:hover { 
-				background-color: #99CCFF;
-			}
-			
- 
-			
-			.results_quantity{
-				float: right;
-				width: 15%;
-			} 
-				
-	
-	 
-/* Search Results*/ 				
-
-	 		.result_list{
-				background-color: white;
-				width: 78%;
-				float: right;
-
-			}	
-				
-			.result{
-				width: 100%;
-				background-color: white;
-			}
-			.result_link{
-				font-size: 150%;
-				font-weight: bold;
-				color: blue;
-				padding-top: 0;
-				padding-bottom: 0;
-			}
-	 
-			.result_desc	{
-				color: black;
-				padding: 0;
-				margin: 0;
-			
-			}
-
-			.version_metadata{
-				color: black;
-				}
-  
-			.content_metadata{
-				color: black;
-				}	
-
-
-			
+			.tagcloud a.tag10 { font-size: 190%; font-weight: 900; background: #00FF33;}			
 
 
 

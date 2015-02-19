@@ -11,10 +11,10 @@
 	<div class="searchbar">
 		<form id="searchform" action="results.html" method="get">
 			<p class="searchbox">
-					<select name="facet">
+					<select name="domain">
 						<option value="all">All</option>
 						<option value="registration" title="Casework, Register creation and update">Registration</option>
-						<option value="information" title="Preliminary, developer and data services">Infoation Services</option>
+						<option value="information" title="Preliminary, developer and data services">Information Services</option>
 						<option value="customer" title="Customer contact policies and procedures">Customer handling</option>
 					</select>	
 				<input type="search" name="searchphrase"/>
@@ -66,79 +66,85 @@
 		</aside>
 
 
-		<div class="content">
-		<div class="hotdrop">
-			<div><input type="checkbox" id="drop-4" />
-			<label for="drop-4"> Metadata... </label>
-				<div class="droptext">
-					<div class="content_metadata">
-						<p><strong>Content MetaData</strong></label>
-						<ul>
-							<li>keyword 1</li>
-							<li>Keyword 2</li>
-						</ul>	
-					</div>
+		<div class="km_article hotdrop" id="article_name1">
+			
+			<div class="article_metadata">
+				<div class="hotdrop">
+						<div><input type="checkbox" id="drop-4" />
+						<label for="drop-4"> Metadata... </label>
+							<div class="droptext">
+								<div class="content_metadata">
+									<p><strong>Content MetaData</strong></label>
+									<ul>
+										<li>keyword 1</li>
+										<li>Keyword 2</li>
+									</ul>	
+								</div>
 
-					<div class="version_metadata">
-						<p><strong>Version MetaData</strong></label>
-						<table>
-							<tr>
-								<th scope="col">Attribute</th>
-								<th scope="col">Value</th>
-							</tr>
-							<tr>
-								<td>Author</td>
-								<td>Joe Bloggs</td>
-							</tr>
-							<tr>
-								<td>Version</td>
-								<td>1.1</td>
-							</tr>				
-						</table>
-					</div>
-				</div>
+								<div class="version_metadata">
+									<p><strong>Version MetaData</strong></label>
+									<table>
+										<tr>
+											<th scope="col">Attribute</th>
+											<th scope="col">Value</th>
+										</tr>
+										<tr>
+											<td>Author</td>
+											<td>Joe Bloggs</td>
+										</tr>
+										<tr>
+											<td>Version</td>
+											<td>1.1</td>
+										</tr>				
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>	<!-- hotdrop -->
+			</div> <!-- article_metadata -->
+			
+			<div class="km_title">
+				<p>Bankruptcy - Applications for Form J restrictions</p>
 			</div>
-		</div>	<!-- hotdrop -->
+			
 		
-		<section class="hotdrop">
-		<h1>Bankruptcy - Applications for Form J restrictions</h1>
-		<article class="Reference">
-			<div><input type="checkbox" id="sole_proprietor" />
-				<label class="sub_head" for="sole_proprietor"> Sole Proprietor </label>
-				<div class=droptext>
-					<p>Where a petition in bankruptcy is filed in the court against a sole registered proprietor, a bankruptcy notice is entered in the register. Once the bankruptcy order has been made against a sole registered proprietor, a bankruptcy restriction is entered in the register.</p>
-					<p>A trustee in bankruptcy should not apply for a Form J restriction where:</p>
-					<ul>
-						<li>a bankruptcy inhibition or bankruptcy restriction is entered in the register, and</li>
-						<li>the trustee accepts that the registered estate has vested in them.</li>
-					</ul>
-					<p>This is because, given the existing bankruptcy entry, the entry of the restriction isn't necessary or desirable within s.42(1), LRA 2002. Further, a trustee probably can't rely upon r.93(j), LRR 2003 as they don't have a beneficial interest - a person who is the undivided legal and beneficial owner of property has no separate equitable interest in it (Westdeutsche Landesbank Girozentrale v Islington LBC [1996] AC 669 at 705).</p>	
-					<p>See Topic - Bankruptcy</p>
-				</div>
-			</div>	
-		</article>
-		<article class="Reference">
-			<div><input type="checkbox" id="joint_proprietors" />
-				<label class="sub_head" for="joint_proprietors"> Joint Proprietors </label>
-				<div class=droptext>
-					<p>Where one or more of joint registered proprietors is subject to a petition in bankruptcy or bankruptcy order, neither a bankruptcy notice nor a bankruptcy restriction will be entered. However, the Official Receiver or trustee in bankruptcy may apply in form RX1 for a Form J restriction once the bankruptcy order has been made</p>
-					<ul>
-						<li>certified copy of the bankruptcy order and</li>
-						<li>•evidence of the trustee in bankruptcy’s appointment.</li>
-					</ul>
-					<p>The trustee in bankruptcy may apply for a restriction in Form A at the same time and in the same form RX1, as long as a Form A restriction hasn’t already been entered in the register. The bankruptcy will have severed the beneficial joint tenancy</p>
-				</div>
-			</div>	
-		</article>
-		</section>
-		</div> <!-- knowledge -->
-	</div>
+			<div class="km_item km_reference" name="sole_proprietor">
+					<div><input type="checkbox" id="sole_proprietor" />
+						<label class="sub_head" for="sole_proprietor"> Sole Proprietor </label>
+						<div class=droptext>
+							<p>Where a petition in bankruptcy is filed in the court against a sole registered proprietor, a bankruptcy notice is entered in the register. Once the bankruptcy order has been made against a sole registered proprietor, a bankruptcy restriction is entered in the register.</p>
+							<p>A <span class="km_glossary" title="a trusted person">trustee</span> in bankruptcy should not apply for a Form J restriction where:</p>
+							<ul>
+								<li><span class="km_snippet" km_snippet="snip101">a bankruptcy inhibition or bankruptcy</span> restriction is entered in the register, and</li>
+								<li>the trustee accepts that the registered estate has vested in them.</li>
+							</ul>
+							<p>This is because, given the existing bankruptcy entry, the entry of the restriction isn't necessary or desirable within s.42(1), LRA 2002. Further, a trustee probably can't rely upon r.93(j), LRR 2003 as they don't have a beneficial interest - a person who is the undivided legal and beneficial owner of property has no separate equitable interest in it (Westdeutsche Landesbank Girozentrale v Islington LBC [1996] AC 669 at 705).</p>	
+							<p>See Topic - Bankruptcy</p>
+						</div>
+					</div>	
+			</div> <!-- item_name1 -->	
+			
+			<div class="km_item km_task" name="joint_proprietors">
+ 					<div><input type="checkbox" id="joint_proprietors" />
+						<label class="sub_head" for="joint_proprietors"> Joint Proprietors </label>
+						<div class=droptext>
+							<p>Where one or more of joint registered proprietors is subject to a petition in bankruptcy or bankruptcy order, neither a bankruptcy notice nor a bankruptcy restriction will be entered. However, the Official Receiver or trustee in bankruptcy may apply in form RX1 for a Form J restriction once the bankruptcy order has been made</p>
+							<ul>
+								<li>certified copy of the bankruptcy order and</li>
+								<li>•evidence of the trustee in bankruptcy’s appointment.</li>
+							</ul>
+							<p>The trustee in bankruptcy may apply for a restriction in Form A at the same time and in the same form RX1, as long as a Form A restriction hasn’t already been entered in the register. The bankruptcy will have severed the beneficial joint tenancy</p>
+						</div>
+					</div>	
+			</div> <!-- item_name2 -->
+		</div> <!-- article -->
+	</div> <!--content_container-->
 </div> <!--container*/-->
 	
-	<footer>
-		<p id="copyright">&copy; Land Registry 2015</p>
-		<a id="contact" href="http://contact.html">Contact Us</a>
-	</footer>
+<footer>
+	<p id="copyright">&copy; Land Registry 2015</p>
+	<a id="contact" href="http://contact.html">Contact Us</a>
+</footer>
 
 </body>
 </html>
