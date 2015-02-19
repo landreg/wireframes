@@ -152,7 +152,7 @@
 			
 			.tagcloud a{
 				float: left;
-				background: grey;
+
 				margin: 3px 3px 3px 3px;
 				padding: 5px 5px 5px 5px;
 				border-radius: 10px;
@@ -163,16 +163,16 @@
 			
 			}
 			
-			.tagcloud a.tag1 { font-size: 30%; font-weight: 100; } 
-			.tagcloud a.tag2 { font-size: 50%; font-weight: 200; } 
-			.tagcloud a.tag3 { font-size: 65%; font-weight: 300; } 
-			.tagcloud a.tag4 { font-size: 80%; font-weight: 400; } 
-			.tagcloud a.tag5 { font-size: 95%; font-weight: 500; } 
-			.tagcloud a.tag6 { font-size: 110%; font-weight: 600; } 
-			.tagcloud a.tag7 { font-size: 130%; font-weight: 700; } 
-			.tagcloud a.tag8 { font-size: 150%; font-weight: 800; } 
-			.tagcloud a.tag9 { font-size: 170%; font-weight: 900; } 
-			.tagcloud a.tag10 { font-size: 190%; font-weight: 900; }
+			.tagcloud a.tag1 { font-size: 30%; font-weight: 100; background: #ff00FF;} 
+			.tagcloud a.tag2 { font-size: 50%; font-weight: 200; background: #DD22FF;} 
+			.tagcloud a.tag3 { font-size: 65%; font-weight: 300; background: #BB44FF;} 
+			.tagcloud a.tag4 { font-size: 80%; font-weight: 400; background: #9966FF;} 
+			.tagcloud a.tag5 { font-size: 95%; font-weight: 500; background: #7788FF;} 
+			.tagcloud a.tag6 { font-size: 110%; font-weight: 600; background: #55AAFF;} 
+			.tagcloud a.tag7 { font-size: 130%; font-weight: 700; background: #33BB33;} 
+			.tagcloud a.tag8 { font-size: 150%; font-weight: 800; background: #22DD33;} 
+			.tagcloud a.tag9 { font-size: 170%; font-weight: 900; background: #11EE33;} 
+			.tagcloud a.tag10 { font-size: 190%; font-weight: 900; background: #00FF33;}
 			
 /* Results */
 
