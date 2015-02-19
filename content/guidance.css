@@ -200,11 +200,25 @@
 			.search_rank{
 				float: left;
 				padding: 0 0 0 5%;
-				width: 25%;
+				width: 50%;
 			}
+			.search_rank input {
+				display: none;
+			}
+			.search_rank input:checked + .rank_select{
+				color: red;
+				text-decoration: underline;
+			}
+
+			.rank_select:hover { 
+				background-color: #99CCFF;
+			}
+			
+ 
+			
 			.results_quantity{
 				float: right;
-				width: 25%;
+				width: 15%;
 			} 
 				
 	

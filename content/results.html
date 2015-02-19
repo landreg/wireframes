@@ -35,19 +35,57 @@
 					<input type="radio" name="service" class="ss" value="Info Services"/>Information Services<br>
 					<input type="radio" name="service" class="ss" value="Cust Handling"/>Customer Handling<br>
 			<h1>Refine By</h1>
+			
+			<div class="facet_tree">
+			<h2 class="facet_name">Subject Matter</h2>
+			<ul class="facet_tree">
+				<li class="top_node"><input type="radio" name="service" class="tree" value="registration"/>Adverse possession <span class="hits">(20)</span></li>
+					<ul class="node">
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="FR"/>Registered land<span class="hits">(10)</span></li>
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="TP"/>Unregistered land<span class="hits">(10)</span></li>				
+					</ul>
+				<li class="top_node"><input type="radio" name="service" class="tree" value="Information"/>Objection and dispute<span class="hits">(5)</span></li>
+				<li class="top_node"><input type="radio" name="service" class="tree" value="Information"/>Indemnity<span class="hits">(5)</span></li>
+ 				<li class="top_node"><input type="radio" name="service" class="tree" value="Information"/>Charges <span class="hits">(5)</span></li>				
+					<ul class="node">
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="DEV"/>Registration of charge<span class="hits">(4)</span></li>
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="EBA"/>Variation of charge<span class="hits">(3)</span></li>
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="EPA"/>Postponement of charge<span class="hits">(2)</span></li>	
+					</ul>
+				<li class="top_node"><input type="radio" name="service" class="tree" value="Customer"/>Easements<span class="hits">(1)</span></li>
+					<ul class="node">
+						<li class="bot_node">
+							<input type="radio" name="service" class="tree" value="Customer"/>Registration of easements<span class="hits">(10)</span></li>	
+					</ul>						
+			</ul>	
+			</div>
+			
+			<div class="facet_multiple">
+				<h2 class="facet_name" id="Purpose">Purpose</h2>
+				<input type="checkbox" name="Purpose" class="ss" value="citizen"/>Alteration<span class="hits">(100)</span><br>		
+				<input type="checkbox" name="Purpose" class="ss" value="citizen"/>Registration (substantive)<span class="hits">(99)</span><br>		
+				<input type="checkbox" name="Purpose" class="ss" value="citizen"/>Variation<span class="hits">(57)</span><br>	
+			</div>
+
+		
 			<div class="facet_single" id="purpose">
 				<h2 class="facet_name">Purpose/Goal</h2>			
-					<input type="radio" name="purpose" class="ss" value="info"/>Obtain information <br>
-					<input type="radio" name="purpose" class="ss" value="doc"/>Obtain document<br>
-					<input type="radio" name="purpose" class="ss" value="register"/>Create new registration<br>
+					<input type="radio" name="purpose" class="ss" value="info"/>Obtain information<span class="hits">(100)</span> <br>
+					<input type="radio" name="purpose" class="ss" value="doc"/>Obtain document<span class="hits">(90)</span><br>
+					<input type="radio" name="purpose" class="ss" value="register"/>Create new registration<span class="hits">(80)</span><br>
 					<div class="hotdrop">
 						<div><input type="checkbox" id="drop_purpose" />
 						<label for="drop_purpose"> more... </label>
 							<div class="dropselect">
-							<input type="radio" name="purpose" class="ss" value="entry"/>Create new register entry<br>
-							<input type="radio" name="purpose" class="ss" value="entry"/>Considering/accounting for existing register entry<br>
-							<input type="radio" name="purpose" class="ss" value="entry"/>Amend register entry<br>
-							<input type="radio" name="purpose" class="ss" value="entry"/>Remove register entry<br>
+							<input type="radio" name="purpose" class="ss" value="entry"/>Create new register entry<span class="hits">(70)</span><br>
+							<input type="radio" name="purpose" class="ss" value="entry"/>Considering/accounting for existing register entry<span class="hits">(10)</span><br>
+							<input type="radio" name="purpose" class="ss" value="entry"/>Amend register entry<span class="hits">(60)</span><br>
+							<input type="radio" name="purpose" class="ss" value="entry"/>Remove register entry<span class="hits">(57)</span><br>
 							</div>
 						</div>	
 					</div> <!-- hotdrop -->	
@@ -55,73 +93,48 @@
  
 			<div class="facet_multiple">
 				<h2 class="facet_name" id="agent">Person/Agent</h2>
-				<input type="checkbox" name="agent" class="ss" value="citizen"/>Registered proprietor<br>		
-				<input type="checkbox" name="agent" class="ss" value="citizen"/>Third party<br>		
-				<input type="checkbox" name="agent" class="ss" value="citizen"/>Conveyancer<br>	
+				<input type="checkbox" name="agent" class="ss" value="citizen"/>Registered proprietor<span class="hits">(10)</span><br>		
+				<input type="checkbox" name="agent" class="ss" value="citizen"/>Third party<span class="hits">(10)</span><br>		
+				<input type="checkbox" name="agent" class="ss" value="citizen"/>Conveyancer<span class="hits">(10)</span><br>	
 				<div class="hotdrop">
 					<div><input type="checkbox" id="drop_agent" />
 					<label for="drop_agent"> more... </label>
 						<div class="dropselect">
-							<input type="checkbox" name="agent" class="ss" value="internal"/>Caseworker<br>
-							<input type="checkbox" name="agent" class="ss" value="professional"/>Company<br>	
-							<input type="checkbox" name="agent" class="ss" value="citizen"/>Overseas company<br>	
-							<input type="checkbox" name="agent" class="ss" value="citizen"/>LLP<br>	
-							<input type="checkbox" name="agent" class="ss" value="citizen"/>Corporation<br>	
-							<input type="checkbox" name="agent" class="ss" value="citizen"/>Receiver<br>
-							<input type="checkbox" name="agent" class="ss" value="citizen"/>Administrator<br>	
-							<input type="checkbox" name="agent" class="ss" value="citizen"/>Liquidator<br>	
-							<input type="checkbox" name="agent" class="ss" value="citizen"/>Insolvency practitioner/supervisor<br>	
-							<input type="checkbox" name="agent" class="ss" value="citizen"/>Trustee in bankruptcy<br>	
-							<input type="checkbox" name="agent" class="ss" value="citizen"/>Creditor<br>	
-							<input type="checkbox" name="agent" class="ss" value="citizen"/>Attorney<br>	
-							<input type="checkbox" name="agent" class="ss" value="citizen"/>Deputy (MHA)<br>						
+							<input type="checkbox" name="agent" class="ss" value="internal"/>Caseworker<span class="hits">(10)</span><br>
+							<input type="checkbox" name="agent" class="ss" value="professional"/>Company<span class="hits">(10)</span><br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Overseas company<span class="hits">(10)</span><br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>LLP<span class="hits">(10)</span><br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Corporation<span class="hits">(10)</span><br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Receiver<span class="hits">(10)</span><br>
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Administrator<span class="hits">(10)</span><br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Liquidator<span class="hits">(10)</span><br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Insolvency practitioner/supervisor<span class="hits">(10)</span><br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Trustee in bankruptcy<span class="hits">(10)</span><br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Creditor<span class="hits">(10)</span><br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Attorney<span class="hits">(10)</span><br>	
+							<input type="checkbox" name="agent" class="ss" value="citizen"/>Deputy (MHA)<span class="hits">(10)</span><br>						
 						</div>
 					</div>	
 				</div> <!-- hotdrop -->						
 			</div>
 			
-			<div class="facet_tree">
-			<h2 class="facet_name">Subject Matter</h2>
-			<ul class="facet_tree">
-				<li class="top_node"><input type="radio" name="service" class="tree" value="registration"/>Adverse possession</li>
-					<ul class="node">
-						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="FR"/>Registered land</li>
-						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="TP"/>Unregistered land</li>				
-					</ul>
-				<li class="top_node"><input type="radio" name="service" class="tree" value="Information"/>Objection and dispute</li>
-				<li class="top_node"><input type="radio" name="service" class="tree" value="Information"/>Indemnity</li>
- 				<li class="top_node"><input type="radio" name="service" class="tree" value="Information"/>Charges </li>				
-					<ul class="node">
-						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="DEV"/>Registration of charge</li>
-						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="EBA"/>Variation of charge</li>
-						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="EPA"/>Postponement of charge</li>	
-					</ul>
-				<li class="top_node"><input type="radio" name="service" class="tree" value="Customer"/>Easements</li>
-					<ul class="node">
-						<li class="bot_node">
-							<input type="radio" name="service" class="tree" value="Customer"/>Registration of easements</li>	
-					</ul>						
-			</ul>	
-			</div>
+			
 			</form>
 		</aside>
 		
 		<div class="results">
 			<div class="results_bar">
 				<div class="search_rank">
-					<p>Sort Order</p> 
 					<form id="ranking" class="form_rank">
-						<select name="rank">
-							<option value="helpful">Most Helpful</option>
-							<option value="relevant">Most Relevant</option>
-							<option value="latest">Latest</option>
-						</select>
-					</form>
+					<p>Sort by:
+							<input type="radio" name="rank" value="helpful" id="helpful"></input>
+								<label class="rank_select" for="helpful">Helpful</label>
+							<input type="radio" name="rank" value="relevant" id="relevant" checked="checked"></input>
+								<label class="rank_select" for="relevant">Relevant</label> 
+							<input type="radio" name="rank" value="latest" id="latest"></input>
+								<label class="rank_select" for="latest">Latest</label> 
+					</p> 
+					</form>					
 				</div>
 
 			
