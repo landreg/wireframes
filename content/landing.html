@@ -19,12 +19,6 @@
 			</form>
 	</div>
 	
-	<div class="buttonbar">
-		<form name="homebuttons" method="get"> 
-		<button name="changes" fromaction="http://www.google.co.uk">Recent Changes</button>
-		<button name="changes" fromaction="http://www.google.co.uk">Hot Topics</button>
-		</form>
-	</div>
 	
 	<div class="home">
 		<div class="homesearch">
@@ -33,9 +27,9 @@
 				<div class="searchbox">
 					<select name="facet">
 						<option value="all">All</option>
-						<option value="registration">Registration</option>
-						<option value="information">Info Services</option>
-						<option value="customer">Cust handling</option>
+						<option value="registration" title="Registration context">Registration</option>
+						<option value="information" title="Information Request">Info Services</option>
+						<option value="customer" title="Customer handling">Cust handling</option>
 					</select>	
 					<input type="search" name="searchphrase"/>
 					<button type="submit" form="searchform" value="Search">Search</button>
