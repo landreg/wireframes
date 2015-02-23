@@ -1,32 +1,32 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="guidance.css">
-<link rel="stylesheet" type="text/css" href="hotdrop.css">
+<link rel="stylesheet" type="text/css" href="hotdropz.css">
 </head>
 <body>
 <div class="container">
-	<header>
-	<img class="headerimage" src="images/Land-Registry.png"/>
-	<p class="headertext">Casework Guidance Knowledge Base</p>
+	<header id="km_knowledge_header">
+	<img id="headerimage" src="images/Land-Registry.png"/>
+	<p id="headertext">Casework Guidance Knowledge Base</p>
 	<div class="searchbar">
 		<form id="searchform" action="results.html" method="get">
-			<p class="searchbox">
-					<select name="domain">
+			<div class="searchbox">  
+					<select name="km_domain">
 						<option value="all">All</option>
 						<option value="registration" title="Casework, Register creation and update">Registration</option>
 						<option value="information" title="Preliminary, developer and data services">Information Services</option>
 						<option value="customer" title="Customer contact policies and procedures">Customer handling</option>
 					</select>	
-				<input type="search" name="searchphrase"/>
+				<input type="search" name="searchphrase" placeholder="Search ?"/>
 				<button type="submit" form="searchform" value="Search">Search</button>
-			</p>
+			</div>
 		</form>	
 	</div>	
 	</header>
 
-	<div class="content_container">
-		<aside class="onwards">
-			<div class="curated_internal_links">
+	<div id="knowledge_container">
+		<aside id="onwards_aside">
+			<div class="curated_internal_links  km_link">
 				<p class="onwards_title">Related KM links</p>
 				<ul>
 					<li><a href="content.html" class="hover_scope" tooltip="Some text that might help the user decide if this is a relevant link. Not sure how long this link should be but maybe the full scoping para would be a good idea" >Restrictions - overview of processing</a></li>
@@ -49,7 +49,7 @@
 				</ul>
 
 			</div>
-			<div class="similar_links">
+			<div class="similar_links km_link">
 				<p class="onwards_title">Similar Articles</p>
 				<ul class="tagcloud">
 					<li><a href="content.html" class="tag10"><span class="tag10">Bankruptcy</span></a></li>
@@ -73,8 +73,8 @@
 						<input type="checkbox" id="drop-4" />
 						<label for="drop-4"> Metadata... </label>
 							<div class="droptext">
-								<div class="content_metadata">
-									<p><strong>Content MetaData</strong></label>
+								<div class="knowledge_metadata">
+									<p><strong>MetaData</strong></label>
 									<ul>
 										<li>keyword 1</li>
 										<li>Keyword 2</li>
@@ -107,11 +107,11 @@
 			</div>
 			
 		
-			<div class="km_item km_reference" name="sole_proprietor">
+			<div class="km_item km_reference" id="sole_proprietors">
 					<div class="droptoggle">
-						<input type="checkbox" id="sole_proprietor" />
-						<label class="sub_head" for="sole_proprietor"> Sole Proprietor </label>
-						<div class=droptext>
+						<input type="checkbox" id="pd1"/>
+						<label class="sub_head" for="pd1"> Sole Proprietor </label>
+						<div class=droptext >
 							<p>Where a petition in bankruptcy is filed in the court against a sole registered proprietor, a bankruptcy notice is entered in the register. Once the bankruptcy order has been made against a sole registered proprietor, a bankruptcy restriction is entered in the register.</p>
 							<p>A <span class="km_glossary" title="a trusted person">trustee</span> in bankruptcy should not apply for a Form J restriction where:</p>
 							<ul>
@@ -124,10 +124,10 @@
 					</div>	
 			</div> <!-- item_name1 -->	
 			
-			<div class="km_item km_task" name="joint_proprietors">
+			<div class="km_item km_task" id="joint_proprietors">
  					<div class="droptoggle">
-						<input type="checkbox" id="joint_proprietors" />
-						<label class="sub_head" for="joint_proprietors"> Joint Proprietors </label>
+						<input type="checkbox" id="pd2" />
+						<label class="sub_head" for="pd2"> Joint Proprietors </label>
 						<div class=droptext>
 							<p>Where one or more of joint registered proprietors is subject to a petition in bankruptcy or bankruptcy order, neither a bankruptcy notice nor a bankruptcy restriction will be entered. However, the Official Receiver or trustee in bankruptcy may apply in form RX1 for a Form J restriction once the bankruptcy order has been made</p>
 							<ul>
@@ -139,7 +139,7 @@
 					</div>	
 			</div> <!-- item_name2 -->
 		</div> <!-- article -->
-	</div> <!--content_container-->
+	</div> <!--knowledge_container-->
 </div> <!--container*/-->
 	
 <footer>

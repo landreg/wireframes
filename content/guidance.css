@@ -29,23 +29,20 @@
 				width: 100%;
 				background-color: green;}
 			
-			.headerimage{
+			#headerimage{
 				height: 90%;
 				float: left;
 				}
 			
-			.headertext{
+			#headertext{
 				float: left;
 				color: white;
 				font-size: 150%;
 				/*position:relative;
 				top: -50% ;*/
 				}
-			.searchbar{
-				float: right;
-				}
-				
-			
+					
+/* footer */			
 			footer {
 				clear: both;
 				color: #ffffff;
@@ -64,54 +61,61 @@
 				text-align = right;
 				float: right;
 			}
-			
+
+
+						
+	
 			
 			
 /* Landing */				
 					
-			.home{
+			#home_container{
 				background-color: white;
-				padding-top: 2em;
-				font-size : 250%;
+
 				color: black;
 				width:100%;
 			}	
 			
+			#GuidanceInvite{
+				font-size : 250%;
+			}
+			
+			.km_search{
+				padding-top: 2em;
+				text-align: center;
+			}
 			
 			.buttonbar form {
 				padding: 0px 0px 0px 0px;
 				margin: 0px 0px 0px 0px;
 			}
-			
-			.homesearch{
-				text-align: center;
-			}
-			
 			.buttonbar{
 				text-align: right;
-			}
-			
-			.searchbox input{
-				font-size : 50%;
-				}
+			}	
 
 
 			
 /* Results */
 
-			.result_container{
+			#results_container{
 				width: 100%;
 				background-color: white;
 				margin: 0%;
 				padding: 0px 0px 5em 0px;
 			}			/* main panel */
 
-			.container .searchbar{
+			
+			#km_results_header .searchbar{
+				font-size: 75%;
 				margin: 1em 3% 0 0;
+				float: right;
 			}
+ 
+ 	
+			
 			
 /* facet filter */			
-			aside.facets{
+			#filter_aside{
 				background-color: #E8E8E8;
 				color: black;
 				width:20%;
@@ -130,17 +134,17 @@
 				font-weight: bold;
 			}	
 
-			.facets ul {
+			#filter_aside ul {
 					list-style-type: none;
 					padding: 0px;
 					padding-left: 10px;
 			}				
-			.facets ul li {
+			#filter_aside ul li {
 					list-style-type: none;
 					padding-left: 0px;
 			}	
 
-			.facets h2 {
+			#filter_aside h2 {
 				font-size: 100%;
 				font-weight:80%;
 			}
@@ -233,24 +237,28 @@
 				color: black;
 				}
   
-			.content_metadata{
+			.knowledge_metadata{
 				color: black;
 				}	
 
 
-/*content*/			
-			.content_container{
+/*knowledge*/			
+			#knowledge_container{
+				clear: both;
 				background-color: white;
 				padding: 0 0 5em 0;
 				width:100%;
 			}	
-/* ..content */			
-			.content{
-				width: 60%;
-				float: left;
-				background-color: white;
+			
+			#km_knowledge_header .searchbar{
+				font-size: 75%;
+				margin: 1em 3% 0 0;
+				float: right;
 			}
-
+			
+ 
+/* ..content */			
+ 
 			.km_title{
 				text-align: center;
 				font-size: 200%;
@@ -258,22 +266,26 @@
 				padding: 0 0 1em 0;
 			}
 			
+			.km_article{
+				}
+				
+			
 			.km_glossary{
 				background-color: yellow;
 			}
 			
 			.km_snippet{
-
+				
 			}
 			
 			
-/* ... onwards navigation */			
+/* ... onwards_aside navigation */			
 			
-			aside.onwards{
+			#onwards_aside{
 				background-color: #f7f7f7;
 				color: black;
 				width:25%;
-				float:Right;
+				float:right;
 				margin: 0%;
 				top: 0px;
 				bottom:0px;
@@ -283,22 +295,22 @@
 				}	
 
 			.curated_internal_links{
-				border-botton: thin solid black;
+				border-bottom: thin solid black;
 			}
 				
-			.curated_internal_links{
-				border-botton: thin solid black;
+			.curated_external_links{
+				border-bottom: thin solid black;
 			}	
 			
-			.facet_links{
-				border-botton: thin solid black;
+			.similar_links{
+				border-bottom: thin solid black;
 			}
-			
-			.onwards a:hover {
+	/*		
+			#onwards_aside a:hover {
  				position:relative;
 			}
 			
-			.onwards a[tooltip]:hover:after {
+			#onwards_aside a[tooltip]:hover:after {
 				  content: attr(tooltip);
 				  color: black;
 				  background-color: yellow;
@@ -333,22 +345,22 @@
 			.tagcloud a.tag9 { font-size: 170%; font-weight: 900; background: #11EE33;} 
 			.tagcloud a.tag10 { font-size: 190%; font-weight: 900; background: #00FF33;}			
 
+*/
 
-
-	
-				
-				
 			@media only screen and (max-width: 800px) {
-					aside.facets{width: 0%;
+					#filter_aside{width: 0%;
 								display: none;
 					}
-					aside.onward{width: 0%;
-								display: none;
+					#onwards_aside{width: 0%;
+							display: none;
 					}
-					.headertext{font-size: 75%;}
-					.content{width: 100%;}
-					.result_list{width: 100%;}
+					#headertext{font-size: 75%;}
+
+					
 					
 					}
+				
+				
+
 					
 					

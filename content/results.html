@@ -5,28 +5,28 @@
 </head>
 <body>
 <div class="container">
-	<header>
-	<img class="headerimage" src="images/Land-Registry.png"/>
-	<p class="headertext">Casework Guidance Knowledge Base</p>
+	<header id="km_results_header">
+	<img id="headerimage" src="images/Land-Registry.png"/>
+	<p id="headertext">Casework Guidance Knowledge Base</p>
 	<div class="searchbar">
 		<form id="searchform" action="results.html" method="get">
-			<p class="searchbox">
+			<div class="searchbox">
 					<select name="domain">
 						<option value="all">All</option>
 						<option value="registration" title="Casework, Register creation and update">Registration</option>
 						<option value="information" title="Preliminary, developer and data services">Information Services</option>
 						<option value="customer" title="Customer contact policies and procedures">Customer handling</option>
 					</select>	
-				<input type="search" name="searchphrase"/>
+				<input type="search" name="searchphrase" placeholder="Search ?"/>
 				<button type="submit" form="searchform" value="Search">Search</button>
-			</p>
+			</div>
 		</form>	
 	</div>	
 	</header>
 
-	<div class="result_container">
+	<div id="results_container">
 	
-		<aside class="facets">
+		<aside id="filter_aside">
 				
 		<form class="facet_form" id="facet_filter">
  
