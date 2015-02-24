@@ -259,7 +259,7 @@
  
 /* ..content */			
  
-			.km_title{
+			.km_article_title{
 				text-align: center;
 				font-size: 200%;
 				font-weight: bold;
@@ -269,6 +269,12 @@
 			.km_article{
 				}
 				
+			.km_item_title{
+				text-align: left;
+				font-size: 150%;
+				font-weight: bold;
+				padding: 0 0 1em 0;
+			}	
 			
 			.km_glossary{
 				background-color: yellow;
@@ -347,7 +353,7 @@
 
 */
 
-			@media only screen and (max-width: 800px) {
+			@media only screen and (max-width: 930px) {
 					#filter_aside{width: 0%;
 								display: none;
 					}
@@ -356,7 +362,9 @@
 					}
 					#headertext{font-size: 75%;}
 
-					
+					.result_list{
+						width: 100%;
+					}
 					
 					}
 				
