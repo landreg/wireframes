@@ -392,7 +392,7 @@
 			}
 			
 			.toggle_display input:checked ~ .toggle_off{
-				width: 100%;
+				width: 80%;
 				display:block;
 			}
 			
