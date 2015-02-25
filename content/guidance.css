@@ -115,7 +115,7 @@
 			
 			
 /* facet filter */			
-			#filter_aside{
+			.filter_aside{
 				background-color: #E8E8E8;
 				color: black;
 				width:20%;
@@ -134,17 +134,17 @@
 				font-weight: bold;
 			}	
 
-			#filter_aside ul {
+			.filter_aside ul {
 					list-style-type: none;
 					padding: 0px;
 					padding-left: 10px;
 			}				
-			#filter_aside ul li {
+			.filter_aside ul li {
 					list-style-type: none;
 					padding-left: 0px;
 			}	
 
-			#filter_aside h2 {
+			.filter_aside h2 {
 				font-size: 100%;
 				font-weight:80%;
 			}
@@ -287,7 +287,7 @@
 			
 /* ... onwards_aside navigation */			
 			
-			#onwards_aside{
+			.onwards_aside{
 				background-color: #f7f7f7;
 				color: black;
 				width:25%;
@@ -296,7 +296,7 @@
 				top: 0px;
 				bottom:0px;
 				padding: 0px 0px 0px 0px;
-
+				
 				border-left: thin solid black;
 				}	
 
@@ -311,17 +311,23 @@
 			.similar_links{
 				border-bottom: thin solid black;
 			}
-	/*		
-			#onwards_aside a:hover {
+			
+			.onwards_aside a:hover {
  				position:relative;
 			}
 			
-			#onwards_aside a[tooltip]:hover:after {
+			
+			.onwards_aside a[tooltip]:hover:after {
 				  content: attr(tooltip);
 				  color: black;
-				  background-color: yellow;
+				  background-color: #f7f7f7;
+				  border:1px;
 				  position: absolute;
-				  left:0;
+				  right:0;
+				  margin-right: 100%;	
+				  border-radius: 10px;
+				  border: thin solid black;
+				  padding: 5px 5px 5px 5px;
 				  width:200%;
 				  z-index=9999;	
 		
@@ -329,7 +335,8 @@
 			
 			.tagcloud a{
 				float: left;
-
+				color: black;
+				text-decoration: none;
 				margin: 3px 3px 3px 3px;
 				padding: 5px 5px 5px 5px;
 				border-radius: 10px;
@@ -340,34 +347,71 @@
 			
 			}
 			
-			.tagcloud a.tag1 { font-size: 30%; font-weight: 100; background: #ff00FF;} 
-			.tagcloud a.tag2 { font-size: 50%; font-weight: 200; background: #DD22FF;} 
-			.tagcloud a.tag3 { font-size: 65%; font-weight: 300; background: #BB44FF;} 
-			.tagcloud a.tag4 { font-size: 80%; font-weight: 400; background: #9966FF;} 
-			.tagcloud a.tag5 { font-size: 95%; font-weight: 500; background: #7788FF;} 
-			.tagcloud a.tag6 { font-size: 110%; font-weight: 600; background: #55AAFF;} 
-			.tagcloud a.tag7 { font-size: 130%; font-weight: 700; background: #33BB33;} 
-			.tagcloud a.tag8 { font-size: 150%; font-weight: 800; background: #22DD33;} 
-			.tagcloud a.tag9 { font-size: 170%; font-weight: 900; background: #11EE33;} 
-			.tagcloud a.tag10 { font-size: 190%; font-weight: 900; background: #00FF33;}			
+			.tagcloud a.tag1 { font-size: 70%; font-weight: 100; background: grey;} 
+			.tagcloud a.tag2 { font-size: 80%; font-weight: 200; background: grey;} 
+			.tagcloud a.tag3 { font-size: 90%; font-weight: 300; background: grey;} 
+			.tagcloud a.tag4 { font-size: 100%; font-weight: 400; background: grey;} 
+			.tagcloud a.tag5 { font-size: 110%; font-weight: 500; background: grey;} 
+			.tagcloud a.tag6 { font-size: 110%; font-weight: 600; background: grey;} 
+			.tagcloud a.tag7 { font-size: 120%; font-weight: 700; background: grey;} 
+			.tagcloud a.tag8 { font-size: 130%; font-weight: 800; background: grey;} 
+			.tagcloud a.tag9 { font-size: 140%; font-weight: 900; background: grey;} 
+			.tagcloud a.tag10 { font-size: 150%; font-weight: 900; background: grey;}			
 
-*/
 
-			@media only screen and (max-width: 930px) {
-					#filter_aside{width: 0%;
-								display: none;
-					}
-					#onwards_aside{width: 0%;
-							display: none;
-					}
-					#headertext{font-size: 75%;}
+	.checkbox_hide { display:none; }
+			
+	#toggle_label {float: left;
+							background: white;
+							margin: .5em 0 0 0;
+							padding: 0 0 0 0;
+							display:none;
+							}
 
-					.result_list{
-						width: 100%;
-					}
-					
-					}
-				
+	#toggle_label:before {						
+ 				content: url('images/hamburger.jpg');
+				}
+			
+	@media only screen and (max-width: 930px) {
+ 
+			.onwards_aside{width: 0%;
+					display: none;
+			}
+			#headertext{font-size: 75%;}
+
+			.result_list{
+				width: 100%;
+			}
+			#toggle_label{
+				display: block;
+			}
+			
+			.toggle_display .toggle_off{
+				width:0%;
+ 				display:none;
+			}
+			
+			.toggle_display input:checked ~ .toggle_off{
+				width: 100%;
+				display:block;
+			}
+			
+			.toggle_display  .toggle_on{
+				width: 100%;
+				display:block;
+			}
+			
+			.toggle_display input:checked ~ .toggle_on{
+				width: 0%;
+				display:none;
+			}
+
+			
+	
+		}
+		
+
+
 				
 
 					

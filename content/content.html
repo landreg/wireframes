@@ -24,9 +24,14 @@
 	</div>	
 	</header>
 
-	<div id="knowledge_container">
-		<aside id="onwards_aside">
-			<div class="curated_internal_links  km_link">
+	<div id="knowledge_container" class="toggle_display">
+ 
+	 	<input type="checkbox" id="toggle_box" class="checkbox_hide" />
+			<label for="toggle_box" id="toggle_label"> = </label>
+	
+	
+		<aside class="onwards_aside toggle_off">
+		<div class="curated_internal_links  km_link">
 				<p class="onwards_title">Related KM links</p>
 				<ul>
 					<li><a href="content.html" class="hover_scope" tooltip="Some text that might help the user decide if this is a relevant link. Not sure how long this link should be but maybe the full scoping para would be a good idea" >Restrictions - overview of processing</a></li>
@@ -52,22 +57,21 @@
 			<div class="similar_links km_link">
 				<p class="onwards_title">Similar Articles</p>
 				<ul class="tagcloud">
-					<li><a href="content.html" class="tag10"><span class="tag10">Bankruptcy</span></a></li>
-					<li><a href="content.html" class="tag9" >Personal insolvency</a> </li>
-					<li><a href="content.html" class="tag8" >Trustee in bankruptcy</a> </li>	
-					<li><a href="content.html" class="tag5" >Official Receiver</a> </li>
-					<li><a href="content.html" class="tag5" >Joint ownership</a> </li>
-					<li><a href="content.html" class="tag5" >Restriction</a> </li>
-					<li><a href="content.html" class="tag3" >s.42, LRA 2002</a> </li>
-					<li><a href="content.html" class="tag1" >r.93, LRR 2003</a> </li>
-					<li><a href="content.html" class="tag1" >Form J</a> </li>					
+					<li><a href="results.html" class="tag10"><span class="tag10">Bankruptcy</span></a></li>
+					<li><a href="results.html" class="tag9" >Personal insolvency</a> </li>
+					<li><a href="results.html" class="tag8" >Trustee in bankruptcy</a> </li>	
+					<li><a href="results.html" class="tag5" >Official Receiver</a> </li>
+					<li><a href="results.html" class="tag5" >Joint ownership</a> </li>
+					<li><a href="results.html" class="tag5" >Restriction</a> </li>
+					<li><a href="results.html" class="tag3" >s.42, LRA 2002</a> </li>
+					<li><a href="results.html" class="tag1" >r.93, LRR 2003</a> </li>
+					<li><a href="results.html" class="tag1" >Form J</a> </li>					
 				</ul>
 			</div>
 		</aside>
 
-
-		<div class="km_article hotdrop" id="article_name1">
-			
+		<div class="km_article hotdrop toggle_on" id="article_name1" >
+					
 			<div class="article_metadata">
 				<div class="droptoggle">
 						<input type="checkbox" id="drop-4" />
@@ -107,9 +111,8 @@
  
 			
 		
-			<div class="km_item km_reference" id="sole_proprietors">
-					<p class=”km_item_title”> Sole Proprietor </p>
-					<div class="droptoggle">
+			<div class="km_item km_reference" id="sole_proprietors"  >
+ 					<div class="droptoggle">
 						<input type="checkbox" id="pd1"/>
 						<label class="sub_head" for="pd1"> Sole Proprietor </label>
 						<div class=droptext >
@@ -125,8 +128,7 @@
 					</div>	
 			</div> <!-- item_name1 -->	
 			
-			<div class="km_item km_task" id="joint_proprietors">
-					<p class=”km_item_title”> Joint Proprietor </p>
+			<div class="km_item km_task" id="joint_proprietor" >
  					<div class="droptoggle">
 						<input type="checkbox" id="pd2" />
 						<label class="sub_head" for="pd2"> Joint Proprietors </label>
