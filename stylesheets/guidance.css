@@ -304,6 +304,11 @@
 				
 			}
 			
+			.user_feedback{
+				margin-top: 5%;
+				background-color: #f7f7f7;
+				border-top: thin solid black;
+			}
 			
 /* ... onwards_aside navigation */			
 			
@@ -320,16 +325,22 @@
 				border-left: thin solid black;
 				}	
 
-			.curated_internal_links{
-				border-bottom: thin solid black;
-			}
-				
-			.curated_external_links{
+			.km_link{
 				border-bottom: thin solid black;
 			}	
 			
+			
+				
+			.curated_internal_links{
+				
+			}
+				
+			.curated_external_links{
+			 
+			}	
+			
 			.similar_links{
-				border-bottom: thin solid black;
+			 
 			}
 			
 			.onwards_aside a:hover {
