@@ -1,6 +1,11 @@
 			header, section, footer, aside, nav, article, figure, figcaption {
 				display: block;}
-				
+			
+			.switcher {
+				display:inline;
+				float: left;
+				}
+			
 			body {
 				color: black;
 				background-color: white;
@@ -9,12 +14,21 @@
 				margin: 0px 0px 0px 0px;
 				height: 100%;
 				}	
+			body.sans
+			{    
+				font-family: Helvetica, Arial, sans-serif;}
+			
+			body.high
+			{   
+				font-size: 150%;	
+				font-family: Helvetica, Arial, sans-serif;}
 			
 			p {
 				margin: 0.5em 0 0em 0;
 			}
 				
 			.container {
+				clear: both;
 				min-height: 100%;
 				background-color: white;
 				margin: 0 0 -5em 0; /*negative margin to pull footer to overlap*/			
@@ -28,6 +42,12 @@
 				height: 5em;
 				width: 100%;
 				background-color: green;}
+			
+			body.alt1 header{
+				background-color: black;
+			}
+			
+		
 			
 			#headerimage{
 				height: 90%;
@@ -333,7 +353,11 @@
 		
 			}
 			
-			.tagcloud a{
+			.tagcloud li{
+				list-style-type: none;	
+			}
+			
+			 body[class*='alt'] .tagcloud a{
 				float: left;
 				color: black;
 				text-decoration: none;
@@ -341,23 +365,24 @@
 				padding: 5px 5px 5px 5px;
 				border-radius: 10px;
 			}
-			.tagcloud li{
-				list-style-type: none;
-
+	
 			
-			}
+			 
+			body.alt1 .tagcloud a {background: #f7f7f7; color:black; border:thin solid black;}
+			body.alt2 .tagcloud a {background: green; color:white}
 			
-			.tagcloud a.tag1 { font-size: 70%; font-weight: 100; background: grey;} 
-			.tagcloud a.tag2 { font-size: 80%; font-weight: 200; background: grey;} 
-			.tagcloud a.tag3 { font-size: 90%; font-weight: 300; background: grey;} 
-			.tagcloud a.tag4 { font-size: 100%; font-weight: 400; background: grey;} 
-			.tagcloud a.tag5 { font-size: 110%; font-weight: 500; background: grey;} 
-			.tagcloud a.tag6 { font-size: 110%; font-weight: 600; background: grey;} 
-			.tagcloud a.tag7 { font-size: 120%; font-weight: 700; background: grey;} 
-			.tagcloud a.tag8 { font-size: 130%; font-weight: 800; background: grey;} 
-			.tagcloud a.tag9 { font-size: 140%; font-weight: 900; background: grey;} 
-			.tagcloud a.tag10 { font-size: 150%; font-weight: 900; background: grey;}			
-
+			.tagcloud a.tag1 { font-size: 70%; font-weight: 100;} 
+			.tagcloud a.tag2 { font-size: 80%; font-weight: 200;} 
+			.tagcloud a.tag3 { font-size: 90%; font-weight: 300;} 
+			.tagcloud a.tag4 { font-size: 100%; font-weight: 400;} 
+			.tagcloud a.tag5 { font-size: 110%; font-weight: 500;} 
+			.tagcloud a.tag6 { font-size: 110%; font-weight: 600;} 
+			.tagcloud a.tag7 { font-size: 120%; font-weight: 700;} 
+			.tagcloud a.tag8 { font-size: 130%; font-weight: 800;} 
+			.tagcloud a.tag9 { font-size: 140%; font-weight: 900;} 
+			.tagcloud a.tag10 { font-size: 150%; font-weight: 900;}			
+			
+			
 
 	.checkbox_hide { display:none; }
 			
