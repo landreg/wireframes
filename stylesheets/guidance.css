@@ -47,7 +47,25 @@
 				background-color: black;
 			}
 			
-		
+			body.alt2 header{
+			-webkit-animation: myfirst 2s; /* Chrome, Safari, Opera */
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-direction: alternate;
+			animation: myfirst 2s;
+			animation-iteration-count: infinite;
+			nimation-direction: alternate;
+			background: yellow;
+			}	
+			
+			@-webkit-keyframes myfirst {
+			from {background: red;}
+			to {background: yellow;}
+			}
+			@keyframes myfirst{
+			from {background: red;}
+			to {background: yellow;}
+			}
+			
 			
 			#headerimage{
 				height: 90%;
@@ -393,8 +411,29 @@
 			.tagcloud a.tag9 { font-size: 140%; font-weight: 900;} 
 			.tagcloud a.tag10 { font-size: 150%; font-weight: 900;}			
 			
-			
+			body.alt2 .tagcloud a{
+			-webkit-animation: jiggle 100ms; /* Chrome, Safari, Opera */
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-direction: alternate;
+			animation: jiggle 100ms;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+			}	
 
+			
+			@-webkit-keyframes jiggle {
+				
+				from {padding: 5px 5px 5px 5px; margin: 3px 3px 3px 3px;}
+				to {padding: 3px 3px 3px 3px; margin:5px 5px 5px 5px; }
+			}
+
+			/* Standard syntax */
+			@keyframes jiggle {
+				from {padding: 5px 5px 5px 5px; margin: 3px 3px 3px 3px;}
+				to {padding: 3px 3px 3px 3px; margin:5px 5px 5px 5px; }
+			}
+			
+			
 	.checkbox_hide { display:none; }
 			
 	#toggle_label {float: left;
