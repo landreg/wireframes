@@ -23,6 +23,10 @@
 				font-size: 150%;	
 				font-family: Helvetica, Arial, sans-serif;}
 			
+			body.print{
+				width: 900px;
+			}
+			
 			p {
 				margin: 0.5em 0 0em 0;
 			}
@@ -45,6 +49,10 @@
 			
 			body.alt1 header{
 				background-color: black;
+			}
+			
+			body.print header{
+				display:none;
 			}
 			
 			body.alt2 header{
@@ -314,19 +322,35 @@
 				padding: 0 0 1em 0;
 			}	
 			
+			.km_article_scope{
+				margin: 0 0 1em 0;
+			}
+			
 			.km_glossary{
 				background-color: yellow;
+			}
+			
+			body.print .km_glossary{
+				background-color: white;
 			}
 			
 			.km_snippet{
 				
 			}
 			
+
+			
 			.user_feedback{
 				margin-top: 5%;
 				background-color: #f7f7f7;
 				border-top: thin solid black;
 			}
+			
+			body.print .user_feedback{
+				display: none;
+				}
+			
+			
 			
 /* ... onwards_aside navigation */			
 			
@@ -342,23 +366,39 @@
 				
 				border-left: thin solid black;
 				}	
+				
+			body.print  .onwards_aside{
+				display: none;
+				}			
 
-			.km_link{
+				
+				
+			.km_links{
 				border-bottom: thin solid black;
 			}	
 			
+			.km_useful{
+					background: lightblue;
+					float: left;
+					margin: 3px 3px 3px 3px;
+			}
+			
+			.curated_useful_links{
+					 clear: both;
+					 height: 5em;
+			}
 			
 				
 			.curated_internal_links{
-				
+					clear: both;		
 			}
 				
 			.curated_external_links{
-			 
+			 		clear: both;
 			}	
 			
 			.similar_links{
-			 
+			 		 clear: both;
 			}
 			
 			.onwards_aside a:hover {
@@ -411,7 +451,7 @@
 			.tagcloud a.tag9 { font-size: 140%; font-weight: 900;} 
 			.tagcloud a.tag10 { font-size: 150%; font-weight: 900;}			
 			
-			body.alt2 .tagcloud a{
+			body.alt2 .tagcloud a:hover{
 			-webkit-animation: jiggle 100ms; /* Chrome, Safari, Opera */
 			-webkit-animation-iteration-count: infinite;
 			-webkit-animation-direction: alternate;
@@ -423,14 +463,15 @@
 			
 			@-webkit-keyframes jiggle {
 				
-				from {padding: 5px 5px 5px 5px; margin: 3px 3px 3px 3px;}
-				to {padding: 3px 3px 3px 3px; margin:5px 5px 5px 5px; }
+				from { margin: 7px 5px 3px 5px;}
+				to {  margin:3px 5px 7px 5px; }
 			}
 
 			/* Standard syntax */
 			@keyframes jiggle {
-				from {padding: 5px 5px 5px 5px; margin: 3px 3px 3px 3px;}
-				to {padding: 3px 3px 3px 3px; margin:5px 5px 5px 5px; }
+				from { margin: 7px 5px 3px 5px;}
+				to {  margin:3px 5px 7px 5px; }
+ 
 			}
 			
 			

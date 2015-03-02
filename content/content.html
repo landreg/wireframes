@@ -7,6 +7,7 @@
 <body>
  <div id="screen-switcher" class="switcher"></div>
  <div id="readability-switcher" class="switcher"></div>
+ <div id="media-switcher" class="switcher"></div>
  <div class="container">
 	<header id="km_knowledge_header">
 	<img id="headerimage" src="../resources/Land-Registry.png"/>
@@ -35,14 +36,19 @@
 	
 		<aside class="onwards_aside toggle_off">
 		
-			<div class="curated_common_links  km_link">
-				<p class="onwards_title">Common KM links</p>
-				<ul>		
-					<li><a href="content.html"  class="hover_scope" tooltip="Some text that might help the user decide if this is a relevant link. Not sure how long this link should be but maybe the full scoping para would be a good idea" >Classification - Restrictions </a></li>
-					<li><a href="content.html"  class="hover_scope" tooltip="Some text that might help the user decide if this is a relevant link. Not sure how long this link should be but maybe the full scoping para would be a good idea" >Fees - Restrictions </a></li>	
-				</ul>
+			<div class="curated_useful_links  km_links">
+				<p class="onwards_title">Useful KM links</p>
+				<div class="km_fees km_useful">
+					<p> FEE </p>
+					<a href="fees.html"> £100.23 </a>
+				</div>
+				<div class="km_fees km_useful">
+					<p> CLASSIFICATION </p>
+					<a href="classifications.html"> ASBO </a>
+				</div>
 			</div>
-			<div class="curated_internal_links  km_link">
+			
+			<div class="curated_internal_links  km_links">
 				<p class="onwards_title">Related KM links</p>
 				<ul>
 					<li><a href="content.html" class="hover_scope" tooltip="A brief overview of the elements involved in processing applications to enter restrictions, with links to more detailed guidance." >Restrictions - overview of processing</a></li>
@@ -55,7 +61,7 @@
 					<li><a href="content.html"  class="hover_scope" tooltip="Dealing with applications to change a joint tenancy to a tenancy in common" >Severance of joint tenancy </a></li>
 				</ul>
 			</div>
-			<div class="curated_external_links km_link">
+			<div class="curated_external_links km_links">
 				<p class="onwards_title">Related external links</p>
 				<ul>
 					<li><a href="http://www.gov.uk/bankruptcy/your home" target="_blank" class="hover_scope" tooltip="Some text that might help the user decide if this is a relevant link. Not sure how long this link should be but maybe the full scoping para would be a good idea" >GOV.UK -> your home</a></li>
@@ -63,7 +69,7 @@
 				</ul>
 
 			</div>
-			<div class="similar_links km_link">
+			<div class="similar_links km_links">
 				<p class="onwards_title">Similar Articles</p>
 				<ul class="tagcloud">
 					<li><a href="results.html" class="tag10"><span class="tag10">Bankruptcy</span></a></li>
@@ -80,6 +86,72 @@
 
 		<div class="km_article hotdrop toggle_on" id="article_name1" >
 					
+			
+			
+			<div class="article_rating">
+				<a href="article.rating">This article is rated 5*</a>
+			</div>
+			<p class="km_article_title">Bankruptcy - Applications for Form J restrictions</p>
+ 
+			<p class="km_article_scope">Where one or more of joint registered proprietors is subject to a petition in bankruptcy or bankruptcy order, neither a bankruptcy notice nor a bankruptcy restriction will be entered. However, the Official Receiver or trustee in bankruptcy may apply in form RX1 for a Form J restriction once the bankruptcy order has been made.
+			</p>
+		
+			<div class="km_item km_reference" id="sole_proprietors"  >
+ 					<div class="droptoggle">
+						<input type="checkbox" id="pd1"/>
+						<label class="sub_head" for="pd1"> Sole Proprietor </label>
+						<div class=droptext >
+							<p>Where a petition in bankruptcy is filed in the court against a sole registered proprietor, a bankruptcy notice is entered in the register. Once the bankruptcy order has been made against a sole registered proprietor, a bankruptcy restriction is entered in the register.</p>
+							<p>A <span class="km_glossary" title="a trusted person">trustee</span> in bankruptcy should not apply for a Form J restriction where:</p>
+							<ul>
+								<li><span class="km_snippet" km_snippet="snip101">a bankruptcy inhibition or bankruptcy</span> restriction is entered in the register, and</li>
+								<li>the trustee accepts that the registered estate has vested in them.</li>
+							</ul>
+							<p>This is because, given the existing bankruptcy entry, the entry of the restriction isn't necessary or desirable within s.42(1), LRA 2002. Further, a trustee probably can't rely upon r.93(j), LRR 2003 as they don't have a beneficial interest - a person who is the undivided legal and beneficial owner of property has no separate equitable interest in it (Westdeutsche Landesbank Girozentrale v Islington LBC [1996] AC 669 at 705).</p>	
+							<p>See Topic - Bankruptcy</p>
+						</div>
+					</div>	
+			</div> <!-- item_name1 -->	
+			
+			<div class="km_item km_task" id="joint_proprietor" >
+ 					<div class="droptoggle">
+						<input type="checkbox" id="pd2" />
+						<label class="sub_head" for="pd2"> Joint Proprietors </label>
+						<div class=droptext>
+							<p>Where one or more of joint registered proprietors is subject to a petition in bankruptcy or bankruptcy order, neither a bankruptcy notice nor a bankruptcy restriction will be entered. However, the Official Receiver or trustee in bankruptcy may apply in form RX1 for a Form J restriction once the bankruptcy order has been made</p>
+							<ul>
+								<li>certified copy of the bankruptcy order and</li>
+								<li>•evidence of the trustee in bankruptcy’s appointment.</li>
+							</ul>
+							<p>The trustee in bankruptcy may apply for a restriction in Form A at the same time and in the same form RX1, as long as a Form A restriction hasn’t already been entered in the register. The bankruptcy will have severed the beneficial joint tenancy</p>
+						</div>
+					</div>	
+			</div> <!-- item_name2 -->
+			
+			
+			<div class="user_feedback">
+				<form action="feedback">
+				<h2> Please provide feedback on this article </h2>	
+				<p>Did this article solve your problem</p>
+				<input type="radio" name="solved" value="yes">yes</input>
+				<input type="radio" name="solved" value="no">no</input>
+				<p>Please rate this article for usefulness</p>
+				<input type="radio" name="useful" value="5">very high</input>
+				<input type="radio" name="useful" value="4">high</input>
+				<input type="radio" name="useful" value="3">ok</input>
+				<input type="radio" name="useful" value="2">low</input>		
+				<input type="radio" name="useful" value="1">useless</input>		
+				<p>Please rate this article for quality</p>
+				<input type="radio" name="quality" value="3">good</input>
+				<input type="radio" name="quality" value="2">ok</input>
+				<input type="radio" name="quality" value="1">bad</input>
+				<br/>
+				<textarea name="comments" cols="40" rows="5">Please enter your comments</textarea>
+				<br/>
+				<input type="submit" value="Submit Feedback"/>
+				</form>
+			</div>	
+
 			<div class="article_metadata">
 				<div class="droptoggle">
 						<input type="checkbox" id="drop-4" />
@@ -113,68 +185,12 @@
 							</div> <!--droptext -->
 				</div>	<!-- hotdrop -->
 			</div> <!--  metadata -->
-			
-			<div class="article_rating">
-				<a href="article.rating">This article is rated 5*</a>
-			</div>
-			<p class="km_article_title">Bankruptcy - Applications for Form J restrictions</p>
- 
-			
-		
-			<div class="km_item km_reference" id="sole_proprietors"  >
- 					<div class="droptoggle">
-						<input type="checkbox" id="pd1"/>
-						<label class="sub_head" for="pd1"> Sole Proprietor </label>
-						<div class=droptext >
-							<p>Where a petition in bankruptcy is filed in the court against a sole registered proprietor, a bankruptcy notice is entered in the register. Once the bankruptcy order has been made against a sole registered proprietor, a bankruptcy restriction is entered in the register.</p>
-							<p>A <span class="km_glossary" title="a trusted person">trustee</span> in bankruptcy should not apply for a Form J restriction where:</p>
-							<ul>
-								<li><span class="km_snippet" km_snippet="snip101">a bankruptcy inhibition or bankruptcy</span> restriction is entered in the register, and</li>
-								<li>the trustee accepts that the registered estate has vested in them.</li>
-							</ul>
-							<p>This is because, given the existing bankruptcy entry, the entry of the restriction isn't necessary or desirable within s.42(1), LRA 2002. Further, a trustee probably can't rely upon r.93(j), LRR 2003 as they don't have a beneficial interest - a person who is the undivided legal and beneficial owner of property has no separate equitable interest in it (Westdeutsche Landesbank Girozentrale v Islington LBC [1996] AC 669 at 705).</p>	
-							<p>See Topic - Bankruptcy</p>
-						</div>
-					</div>	
-			</div> <!-- item_name1 -->	
-			
-			<div class="km_item km_task" id="joint_proprietor" >
- 					<div class="droptoggle">
-						<input type="checkbox" id="pd2" />
-						<label class="sub_head" for="pd2"> Joint Proprietors </label>
-						<div class=droptext>
-							<p>Where one or more of joint registered proprietors is subject to a petition in bankruptcy or bankruptcy order, neither a bankruptcy notice nor a bankruptcy restriction will be entered. However, the Official Receiver or trustee in bankruptcy may apply in form RX1 for a Form J restriction once the bankruptcy order has been made</p>
-							<ul>
-								<li>certified copy of the bankruptcy order and</li>
-								<li>•evidence of the trustee in bankruptcy’s appointment.</li>
-							</ul>
-							<p>The trustee in bankruptcy may apply for a restriction in Form A at the same time and in the same form RX1, as long as a Form A restriction hasn’t already been entered in the register. The bankruptcy will have severed the beneficial joint tenancy</p>
-						</div>
-					</div>	
-			</div> <!-- item_name2 -->
-			<div class="user_feedback">
-				<form action="feedback">
-				<h2> Please provide feedback on this article </h2>	
-				<p>Did this article solve your problem</p>
-				<input type="radio" name="solved" value="yes">yes</input>
-				<input type="radio" name="solved" value="no">no</input>
-				<p>Please rate this article for usefulness</p>
-				<input type="radio" name="useful" value="5">very high</input>
-				<input type="radio" name="useful" value="4">high</input>
-				<input type="radio" name="useful" value="3">ok</input>
-				<input type="radio" name="useful" value="2">low</input>		
-				<input type="radio" name="useful" value="1">useless</input>		
-				<p>Please rate this article for quality</p>
-				<input type="radio" name="quality" value="3">good</input>
-				<input type="radio" name="quality" value="2">ok</input>
-				<input type="radio" name="quality" value="1">bad</input>
-				<br/>
-				<textarea name="comments" cols="40" rows="5">Please enter your comments</textarea>
-				<br/>
-				<input type="submit" value="Submit Feedback"/>
-				</form>
-			</div>	
+
+
 		</div> <!-- article -->
+		
+		
+	
 	</div> <!--knowledge_container-->
 	
 
