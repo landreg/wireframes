@@ -30,6 +30,12 @@ screenSwitcher.defineClass('proposed', 'Proposed');
 screenSwitcher.defineClass('sans', 'Sans-serif');
 screenSwitcher.defineClass('high', 'High visibility'); 
 
+var screenSwitcher = new bodySwitcher('media-switcher', 'Media');
+screenSwitcher.defineClass('screen', 'Screen');
+screenSwitcher.defineClass('print', 'Print');
+ 
+
+
 /*****************************************************************************
 *****************************************************************************/
 
