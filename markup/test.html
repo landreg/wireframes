@@ -57,6 +57,7 @@
 
 
 	function getHTML(){
+		editor.preview()
 		var html = editor.getElement('previewer').body.innerHTML;
 		var rstart = html.replace('<div id="epiceditor-preview">',"");
 		var rend = rstart.replace(new RegExp('\<div\>(?!\<div\>)','g'),"&gt");
@@ -64,10 +65,8 @@
 		var ehtml2 = ehtml1.replace(new RegExp('\>','g'),"&gt");
 
 		disp = "<pre >" + ehtml2 + "</pre>";
-	
-
 		document.getElementById("html").innerHTML = disp;
-	
+		editor.edit();
 	}
 
 
