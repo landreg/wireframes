@@ -1,0 +1,93 @@
+<html>
+<head>
+
+<!--
+-->
+<style>
+	.html {
+		background: lightblue;
+	}
+</style>
+
+<script src="epiceditor/js/epiceditor.min.js"       type="text/javascript"></script>
+<script type="text/javascript">
+	var editor;
+
+	function loadEditor(){
+		var opts = {
+		  container: 'epiceditor',
+		  textarea: null,
+		  basePath: 'epiceditor',
+		  clientSideStorage: true,
+		  localStorageName: 'epiceditor',
+		  useNativeFullscreen: true,
+		  parser: marked,
+		  file: {
+			name: 'epiceditor',
+			defaultContent: '',
+			autoSave: 100
+		  },
+		  theme: {
+			base: '/themes/base/epiceditor.css',
+			preview: '/themes/preview/preview-dark.css',
+			editor: '/themes/editor/epic-dark.css'
+		  },
+		  button: {
+			preview: true,
+			fullscreen: true,
+			bar: "auto"
+		  },
+		  focusOnLoad: false,
+		  shortcut: {
+			modifier: 18,
+			fullscreen: 70,
+			preview: 80
+		  },
+		  string: {
+			togglePreview: 'Toggle Preview Mode',
+			toggleEdit: 'Toggle Edit Mode',
+			toggleFullscreen: 'Enter Fullscreen'
+		  },
+		  autogrow: false
+		}
+	editor = new EpicEditor(opts);
+	editor.load();
+	}
+
+
+
+	function getHTML(){
+		var html = editor.getElement('previewer').body.innerHTML;
+		var rstart = html.replace('<div id="epiceditor-preview">',"");
+		var rend = rstart.replace(new RegExp('\<div\>(?!\<div\>)','g'),"&gt");
+		var ehtml1 = rend.replace(new RegExp('\<','g'),"&lt");
+		var ehtml2 = ehtml1.replace(new RegExp('\>','g'),"&gt");
+
+		disp = "<pre >" + ehtml2 + "</pre>";
+	
+
+		document.getElementById("html").innerHTML = disp;
+	
+	}
+
+
+	window.onload = loadEditor;
+</script>
+
+</head>
+
+<body>
+<!--
+-->
+Enter some text in markdown : Notice the full screen and preview buttons at the bottom
+
+<div id="epiceditor"></div>
+</div>
+then click this button to 
+<button type="button" onclick="getHTML()">get the HTML</button>
+<div id="html" class="html">
+
+</div>
+
+</body>
+</html>
