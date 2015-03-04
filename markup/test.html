@@ -7,6 +7,9 @@
 	.html {
 		background: lightblue;
 	}
+	.json {
+		background: pink;
+	}
 	.hide {
 		display:none;
 	}
@@ -58,11 +61,12 @@
 	editor.load();
 	}
 
-
+	var html;
+	var disp;
 
 	function getHTML(){
 		editor.preview()
-		var html = editor.getElement('previewer').body.innerHTML;
+		html = editor.getElement('previewer').body.innerHTML;
 		var rstart = html.replace('<div id="epiceditor-preview">',"");
 		var rend = rstart.replace(new RegExp('\<div\>(?!\<div\>)','g'),"&gt");
 		var ehtml1 = rend.replace(new RegExp('\<','g'),"&lt");
@@ -74,7 +78,22 @@
 		editor.edit();
 	}
 
+		function getJSON(){
+		var jsonstart;
+		json = '{"article\":{<br/>';
+		json += '"_boost": {"name" : "sponsor", "null_value" : 1.0},<br/>';	
+		json += '"properties":{}<br/>';		
+		json += '}<br/>';
+ 		document.getElementById("json").innerHTML =  json;
+ 	}
 
+	function getit(){
+		getHTML();
+		getJSON();
+	
+	}
+	
+	
 	window.onload = loadEditor;
 </script>
 
@@ -88,9 +107,12 @@ Enter some text in markdown : Notice the full screen and preview buttons at the 
 <div id="epiceditor"></div>
 </div>
 then click this button to 
-<button type="button" onclick="getHTML()">get the HTML</button>
+<button type="button" onclick="getit()">get the JSON</button>
 <div id="html" class="html">
 </div>
+<div id="json" class="json">
+</div>
+
 
 <h2>Send as e-mail to john.pickerill@landregistry.gsi.gov.uk:</h2>
 <form action="MAILTO:john.pickerill@landregistry.gsi.gov.uk" method="post" enctype="text/plain">
