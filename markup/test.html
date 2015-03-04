@@ -7,6 +7,10 @@
 	.html {
 		background: lightblue;
 	}
+	.hide {
+		display:none;
+	}
+	
 </style>
 
 <script src="epiceditor/js/epiceditor.min.js"       type="text/javascript"></script>
@@ -66,6 +70,7 @@
 
 		disp = "<pre >" + ehtml2 + "</pre>";
 		document.getElementById("html").innerHTML = disp;
+		document.getElementById("mhtml").value =  html;
 		editor.edit();
 	}
 
@@ -85,8 +90,21 @@ Enter some text in markdown : Notice the full screen and preview buttons at the 
 then click this button to 
 <button type="button" onclick="getHTML()">get the HTML</button>
 <div id="html" class="html">
-
 </div>
+
+<h2>Send as e-mail to john.pickerill@landregistry.gsi.gov.uk:</h2>
+<form action="MAILTO:john.pickerill@landregistry.gsi.gov.uk" method="post" enctype="text/plain">
+
+	<input type="submit" value="Send">
+		<div class=hide> 
+		HTML:<br>
+		<input id="mhtml" type="text" name="html" value="your name"><br>
+		JSON:<br>
+		<input id="mjson" type="text" name="json" value="your email"><br>
+		</div>
+<input type="reset" value="Reset">
+</form>
+
 
 </body>
 </html>
