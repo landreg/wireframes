@@ -17,6 +17,9 @@
 </style>
 
 <script src="epiceditor/js/epiceditor.min.js"       type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+ 
+		
 <script type="text/javascript">
 	var editor;
 
@@ -95,7 +98,7 @@
 	function rest($method,$url,$data){ 
 		xmlhttp=new XMLHttpRequest(); 
 		xmlhttp.open($method,$url,true) 
-		xmlhttp.send($data); 
+		xmlhttp.send(null); 
 		
 		if (xmlhttp.status == 200)
 			alert("The request succeeded!\n\nThe response representation was:\n\n" + xmlhttp.responseText)
@@ -110,6 +113,19 @@
 	
 	window.onload = loadEditor;
 </script>
+
+<script>
+	$(document).ready(function() {
+		$.ajax({
+			url: ""https://cr8s6lopm:ruvfrlsbil@johns-first-starter-1934305931.eu-west-1.bonsai.io/article/external/1"
+		}).then(function(data) {
+		   $('.greeting-id').append(data.id);
+		   $('.greeting-content').append(data.content);
+		});
+	});
+</script>
+
+
 
 </head>
 
@@ -143,5 +159,9 @@ then click this button to
 
 <h2>Send to Elastic Searcg</h2>
 <button type="button" onclick="sendES()">send</button>
+
+<p class="greeting-id">The ID is </p>
+<p class="greeting-content">The content is </p>
+
 </body>
 </html>
