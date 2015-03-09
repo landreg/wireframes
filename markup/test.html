@@ -10,12 +10,24 @@
 	.json {
 		background: pink;
 	}
+	
+	.csv {
+		background: pink;
+	}
+	
+
 	.hide {
 		display:none;
 	}
 	
+	#SCOPE{
+		width: 100%;
+		height:5em;
+		}
+	
 </style>
 <script src="jmarked.js"       type="text/javascript"></script>
+<script src="jeditor.js"       type="text/javascript"></script>
 <script src="epiceditor/js/epiceditor.js"       type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
  
@@ -63,66 +75,10 @@
 	editor = new EpicEditor(opts);
 	editor.load();
 	}
-
-	var html;
-	var disp;
-
-	function getHTML(){
-		editor.preview()
-		html = editor.getElement('previewer').body.innerHTML;
-		var rstart = html.replace('<div id="epiceditor-preview">',"");
-		var rend = rstart.replace(new RegExp('</div>(?!</div>)','g'),"");
-		var ehtml1 = rend.replace(new RegExp('\<','g'),"&lt");
-		var ehtml2 = ehtml1.replace(new RegExp('\>','g'),"&gt");
-
-		disp = "<pre >" + ehtml2 + "</pre>";
-		document.getElementById("html").innerHTML = disp;
-		document.getElementById("mhtml").value =  html;
-		editor.edit();
-	}
-
-		function getJSON(){
-		var jsonstart;
-		json = '{"article\":{<br/>';
-		json += '"_boost": {"name" : "sponsor", "null_value" : 1.0},<br/>';	
-		json += '"properties":{}<br/>';		
-		json += '}<br/>';
- 		document.getElementById("json").innerHTML =  json;
- 	}
-
-	function getit(){
-		getHTML();
-		getJSON();
-	
-	}
-	function rest($method,$url,$data){ 
-		xmlhttp=new XMLHttpRequest(); 
-		xmlhttp.open($method,$url,true) 
-		xmlhttp.send(null); 
-		
-		if (xmlhttp.status == 200)
-			alert("The request succeeded!\n\nThe response representation was:\n\n" + xmlhttp.responseText)
-		else
-			alert("The request did not succeed!\n\nThe response status was: " + xmlhttp.status + " " + xmlhttp.statusText + ".");
-		}
-		
-	function sendES(){
-		rest("GET","https://cr8s6lopm:ruvfrlsbil@johns-first-starter-1934305931.eu-west-1.bonsai.io/article/external/1",null);
-	}
-	
 	
 	window.onload = loadEditor;
-</script>
 
-<script>
-	$(document).ready(function() {
-		$.ajax({
-			url: ""https://cr8s6lopm:ruvfrlsbil@johns-first-starter-1934305931.eu-west-1.bonsai.io/article/external/1"
-		}).then(function(data) {
-		   $('.greeting-id').append(data.id);
-		   $('.greeting-content').append(data.content);
-		});
-	});
+	
 </script>
 
 
@@ -132,8 +88,20 @@
 <body>
 <!--
 -->
-Enter some text in markdown : Notice the full screen and preview buttons at the bottom
+ 
+<p>Filename:
+<input type="file" id="fileToLoad"> </p>
+<input id="filename" type="text">filename</input>
+<button onclick="loadFileAsText()">Load</button>
+<button type="button" onclick="saveTextAsFile()">Save</button>
+<div class="metadata">
+<p>UID:<br><input id="UID" type="text" ></input></p>
+<p>SCOPE:<textarea id="SCOPE" textarea>SCOPE</textarea></p>
+<div>
 
+
+</p>
+Enter the article using markdown notation. Notice the full screen and preview buttons at the bottom of the editor box.
 <div id="epiceditor"></div>
 </div>
 then click this button to 
@@ -142,26 +110,21 @@ then click this button to
 </div>
 <div id="json" class="json">
 </div>
-
+<div id="csv" class="csv">
+</div>
 
 <h2>Send as e-mail to john.pickerill@landregistry.gsi.gov.uk:</h2>
-<form action="MAILTO:john.pickerill@landregistry.gsi.gov.uk" method="post" enctype="text/plain">
-
+<form action="MAILTO:john.pickerill@landregistry.gsi.gov.uk" subject="Knowledge article" method="post" enctype="text/plain">
 	<input type="submit" value="Send">
 		<div class=hide> 
-		HTML:<br>
-		<input id="mhtml" type="text" name="html" value="your name"><br>
-		JSON:<br>
-		<input id="mjson" type="text" name="json" value="your email"><br>
+ 		JSON:<br>
+		<input id="mjson" type="text" name="json" value=""><br>
+		CSV:<br>
+		<input id="mcsv" type="text" name="csv" value=""><br>
 		</div>
-<input type="reset" value="Reset">
 </form>
 
-<h2>Send to Elastic Searcg</h2>
-<button type="button" onclick="sendES()">send</button>
 
-<p class="greeting-id">The ID is </p>
-<p class="greeting-content">The content is </p>
 
 </body>
 </html>
