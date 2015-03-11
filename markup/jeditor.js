@@ -21,32 +21,81 @@
 	}
 	
 	function getMarkup(){
-		var mup = editor.exportFile("epiceditor","text");
-		var xmup = mup.replace(new RegExp('\"','g'),'\\"');	
-		var xxmup = xmup.replace(new RegExp('\[\x0A\x0D]','g'),"");
-		return xxmup;
+		var theText = editor.exportFile("epiceditor","text");
+		/*
+		var mup = mup.replace(new RegExp('\"','g'),'\\"');	
+		var mup = xmup.replace(new RegExp('\[\x0A\x0D]','g'),"");
+		*/
+		  // First replace <br>s before replacing the rest of the HTML
+		  theText = theText.replace(/<br>/gi, "\n");
+		  // Now we can clean the HTML
+		  theText = theText.replace(/<(?:.|\n)*?>/gm, '');
+		  // Now fix HTML entities
+		  theText = theText.replace(/&lt;/gi, '<'); 
+		return theText;	
+	
+	}
+	function setMarkup(content){
+		// Don't convert lt/gt characters as HTML when viewing the editor window
+		// TODO: Write a test to catch regressions for this
+		content = content.replace(/</g, '&lt;');
+		content = content.replace(/>/g, '&gt;');
+		content = content.replace(/\n/g, '<br>');
+		
+		// Make sure to there aren't two spaces in a row (replace one with &nbsp;)
+		// If you find and replace every space with a &nbsp; text will not wrap.
+		// Hence the name (Non-Breaking-SPace).
+		// TODO: Probably need to test this somehow...
+		content = content.replace(/<br>\s/g, '<br>&nbsp;')
+		content = content.replace(/\s\s\s/g, '&nbsp; &nbsp;')
+		content = content.replace(/\s\s/g, '&nbsp; ')
+		content = content.replace(/^ /, '&nbsp;')
+	
+		editor.importFile("epiceditor",content);
+	}
+	
+	
+	
+	
+	function putJSON(json){
+ 
+	try{
+			jsonObj= JSON.parse(json);
+			document.getElementById("json").innerHTML = json;
+			document.getElementById("UID").value=jsonObj.article.properties.id;
+			document.getElementById("TITLE").value=jsonObj.article.properties.title;
+			document.getElementById("SCOPE").value=jsonObj.article.properties.scope;
+ 
+			document.getElementById('html').innerHTML=jsonObj.article.properties.content;
+			editor.importFile("epiceditor",jsonObj.article.properties.markup);
+			//setMarkup(jsonObj.article.properties.markup);
+		}
+		catch(err){
+			document.getElementById("json").innerHTML = "Error"+ err.message;
+ 
 	}
 
+	
+	}
+	
+	
 	function getJSON(){
 		var xhtml = getHTML();
-		html = xhtml.replace (new RegExp('\[\x0A\x0D]','g'),"");
+		//html = xhtml.replace (new RegExp('\[\x0A\x0D]','g'),"");
 		var json;
-		json = '{"article":{';
-		/*							 */
-			json += '"_boost": {"name" : "sponsor", "null_value" : 1.0},';	
-			json += '"properties":{'
-
-			json += '"id":"' + document.getElementById("UID").value +'",';
-			json += '"title":"' + document.getElementById("TITLE").value +'",';
-			json += '"scope":"' + document.getElementById("SCOPE").innerHTML +'",';
-			json += '"content":"' +  html + '",';
-			json += '"markup":"' + getMarkup() + '"';
-			json += '}';		
-			json += '}';
-		json += '}';
+		var jsonObj = {};
+		jsonObj.article={};
+		jsonObj.article._boost = {name: "sponsor" , "null_value" : 1.0};
+		jsonObj.article.properties = {};
+		jsonObj.article.properties.id =  document.getElementById("UID").value ;
+		jsonObj.article.properties.title = document.getElementById("TITLE").value ;
+		jsonObj.article.properties.scope = document.getElementById("SCOPE").innerHTML
+		jsonObj.article.properties.content = html ;
+		jsonObj.article.properties.markup = editor.exportFile("epiceditor","text");
+		 
 		 
 		try{
-			jsonObj= JSON.parse(json);
+		/*	jsonObj= JSON.parse(json);*/
 			json = JSON.stringify(jsonObj,null,2) 
 			document.getElementById("json").innerHTML = "<pre >" + json+ "</pre>";
 			return json;
@@ -68,9 +117,10 @@
  	}
 
 	function getit(){
-		
-		getJSON();
-		getCSV(); 
+		var theText = editor.exportFile("epiceditor","text");
+		editor.importFile("epiceditor",theText);
+		//etJSON();
+		//getCSV(); 
 
 	}
 	
@@ -107,22 +157,7 @@
 	document.body.removeChild(event.target);
 }
 
-	function loadJSON(json){
-	try{
-			jsonObj= JSON.parse(json);
-			document.getElementById("json").innerHTML = json;
-			document.getElementById("UID").value=jsonObj.article.properties.id;
-			document.getElementById("TITLE").value=jsonObj.article.properties.title;
-			document.getElementById("SCOPE").innerHTML=jsonObj.article.properties.scope;
- 
-			document.getElementById('html').innerHTML=jsonObj.article.properties.content;
-			editor.importFile("tmp",jsonObj.article.properties.markup);
-		}
-		catch(err){
-			document.getElementById("json").innerHTML = "Error"+ err.message;
-		}	
-	}
-
+	
 
 	function loadFileAsText()
 	{
@@ -132,7 +167,7 @@
 		fileReader.onload = function(fileLoadedEvent) 
 		{
 			var textFromFileLoaded = fileLoadedEvent.target.result;		
- 			loadJSON(textFromFileLoaded);
+ 			putJSON(textFromFileLoaded);
 			
 		};
 		fileReader.readAsText(fileToLoad, "UTF-8");
