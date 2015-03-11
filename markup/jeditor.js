@@ -117,10 +117,9 @@
  	}
 
 	function getit(){
-		var theText = editor.exportFile("epiceditor","text");
-		editor.importFile("epiceditor",theText);
-		//etJSON();
-		//getCSV(); 
+ 
+		getJSON();
+		getCSV(); 
 
 	}
 	
@@ -129,7 +128,7 @@
 	function saveTextAsFile(){
 		var textToWrite = getJSON();
 		var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
-		var fileNameToSaveAs = document.getElementById("UID").value+ "_" + document.getElementById("TITLE").value +".json";
+		var fileNameToSaveAs = document.getElementById("UID").value +".json";
 
 		var downloadLink = document.createElement("a");
 		downloadLink.download = fileNameToSaveAs;
