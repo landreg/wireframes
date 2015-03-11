@@ -123,6 +123,17 @@
 
 	}
 	
+	function createHeader{}{
+	 
+		var para = this.createElement('p', this.attrs);
+		para.
+		document.getElementById(divid).appendChild(this.form);
+		
+	
+	
+	}
+	
+	
 /*
 */
 	function saveTextAsFile(){
