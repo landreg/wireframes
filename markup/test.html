@@ -19,6 +19,8 @@
 	}
 	
 </style>
+<link rel="stylesheet" type="text/css" href="../stylesheets/guidance.css" title="best">
+<link rel="stylesheet" type="text/css" href="../stylesheets/hotdrop.css" title="best">
 <script src="jmarked.js"       type="text/javascript"></script>
 <script src="jexport.js"       type="text/javascript"></script>
 <script src="epiceditor/js/epiceditor.js"       type="text/javascript"></script>
@@ -89,12 +91,15 @@
 <div class="metadata">
 <p>UID:<br><input id="UID" type="text" ></input></p>
 <p>TITLE:<br><input id="TITLE" type="text" ></input></p>
+<p>TYPE:<br><input id="TYPE" type="text" value="km_task" ></input></p>
 <p>SCOPE:<textarea id="SCOPE" textarea>SCOPE</textarea></p>
+ 
 <div>
 Enter the article using markdown notation. Notice the full screen and preview buttons at the bottom of the editor box.
 <div id="epiceditor"></div>
+<p><button onclick="preview()">Preview</button></p>
 </div> 
-<div id="html">
+<div id="km_article">
 </div>
 
 

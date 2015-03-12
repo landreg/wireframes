@@ -24,9 +24,16 @@
 		var disp = xhtml.replace(new RegExp('\&amp','g'),"\&");	
 		var xdisp = disp.replace(new RegExp('\&lt','g'),"<");
 		*/
-		document.getElementById('html').innerHTML= html;
+		try{
+			document.getElementById('km_article').innerHTML= html;
+		}
+		catch(err){};	
 	}
 	
+	function preview(){
+		var jsonObj = getJSON();
+		putHTML(jsonObj.article.properties.content);
+	}
 	
 	
 	function putJSON(json){
@@ -41,7 +48,7 @@
 		}
 		catch(err){
 			alert ("Error"+ err.message);
- 
+			return;
 		}
 		
 	
@@ -50,25 +57,21 @@
 	
 	function getJSON(){
  		//html = xhtml.replace (new RegExp('\[\x0A\x0D]','g'),"");
-		var json;
-		var jsonObj = {};
+ 		var jsonObj = {};
 		jsonObj.article={};
 		jsonObj.article._boost = {name: "sponsor" , "null_value" : 1.0};
 		jsonObj.article.properties = {};
 		jsonObj.article.properties.id =  document.getElementById("UID").value ;
 		jsonObj.article.properties.title = document.getElementById("TITLE").value ;
 		jsonObj.article.properties.scope = document.getElementById("SCOPE").innerHTML
-		jsonObj.article.properties.content = getFirst() + wrapItem(getHTML(),document.getElementById("UID").value ); ;
+		jsonObj.article.properties.items  =[];
+		jsonObj.article.properties.items[0] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
+ 		jsonObj.article.properties.items[1] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
+		jsonObj.article.properties.content = getFirst() + wrapItem(getHTML(),document.getElementById("UID").value,document.getElementById("TYPE").value); 
 		jsonObj.article.properties.markup = editor.exportFile("epiceditor","text");
-		 
-		 
-		try{
-			json = JSON.stringify(jsonObj,null,2)   
- 			return json;
-		}
-		catch(err){
-			alert ("Error creating json file:" + err.message);
-		}
+	 
+		return jsonObj;
+
  	}
 	
 	function getCSV(){
@@ -98,15 +101,22 @@
  
 	}
 	
-	 function wrapItem(html,item){
-	 return "<div class=\"km_article_item\" id=\""+item+"\">"+html+"</div>"
+	 function wrapItem(html,item,type){
+	 return "<div class=\"km_article_item " + type + "\" id=\""+item+"\">"+html+"</div>"
 	 }
 	 
 	
 /*
 */
 	function saveTextAsFile(){
-		var textToWrite = getJSON();
+		try{
+			textToWrite = JSON.stringify(getJSON(),null,2)   
+		}
+		catch(err){
+			alert ("Error creating json file:" + err.message);
+			return;
+		}
+ 
 		var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
 		var fileNameToSaveAs = document.getElementById("UID").value +".json";
 
