@@ -20,6 +20,14 @@
 		width: 100%;
 	}
 	
+	#drop {
+	  min-height: 50px;
+	  width: 50px;
+	  border: 1px solid blue;
+	  margin: 10px;
+	  padding: 10px;
+	}
+	
 </style>
 <link rel="stylesheet" type="text/css" href="../stylesheets/guidance.css" title="best">
 <link rel="stylesheet" type="text/css" href="../stylesheets/hotdrop.css" title="best">
@@ -72,8 +80,32 @@
 	editor.load();
 	}
 	
-	window.onload = loadEditor;
+	window.onload = loadWindow;
 	
+	
+
+
+	
+	function loadWindow(){
+		loadEditor();
+		loadExport();
+		}
+		
+
+	
+function addEventHandler(obj, evt, handler) {
+    if(obj.addEventListener) {
+        // W3C method
+        obj.addEventListener(evt, handler, false);
+    } else if(obj.attachEvent) {
+        // IE method.
+        obj.attachEvent('on'+evt, handler);
+    } else {
+        // Old school method.
+        obj['on'+evt] = handler;
+    }
+}
+
 
 	
 </script>
@@ -87,6 +119,7 @@
 -->
  
 <p>
+<span id="drop">Drop files here.</span>
 <button type="button" onclick="clearFields()">Clear</button>
 <input type="file" id="fileToLoad" /> 
 <button onclick="loadFileAsText()">Load</button></p>

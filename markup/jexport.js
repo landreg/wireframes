@@ -67,6 +67,7 @@
 		document.getElementById("UID").value=jsonObj.article.properties.id;
 		document.getElementById("TITLE").value=jsonObj.article.properties.title;
 		document.getElementById("SCOPE").value=jsonObj.article.properties.scope;
+		document.getElementById("TYPE").value = jsonObj.article.properties.type;
 		for (x=0;x<jsonObj.article.properties.facets.length;x++){
 			setFoci(jsonObj.article.properties.facets[x].name,jsonObj.article.properties.facets[x].foci);
 		}
@@ -115,6 +116,7 @@
 		jsonObj.article.properties.id =  document.getElementById("UID").value ;
 		jsonObj.article.properties.title = document.getElementById("TITLE").value ;
 		jsonObj.article.properties.scope = document.getElementById("SCOPE").value ;
+		jsonObj.article.properties.type =  document.getElementById("TYPE").value;
  		jsonObj.article.properties.items  =[];
 		jsonObj.article.properties.items[0] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
  		jsonObj.article.properties.items[1] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
@@ -124,7 +126,7 @@
 		jsonObj.article.properties.facets[0].foci = getFoci("facet1");
 		jsonObj.article.properties.facets[1] ={};
 		jsonObj.article.properties.facets[1].name = "facet2";
-		jsonObj.article.properties.facets[1].foci = getFoci("facet1");
+		jsonObj.article.properties.facets[1].foci = getFoci("facet2");
 		jsonObj.article.properties.content = getFirst() + wrapItem(getHTML(),document.getElementById("UID").value,document.getElementById("TYPE").value); 
 		jsonObj.article.properties.markup = editor.exportFile("epiceditor","text");
 		return jsonObj;
@@ -203,12 +205,7 @@
 	document.body.removeChild(event.target);
 }
 
-	
-
-	function loadFileAsText()
-	{
-		var fileToLoad = document.getElementById("fileToLoad").files[0];
-
+	function loadFile(fileToLoad){
 		var fileReader = new FileReader();
 		fileReader.onload = function(fileLoadedEvent) 
 		{
@@ -217,9 +214,38 @@
 			
 		};
 		fileReader.readAsText(fileToLoad, "UTF-8");
+		document.getElementById("fileToLoad").files[0] = fileToLoad;
 	}
 	
 
+	function loadFileAsText()
+	{
+		var fileToLoad = document.getElementById("fileToLoad").files[0];
+		loadFile(fileToLoad);
+		
+	}
+	
+	function loadExport(){
+		var drop   = document.getElementById('drop');
+			addEventHandler(drop, 'dragover', cancel);
+			addEventHandler(drop, 'dragenter', cancel);
+				
+			addEventHandler(drop, 'drop', function (e) {
+			  e = e || window.event; // get window.event if e argument missing (in IE)   
+			  if (e.preventDefault) { e.preventDefault(); } // stops the browser from redirecting off to the image.
+
+			  var dt    = e.dataTransfer;
+			  var files = dt.files;
+			  loadFile(files[0]);
+			  return false;
+			  });
+	}			
+	 
+	
+	function cancel(e) {
+				  if (e.preventDefault) { e.preventDefault(); }
+				  return false;
+				}	
  
 
  
