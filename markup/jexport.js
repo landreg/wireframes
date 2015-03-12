@@ -35,24 +35,75 @@
 		putHTML(jsonObj.article.properties.content);
 	}
 	
+	function clearFacet(facet){
+		selList = document.getElementById(facet)
+		for (x=0;x<selList.options.length;x++) 
+				selList.options[x].selected = false;			
+
+	}
+	
+	function clearFields(){
+		document.getElementById("UID").value="";
+		document.getElementById("TITLE").value="";
+		document.getElementById("SCOPE").value="";
+		document.getElementById("TYPE").value="km_task";
+		editor.importFile("epiceditor","");
+		clearFacet("facet1");
+		clearFacet("facet2");
+		putHTML("");
+	
+	}
 	
 	function putJSON(json){
  
-	try{
+		try{
 			jsonObj= JSON.parse(json);
-			document.getElementById("UID").value=jsonObj.article.properties.id;
-			document.getElementById("TITLE").value=jsonObj.article.properties.title;
-			document.getElementById("SCOPE").value=jsonObj.article.properties.scope;
-			editor.importFile("epiceditor",jsonObj.article.properties.markup);
-			putHTML(jsonObj.article.properties.content);
+
 		}
 		catch(err){
 			alert ("Error"+ err.message);
 			return;
 		}
-		
+		document.getElementById("UID").value=jsonObj.article.properties.id;
+		document.getElementById("TITLE").value=jsonObj.article.properties.title;
+		document.getElementById("SCOPE").value=jsonObj.article.properties.scope;
+		for (x=0;x<jsonObj.article.properties.facets.length;x++){
+			setFoci(jsonObj.article.properties.facets[x].name,jsonObj.article.properties.facets[x].foci);
+		}
+		editor.importFile("epiceditor",jsonObj.article.properties.markup);
+		putHTML(jsonObj.article.properties.content);
 	
 	}
+	
+	function setFoci(facet,foci){
+		selList = document.getElementById(facet);
+		var x;
+		for (x=0;x<selList.options.length;x++){
+			if (foci.indexOf(selList[x].value) != -1) 
+				 selList.options[x].selected = true;
+			else
+				selList.options[x].selected = false;			
+		}	
+	}
+	
+	
+	function getFoci(facet){
+		var foci =[];
+		//var str = "" ;
+	 
+		selList = document.getElementById(facet);
+		var x;
+		for (x=0;x<selList.options.length;x++){
+			if (selList.options[x].selected) {
+				foci.push(selList[x].value);
+				//str += selList[x].value + " ";
+			}			
+		}
+		//document.getElementById(facet+"disp").innerHTML = str;
+		return foci
+	}
+	
+	
 	
 	
 	function getJSON(){
@@ -63,13 +114,19 @@
 		jsonObj.article.properties = {};
 		jsonObj.article.properties.id =  document.getElementById("UID").value ;
 		jsonObj.article.properties.title = document.getElementById("TITLE").value ;
-		jsonObj.article.properties.scope = document.getElementById("SCOPE").innerHTML
-		jsonObj.article.properties.items  =[];
+		jsonObj.article.properties.scope = document.getElementById("SCOPE").value ;
+ 		jsonObj.article.properties.items  =[];
 		jsonObj.article.properties.items[0] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
  		jsonObj.article.properties.items[1] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
+		jsonObj.article.properties.facets = [];
+		jsonObj.article.properties.facets[0] ={};
+		jsonObj.article.properties.facets[0].name = "facet1";
+		jsonObj.article.properties.facets[0].foci = getFoci("facet1");
+		jsonObj.article.properties.facets[1] ={};
+		jsonObj.article.properties.facets[1].name = "facet2";
+		jsonObj.article.properties.facets[1].foci = getFoci("facet1");
 		jsonObj.article.properties.content = getFirst() + wrapItem(getHTML(),document.getElementById("UID").value,document.getElementById("TYPE").value); 
 		jsonObj.article.properties.markup = editor.exportFile("epiceditor","text");
-	 
 		return jsonObj;
 
  	}
@@ -118,7 +175,7 @@
 		}
  
 		var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
-		var fileNameToSaveAs = document.getElementById("UID").value +".json";
+		var fileNameToSaveAs = document.getElementById("UID").value +".kmj";
 
 		var downloadLink = document.createElement("a");
 		downloadLink.download = fileNameToSaveAs;
