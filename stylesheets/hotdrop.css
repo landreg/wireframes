@@ -1,0 +1,78 @@
+
+			
+.droptoggle input {
+	display: none;
+}
+
+.hotdrop label {
+	background: #eee;
+	color: black;
+	border-radius: .25em;
+	display: inline;
+	font-size: 80%;
+	font-weight: bold;
+}
+
+.hotdrop .sub_head{
+	margin: 0 0 1em;
+	display: block;
+	width: 100%;
+}
+.hotdrop input:checked + label {
+	margin: 0 0 0em;
+}
+
+.hotdrop label:hover {
+	background: #ccc;
+}
+
+.hotdrop input:checked + label {
+	background: #ccc;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	color: white;
+	padding-bottom: 0em;
+}
+.hotdrop  .droptext{
+	background: #f7f7f7;
+	color: black;
+	z-index:10;
+/*	border-bottom-left-radius: .25em;
+	border-bottom-right-radius: .25em;*/
+	height: 0px;
+	overflow:hidden;
+/*	padding-bottom: .125em;*/
+}
+
+body.print .hotdrop .droptext{
+	background: white;
+	height: auto;
+	padding: 0 0 0 0;
+	margin: 0 0 1em 0;
+	z-index:10;
+}
+
+
+.hotdrop input:checked ~ .droptext{
+	background: #f7f7f7;
+	height: auto;
+	padding: 0 0 0 0;
+	margin: 0 0 1em 0;
+	z-index:10;
+}
+
+.hotdrop  .dropselect input{
+	display: inline;
+	}
+
+.hotdrop  .dropselect{
+ 	z-index:10;
+ 	height: 0px;
+	overflow:hidden;
+ 
+}
+.hotdrop input:checked ~ .dropselect{
+	height: auto;
+	z-index:10;
+}
+

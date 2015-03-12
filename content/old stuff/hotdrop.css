@@ -1,0 +1,44 @@
+#container {
+    margin: 0 auto;
+    width: 100%;
+}
+#hotdrop input {
+	display: none;
+}
+#hotdrop label {
+	background: #eee;
+	border-radius: .25em;
+	cursor: pointer;
+	display: block;
+	margin-bottom: .125em;
+	padding: .25em;
+	z-index: 20;
+}
+#hotdrop label:hover {
+	background: #ccc;
+}
+
+#hotdrop input:checked + label {
+	background: #ccc;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	color: white;
+	margin-bottom: 0;
+}
+#hotdrop article {
+	background: #f7f7f7;
+	height:0px;
+	overflow:hidden;
+	z-index:10;
+}
+#accordion article p {
+	padding: 0em;
+}
+#accordion input:checked article {
+}
+#hotdrop input:checked ~ article {
+	border-bottom-left-radius: .25em;
+	border-bottom-right-radius: .25em;
+	height: auto;
+	margin-bottom: .125em;
+}

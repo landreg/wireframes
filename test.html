@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div {
+    width: 200px;
+    height: 100px;
+    background-color: yellow;
+    /* Rotate div */
+    -ms-transform: rotate(7deg); /* IE 9 */
+    -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+    transform: rotate(7deg);
+}
+
+div:before{
+		content: " ";
+		width:1em;
+		height:1em;
+		background: black;	
+}
+
+</style>
+</head>
+<body>
+
+<div>Hello</div>
+<br>
+
+<p><b>Note:</b> Internet Explorer 8 and earlier versions do not support the transform property.</p>
+
+<p><b>Note:</b> Internet Explorer 9 supports an alternative, the -ms-transform property. Newer versions of IE support the transform property (do not need the ms prefix).</p>
+
+<p><b>Note:</b> Chrome, Safari and Opera supports an alternative, the -webkit-transform property.</p>
+
+</body>
+</html>

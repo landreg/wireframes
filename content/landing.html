@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Land Registration Guidance</title> 
+<link rel="stylesheet" type="text/css" href="../stylesheets/guidance.css">
+<link rel="stylesheet" type="text/css" href="../stylesheets/hotdrop.css">
+<script type="text/javascript" src="../scripts/iotbs.js"></script>
+</head>
+
+
+<body> 
+ <div id="screen-switcher" class="switcher"></div>
+ <div id="readability-switcher" class="switcher"></div>
+ 
+<div class="container">
+	<header>
+	<img id="headerimage" src="../resources/Land-Registry.png"/>
+	<p id="headertext">Casework Guidance Knowledge Base</p>
+	</header>
+	
+	<div id="home_container">
+	<div class="buttonbar">
+			<form name="homebuttons" method="get"> 
+			<button name="changes" fromaction="http://www.google.co.uk">Recent Changes</button>
+			<button name="changes" fromaction="http://www.google.co.uk">Hot Topics</button>
+			</form>
+	</div>
+	
+	
+
+	<div class="km_search">
+			<p id="GuidanceInvite">Search Guidance</p> 
+			<form id="searchform" action="results.html" method="get"> 
+				<div class="searchbox">
+					<select name="domain">
+						<option value="all">All</option>
+						<option value="registration" title="Casework, Register creation and update">Registration</option>
+						<option value="information" title="Preliminary, developer and data services">Information Services</option>
+						<option value="customer" title="Customer contact policies and procedures">Customer handling</option>
+					</select>	
+					<input type="search" name="searchphrase"/>
+					<button type="submit" form="searchform" value="Search">Search</button>
+				</div>
+			</form>
+		</div>
+		
+
+
+	</div>
+</div> <!--container*/-->
+
+	<footer>
+	<p id="copyright">&copy; Land Registry 2015</p>
+	<a id="contact" href="http://contact.html">Contact Us</a>
+	</footer>
+
+</body>
+</html>

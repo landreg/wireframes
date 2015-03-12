@@ -1,0 +1,1 @@
+curl -XPUT "localhost:9200/article/external/1?pretty" -d "{""name"":""johnp""} "
