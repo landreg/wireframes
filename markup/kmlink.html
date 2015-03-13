@@ -2,7 +2,7 @@
 <script>
 var kmlinks = [];
 function CloseMySelf() {
-	alert("close");
+	document.getElementById("hello").innerHTML = "close";
     try {
 		var kmlinks =[];
 		kmlinks[0] ={};
@@ -13,12 +13,13 @@ function CloseMySelf() {
 		kmlinks[1].id = "link 1";
 		kmlinks[1].title = "The title of a article 1" ;
 		kmlinks[1].scope = "The title of a article 1"  ;
+		document.getElementById("hello").innerHTML = "close now";
 		window.opener.kmlinks=kmlinks;
     }
     catch (err) {
 		alert("fail" +err.message);
 	}
-    //window.close();
+    window.close();
     return false;
 }
 
@@ -48,6 +49,6 @@ function changeit(){
 <head>
 <body>
 <div id="hello">hi there</div>
-<button onclick=CloseMySelf()>Closex</button>
+<button onclick=CloseMySelf()>Closexx</button>
 <button onclick=changeit()>Change</button>
 </body>
