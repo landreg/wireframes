@@ -68,7 +68,9 @@
 		document.getElementById("TITLE").value=jsonObj.article.properties.title;
 		document.getElementById("SCOPE").value=jsonObj.article.properties.scope;
 		document.getElementById("TYPE").value = jsonObj.article.properties.type;
-		for (x=0;x<jsonObj.article.properties.facets.length;x++){
+		setkmlinks(jsonObj.article.properties.kmlinks);
+		setkmlinks(jsonObj.article.properties.extlinks);
+ 		for (x=0;x<jsonObj.article.properties.facets.length;x++){
 			setFoci(jsonObj.article.properties.facets[x].name,jsonObj.article.properties.facets[x].foci);
 		}
 		editor.importFile("epiceditor",jsonObj.article.properties.markup);
