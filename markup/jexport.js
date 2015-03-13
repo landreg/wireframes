@@ -48,6 +48,10 @@
 		document.getElementById("SCOPE").value="";
 		document.getElementById("TYPE").value="km_task";
 		editor.importFile("epiceditor","");
+		document.getElementById("KMLINKS").innerHTML="";
+		document.getElementById("EXTLINKS").innerHTML="";
+		kmlinks=[];
+		extlinks=[];
 		clearFacet("facet1");
 		clearFacet("facet2");
 		putHTML("");
@@ -136,8 +140,8 @@
 	 function setextlinks(obj){
 		extlinks = obj;
 		var str="";
-		for (var x=0;x<kmlinks.length;x++){
-			str+= kmlinks[x].url + "<br>";
+		for (var x=0;x<extlinks.length;x++){
+			str+= extlinks[x].url + "<br>";
 		}
 		document.getElementById("EXTLINKS").innerHTML=str;	
 	}	
