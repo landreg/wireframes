@@ -3,7 +3,7 @@
 var kmlinks = [];
 function CloseMySelf(sender) {
     try {
-		
+		var kmlinks =[];
 		kmlinks[0] ={};
 		kmlinks[0].id = "link 1";
 		kmlinks[0].title = "The title of a article 1" ;
@@ -22,7 +22,14 @@ function CloseMySelf(sender) {
 }
 
 window.onload=function(){
-	kmlinks = window.opener.kmlinks;
+	try{
+		kmlinks = window.opener.kmlinks;
+		JSON.stringify(kmlinks,null,2);
+	}
+	catch(err){
+		alert("could not load exiting links: "+ err.message); 
+	}	
+	
 }
 
 
