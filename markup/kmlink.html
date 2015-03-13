@@ -1,20 +1,10 @@
 <head/>
 <script>
 var kmlinks = [];
-function CloseMySelf() {
-	document.getElementById("hello").innerHTML = "close";
-    try {
-		var kmlinks =[];
-		kmlinks[0] ={};
-		kmlinks[0].id = "link 1";
-		kmlinks[0].title = "The title of a article 1" ;
-		kmlinks[0].scope = "The title of a article 1"  ;
-		kmlinks[1] ={};
-		kmlinks[1].id = "link 1";
-		kmlinks[1].title = "The title of a article 1" ;
-		kmlinks[1].scope = "The title of a article 1"  ;
-		document.getElementById("hello").innerHTML = "close now";
-		window.opener.kmlinks=kmlinks;
+function SaveMySelf() {
+	var kmlinks =[];
+    try { 
+ 		window.opener.setkmlinks(kmlinks);
     }
     catch (err) {
 		alert("fail" +err.message);
@@ -24,17 +14,43 @@ function CloseMySelf() {
 }
 
 window.onload=function(){
-	debugger;
+ 
 	try{
 		kmlinks = window.opener.kmlinks;
-		JSON.stringify(kmlinks,null,2);
+		changeit();
 	}
 	catch(err){
 		alert("could not load exiting links: "+ err.message); 
 	}	
 	
 }
+function addLine(kmlink,num){
+	document.getElementById("kmlinks").innerHTML += "<p><button onclick='deleteLink(" + num + ")'>Delete </button>" + kmlink.kmlink + "</p>";
+}
 
+
+function deleteLink(num){
+	kmlinks.splice(num,1);
+	document.getElementById("kmlinks").innerHTML ="";
+	for (var x=0;(x<kmlinks.length);x++){
+		addLine(kmlinks[x],x);
+	}
+}
+
+function addlink(){
+		
+		var kmlink = {"kmlink":document.getElementById("kmlink").value};
+		if (kmlinks.indexOf(kmlink) == -1){
+			var num = kmlinks.push(kmlink)-1;
+			addLine(kmlink,num);
+			document.getElementById("kmlink").value ="";
+			document.getElementById("kmlink").focus();
+			}
+			else{
+			alert("duplicate");
+			}
+			
+}
 
 
  
@@ -43,12 +59,10 @@ function changeit(){
 	}
 </script>	
 
-
-
-</script>
 <head>
 <body>
-<div id="hello">hi there</div>
-<button onclick=CloseMySelf()>Closexx</button>
-<button onclick=changeit()>Change</button>
+<p>KM LINK:<br><input id="kmlink" type="text" ></input><button onclick="addlink()">Add</button></p>
+<div id="kmlinks"></div>
+<button onclick="SaveMySelf()">Save</button>
+
 </body>

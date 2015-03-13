@@ -119,7 +119,17 @@
 	
 	
 	var kmlinks = [];
- 	
+ 	function setkmlinks(obj){
+		kmlinks = obj;
+		var str="";
+		for (var x=0;x<kmlinks.length;x++){
+			str+= kmlinks[x].kmlink + " ";
+		}
+		document.getElementById("KMLINKS").innerHTML=str;	
+	}	
+	
+	
+	
 	function getJSON(){
  		//html = xhtml.replace (new RegExp('\[\x0A\x0D]','g'),"");
  		var jsonObj = {};
