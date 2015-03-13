@@ -43,7 +43,7 @@ function deleteLink(num){
 
 function addlink(){
 		
-		var extlink = {"name":document.getElementById("name").value,"url":document.getElementById("url").value,"desc":document.getElementById("desc").value};
+		var extlink = {"name":document.getElementById("name").value,"url":document.getElementById("url").value,"scope":document.getElementById("scope").value};
 		if (extlinks.indexOf(extlink) == -1){
 			var num = extlinks.push(extlink)-1;
 			addLine(extlink,num);
@@ -67,7 +67,7 @@ function addlink(){
 <p>EXTERNAL LINK:</p>
 <p>NAME:<input id="name" type="text" > </p>
 <p>URL:<input id="url" type="text" > </p>
-<p>DESC:<input id="desc" type="text" > </p>
+<p>SCOPE:<input id="scope" type="text" > </p>
 </input><button onclick="addlink()">Add</button></p>
 <div id="extlinks"></div>
 <button onclick="SaveMySelf()">Save</button>
