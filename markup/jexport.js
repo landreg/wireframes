@@ -107,15 +107,10 @@
 
 	function popitup(url) {
 		var p1 = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=yes,menubar=yes ';
-		var p2 = 'width=300,height=300,left=200,top=100';
-		 
+		var p2 = 'width=300,height=300,left=200,top=100'; 
 		newwindow=window.open(url,'name',p1+p2);
-		newwindow.tmp = "hello";
-		tmp = newwindow.tmp ;
-		tmp = "john";
 		if (window.focus) {newwindow.focus()}
-		newwindow.onload =function(){newwindow.tmp = "johnp";};
-		return false;
+ 		return false;
 	}
 
 	function HandlePopupResult(){

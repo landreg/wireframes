@@ -1,7 +1,8 @@
 <head/>
 <script>
 var kmlinks = [];
-function CloseMySelf(sender) {
+function CloseMySelf( ) {
+	debugger;
     try {
 		var kmlinks =[];
 		kmlinks[0] ={};
@@ -22,6 +23,7 @@ function CloseMySelf(sender) {
 }
 
 window.onload=function(){
+	debugger;
 	try{
 		kmlinks = window.opener.kmlinks;
 		JSON.stringify(kmlinks,null,2);
@@ -46,6 +48,6 @@ function changeit(){
 <head>
 <body>
 <div id="hello">hi there</div>
-<button onclick=CloseMySelf("result")>Close</button>
+<button onclick=CloseMySelf( )>Closex</button>
 <button onclick=changeit()>Change</button>
 </body>
