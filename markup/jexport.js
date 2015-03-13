@@ -165,7 +165,7 @@
 		jsonObj.article.properties.facets[1].foci = getFoci("facet2");
 		jsonObj.article.properties.kmlinks = kmlinks;
 		jsonObj.article.properties.extlinks = extlinks;
-		jsonObj.article.properties.keywords = [one, two, three]; 
+ 
 		/*
 		jsonObj.article.properties.kmlinks[0] ={};
 		jsonObj.article.properties.kmlinks[0].id = "link 1";
