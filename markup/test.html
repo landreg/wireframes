@@ -83,32 +83,46 @@
 	window.onload = loadWindow;
 	
 	
-
-
-	
 	function loadWindow(){
 		loadEditor();
 		loadExport();
 		}
 		
-
 	
-function addEventHandler(obj, evt, handler) {
-    if(obj.addEventListener) {
-        // W3C method
-        obj.addEventListener(evt, handler, false);
-    } else if(obj.attachEvent) {
-        // IE method.
-        obj.attachEvent('on'+evt, handler);
-    } else {
-        // Old school method.
-        obj['on'+evt] = handler;
+	function addEventHandler(obj, evt, handler) {
+		if(obj.addEventListener) {
+			// W3C method
+			obj.addEventListener(evt, handler, false);
+		} else if(obj.attachEvent) {
+			// IE method.
+			obj.attachEvent('on'+evt, handler);
+		} else {
+			// Old school method.
+			obj['on'+evt] = handler;
     }
 }
+</script>
 
+<script   type="text/javascript">
+ 
+	function popitup(url) {
+		var p1 = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=yes,menubar=yes ';
+		var p2 = 'width=300,height=300,left=200,top=100';
+		var tmp = null;
+		newwindow=window.open(url,'name',p1+p2);
+		if (window.focus) {newwindow.focus()}
+		//newwindow.onunload = HandlePopupResult(tmp);
+		return false;
+	}
+
+	function HandlePopupResult(result) {
+		alert("result of popup is: " + result);
+	}
+ 
+</script>
 
 	
-</script>
+
 
 
 
@@ -142,7 +156,9 @@ function addEventHandler(obj, evt, handler) {
 </select> 
 <span id="facet2disp"></span>
  </p>
- 
+ <button type="button" onclick="popitup('kmlink.html')">kmlink</button>
+ <p>KM LINKS:<textarea id="KMLINKS" textarea></textarea></p>
+ <p>EXT LINKS:<textarea id="EXTLINKS" textarea></textarea></p>
  
 <div>
 Enter the article using markdown notation. Notice the full screen and preview buttons at the bottom of the editor box.

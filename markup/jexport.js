@@ -104,7 +104,14 @@
 		return foci
 	}
 	
+	function parseKMLinks(str) {
+		var KMLinks = {};
+		return KMLinks;
+	}
 	
+	function popupKMLinks(){
+		
+	}
 	
 	
 	function getJSON(){
@@ -136,6 +143,7 @@
 		jsonObj.article.properties.kmlinks[1].id = "link 1";
 		jsonObj.article.properties.kmlinks[1].title = "The title of a article 1" ;
 		jsonObj.article.properties.kmlinks[1].scope = "The title of a article 1"  ;
+		jsonObj.article.properties.extlinks = [];
 		jsonObj.article.properties.extlinks[0] ={};
 		jsonObj.article.properties.extlinks[0].url= "http://wwww.link1";
 		jsonObj.article.properties.extlinks[0].title = "The title of a link 1" ;

@@ -1,0 +1,19 @@
+<head/>
+<script>
+function CloseMySelf(sender) {
+    try {
+        window.opener.HandlePopupResult(sender);
+		//tmp = "hello";
+    }
+    catch (err) {
+		alert("fail" +err.message);
+	}
+    window.close();
+    return false;
+}
+</script>
+<head>
+<body>
+hi there
+<button onclick=CloseMySelf("result")>Close</button>
+</body>
