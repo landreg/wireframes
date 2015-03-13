@@ -121,7 +121,7 @@
 	var kmlinks = [];
 	
  	function setkmlinks(obj){
-		kmlinks = obj;
+		var xxx = obj;
 		var str="";
 		for (var x=0;x<kmlinks.length;x++){
 			str+= kmlinks[x].kmlink + " ";

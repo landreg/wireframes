@@ -16,7 +16,7 @@ window.onload=function(){
  
 	try{
 		kmlinks = window.opener.kmlinks;
-		changeit();
+		showlinks();
 	}
 	catch(err){
 		alert("could not load exiting links: "+ err.message); 
@@ -27,13 +27,16 @@ function addLine(kmlink,num){
 	document.getElementById("kmlinks").innerHTML += "<p><button onclick='deleteLink(" + num + ")'>Delete </button>" + kmlink.kmlink + "</p>";
 }
 
-
-function deleteLink(num){
-	kmlinks.splice(num,1);
+function showLinks(){
 	document.getElementById("kmlinks").innerHTML ="";
 	for (var x=0;(x<kmlinks.length);x++){
 		addLine(kmlinks[x],x);
 	}
+}
+
+function deleteLink(num){
+	kmlinks.splice(num,1);
+	showlinks();
 }
 
 function addlink(){
@@ -51,11 +54,8 @@ function addlink(){
 			
 }
 
-
  
-function changeit(){
-	document.getElementById("hello").innerHTML = JSON.stringify(kmlinks,null,2) ;
-	}
+	
 </script>	
 
 <head>
