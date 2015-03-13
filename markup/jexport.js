@@ -137,7 +137,7 @@
 		for (var x=0;x<kmlinks.length;x++){
 			str+= kmlinks[x].url + "<br>";
 		}
-		document.getElementById("EXT LINKS").innerHTML=str;	
+		document.getElementById("EXTLINKS").innerHTML=str;	
 	}	
 	
 	function getJSON(){
@@ -155,7 +155,7 @@
  		jsonObj.article.properties.items[1] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
 		jsonObj.article.properties.lastupdate = new Date();
 		jsonObj.article.properties.popularity = 5;
-		jsonObj.article.properties.keywords = [one, two, three]; 
+		jsonObj.article.properties.keywords = ["one", "two", "three"]; 
 		jsonObj.article.properties.facets = [];
 		jsonObj.article.properties.facets[0] ={};
 		jsonObj.article.properties.facets[0].name = "facet1";
