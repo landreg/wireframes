@@ -16,7 +16,7 @@ window.onload=function(){
  
 	try{
 		kmlinks = window.opener.kmlinks;
-		showlinks();
+		showLinks();
 	}
 	catch(err){
 		alert("could not load exiting links: "+ err.message); 
@@ -29,8 +29,10 @@ function addLine(kmlink,num){
 
 function showLinks(){
 	document.getElementById("kmlinks").innerHTML ="";
-	for (var x=0;(x<kmlinks.length);x++){
-		addLine(kmlinks[x],x);
+    
+	if (kmlinks != null)
+		for (var x=0;(x<kmlinks.length);x++){
+			addLine(kmlinks[x],x);
 	}
 }
 

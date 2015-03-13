@@ -121,10 +121,10 @@
 	var kmlinks = [];
 	
  	function setkmlinks(obj){
-		var xxx = obj;
+		kmlinks = obj;
 		var str="";
 		for (var x=0;x<kmlinks.length;x++){
-			str+= kmlinks[x].kmlink + " ";
+			str+= kmlinks[x].kmlink + "<br>";
 		}
 		document.getElementById("KMLINKS").innerHTML=str;	
 	}	
