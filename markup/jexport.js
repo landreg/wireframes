@@ -69,7 +69,7 @@
 		document.getElementById("SCOPE").value=jsonObj.article.properties.scope;
 		document.getElementById("TYPE").value = jsonObj.article.properties.type;
 		setkmlinks(jsonObj.article.properties.kmlinks);
-		setkmlinks(jsonObj.article.properties.extlinks);
+		setextlinks(jsonObj.article.properties.extlinks);
  		for (x=0;x<jsonObj.article.properties.facets.length;x++){
 			setFoci(jsonObj.article.properties.facets[x].name,jsonObj.article.properties.facets[x].foci);
 		}
