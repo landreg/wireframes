@@ -124,12 +124,21 @@
 		kmlinks = obj;
 		var str="";
 		for (var x=0;x<kmlinks.length;x++){
-			str+= kmlinks[x].kmlink + "<br>";
+			str+= kmlinks[x].id + "<br>";
 		}
 		document.getElementById("KMLINKS").innerHTML=str;	
 	}	
 	
+	var extlinks = [];
 	
+	 function setextlinks(obj){
+		extlinks = obj;
+		var str="";
+		for (var x=0;x<kmlinks.length;x++){
+			str+= kmlinks[x].url + "<br>";
+		}
+		document.getElementById("EXT LINKS").innerHTML=str;	
+	}	
 	
 	function getJSON(){
  		//html = xhtml.replace (new RegExp('\[\x0A\x0D]','g'),"");
@@ -144,6 +153,9 @@
  		jsonObj.article.properties.items  =[];
 		jsonObj.article.properties.items[0] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
  		jsonObj.article.properties.items[1] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
+		jsonObj.article.properties.lastupdate = new Date();
+		jsonObj.article.properties.popularity = 5;
+		jsonObj.article.properties.keywords = [one, two, three]; 
 		jsonObj.article.properties.facets = [];
 		jsonObj.article.properties.facets[0] ={};
 		jsonObj.article.properties.facets[0].name = "facet1";
@@ -152,6 +164,8 @@
 		jsonObj.article.properties.facets[1].name = "facet2";
 		jsonObj.article.properties.facets[1].foci = getFoci("facet2");
 		jsonObj.article.properties.kmlinks = kmlinks;
+		jsonObj.article.properties.extlinks = extlinks;
+		jsonObj.article.properties.keywords = [one, two, three]; 
 		/*
 		jsonObj.article.properties.kmlinks[0] ={};
 		jsonObj.article.properties.kmlinks[0].id = "link 1";
@@ -161,7 +175,7 @@
 		jsonObj.article.properties.kmlinks[1].id = "link 1";
 		jsonObj.article.properties.kmlinks[1].title = "The title of a article 1" ;
 		jsonObj.article.properties.kmlinks[1].scope = "The title of a article 1"  ;		
-		*/
+		
 		jsonObj.article.properties.extlinks = [];
 		jsonObj.article.properties.extlinks[0] ={};
 		jsonObj.article.properties.extlinks[0].url= "http://wwww.link1";
@@ -173,6 +187,7 @@
 		jsonObj.article.properties.extlinks[1].scope = "The title of a link 2" ;	
 		jsonObj.article.properties.content = getFirst() + wrapItem(getHTML(),document.getElementById("UID").value,document.getElementById("TYPE").value); 
 		jsonObj.article.properties.markup = editor.exportFile("epiceditor","text");
+		*/
 		return jsonObj;
 
  	}

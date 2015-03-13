@@ -1,0 +1,75 @@
+<head/>
+<script>
+var extlinks = [];
+function SaveMySelf() {
+    try { 
+ 		window.opener.setextlinks(extlinks);
+    }
+    catch (err) {
+		alert("fail" +err.message);
+	}
+    window.close();
+    return false;
+}
+
+window.onload=function(){
+	
+	try{
+		extlinks = window.opener.extlinks.splice(); // make an undeep copy so we can cancel changes
+		showLinks();
+	}
+	catch(err){
+		alert("could not load exiting links: "+ err.message); 
+	}	
+}
+
+function addLine(extlink,num){
+	document.getElementById("extlinks").innerHTML += "<p><button onclick='deleteLink(" + num + ")'>Delete </button><span title='"+ extlink.scope+"'> " + extlink.name +" </span> "+ extlink.url +"</p>";
+}
+
+function showLinks(){
+	document.getElementById("extlinks").innerHTML ="";
+    
+	if (extlinks != null)
+		for (var x=0;(x<extlinks.length);x++){
+			addLine(extlinks[x],x);
+	}
+}
+
+function deleteLink(num){
+	extlinks.splice(num,1);
+	showLinks();
+}
+
+function addlink(){
+		
+		var extlink = {"name":document.getElementById("name").value,"url":document.getElementById("url").value,"desc":document.getElementById("desc").value};
+		if (extlinks.indexOf(extlink) == -1){
+			var num = extlinks.push(extlink)-1;
+			addLine(extlink,num);
+			document.getElementById("name").value ="";
+			document.getElementById("url").value ="";
+			document.getElementById("scope").value ="";
+			document.getElementById("name").focus();
+			}
+			else{
+			alert("duplicate");
+			}
+			
+}
+
+ 
+	
+</script>	
+
+<head>
+<body>
+<p>EXTERNAL LINK:</p>
+<p>NAME:<input id="name" type="text" > </p>
+<p>URL:<input id="url" type="text" > </p>
+<p>DESC:<input id="desc" type="text" > </p>
+</input><button onclick="addlink()">Add</button></p>
+<div id="extlinks"></div>
+<button onclick="SaveMySelf()">Save</button>
+
+</body>

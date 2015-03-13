@@ -15,7 +15,7 @@ function SaveMySelf() {
 window.onload=function(){
  
 	try{
-		kmlinks = window.opener.kmlinks;
+		kmlinks = window.opener.kmlinks.splice(); // make an undeep copy
 		showLinks();
 	}
 	catch(err){
@@ -24,7 +24,7 @@ window.onload=function(){
 	
 }
 function addLine(kmlink,num){
-	document.getElementById("kmlinks").innerHTML += "<p><button onclick='deleteLink(" + num + ")'>Delete </button>" + kmlink.kmlink + "</p>";
+	document.getElementById("kmlinks").innerHTML += "<p><button onclick='deleteLink(" + num + ")'>Delete </button>" + kmlink.id + "</p>";
 }
 
 function showLinks(){
@@ -38,12 +38,12 @@ function showLinks(){
 
 function deleteLink(num){
 	kmlinks.splice(num,1);
-	showlinks();
+	showLinks();
 }
 
 function addlink(){
 		
-		var kmlink = {"kmlink":document.getElementById("kmlink").value};
+		var kmlink = {"id":document.getElementById("kmlink").value};
 		if (kmlinks.indexOf(kmlink) == -1){
 			var num = kmlinks.push(kmlink)-1;
 			addLine(kmlink,num);
