@@ -15,7 +15,7 @@ function SaveMySelf() {
 window.onload=function(){
  
 	try{
-		kmlinks = window.opener.kmlinks.splice(); // make an undeep copy
+		kmlinks = window.opener.kmlinks; // TODO make an undeep copy
 		showLinks();
 	}
 	catch(err){

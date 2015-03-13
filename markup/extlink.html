@@ -15,7 +15,7 @@ function SaveMySelf() {
 window.onload=function(){
 	
 	try{
-		extlinks = window.opener.extlinks.splice(); // make an undeep copy so we can cancel changes
+		extlinks = window.opener.extlinks; // TODO make an undeep copy so we can cancel changes
 		showLinks();
 	}
 	catch(err){
