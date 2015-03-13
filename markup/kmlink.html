@@ -1,19 +1,44 @@
 <head/>
 <script>
+var kmlinks = [];
 function CloseMySelf(sender) {
     try {
-        window.opener.HandlePopupResult(sender);
-		//tmp = "hello";
+		
+		kmlinks[0] ={};
+		kmlinks[0].id = "link 1";
+		kmlinks[0].title = "The title of a article 1" ;
+		kmlinks[0].scope = "The title of a article 1"  ;
+		kmlinks[1] ={};
+		kmlinks[1].id = "link 1";
+		kmlinks[1].title = "The title of a article 1" ;
+		kmlinks[1].scope = "The title of a article 1"  ;
+		window.opener.kmlinks=kmlinks;
     }
     catch (err) {
 		alert("fail" +err.message);
 	}
-    window.close();
+    //window.close();
     return false;
 }
+
+window.onload=function(){
+	kmlinks = window.opener.kmlinks;
+}
+
+
+
+ 
+function changeit(){
+	document.getElementById("hello").innerHTML = JSON.stringify(kmlinks,null,2) ;
+	}
+</script>	
+
+
+
 </script>
 <head>
 <body>
-hi there
+<div id="hello">hi there</div>
 <button onclick=CloseMySelf("result")>Close</button>
+<button onclick=changeit()>Change</button>
 </body>

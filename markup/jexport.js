@@ -104,16 +104,27 @@
 		return foci
 	}
 	
-	function parseKMLinks(str) {
-		var KMLinks = {};
-		return KMLinks;
+
+	function popitup(url) {
+		var p1 = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=yes,menubar=yes ';
+		var p2 = 'width=300,height=300,left=200,top=100';
+		 
+		newwindow=window.open(url,'name',p1+p2);
+		newwindow.tmp = "hello";
+		tmp = newwindow.tmp ;
+		tmp = "john";
+		if (window.focus) {newwindow.focus()}
+		newwindow.onload =function(){newwindow.tmp = "johnp";};
+		return false;
 	}
+
+	function HandlePopupResult(){
+		alert("popup unddload");
+		}
 	
-	function popupKMLinks(){
-		
-	}
 	
-	
+	var kmlinks = [];
+ 	
 	function getJSON(){
  		//html = xhtml.replace (new RegExp('\[\x0A\x0D]','g'),"");
  		var jsonObj = {};
@@ -134,7 +145,8 @@
 		jsonObj.article.properties.facets[1] ={};
 		jsonObj.article.properties.facets[1].name = "facet2";
 		jsonObj.article.properties.facets[1].foci = getFoci("facet2");
-		jsonObj.article.properties.kmlinks = [];
+		jsonObj.article.properties.kmlinks = kmlinks;
+		/*
 		jsonObj.article.properties.kmlinks[0] ={};
 		jsonObj.article.properties.kmlinks[0].id = "link 1";
 		jsonObj.article.properties.kmlinks[0].title = "The title of a article 1" ;
@@ -142,7 +154,8 @@
 		jsonObj.article.properties.kmlinks[1] ={};
 		jsonObj.article.properties.kmlinks[1].id = "link 1";
 		jsonObj.article.properties.kmlinks[1].title = "The title of a article 1" ;
-		jsonObj.article.properties.kmlinks[1].scope = "The title of a article 1"  ;
+		jsonObj.article.properties.kmlinks[1].scope = "The title of a article 1"  ;		
+		*/
 		jsonObj.article.properties.extlinks = [];
 		jsonObj.article.properties.extlinks[0] ={};
 		jsonObj.article.properties.extlinks[0].url= "http://wwww.link1";
