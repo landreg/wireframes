@@ -191,10 +191,10 @@
 		jsonObj.article.properties.extlinks[1].url= "http://wwww.link2";
 		jsonObj.article.properties.extlinks[1].title = "The title of a link 2" ;
 		jsonObj.article.properties.extlinks[1].scope = "The title of a link 2" ;	
+*/
 		jsonObj.article.properties.content = getFirst() + wrapItem(getHTML(),document.getElementById("UID").value,document.getElementById("TYPE").value); 
 		jsonObj.article.properties.markup = editor.exportFile("epiceditor","text");
-		*/
-		return jsonObj;
+ 		return jsonObj;
 
  	}
 	
@@ -288,9 +288,7 @@
 		mup = mup.replace(new RegExp('<h4[^>]*>','g'),"####");
 		//all others
 		mup = mup.replace(new RegExp('<[^>]*>','g'),"");	
-		editor.importFile("epiceditor",mup);	
-	
-		
+		editor.importFile("epiceditor",mup);		
 	}
 
 	function loadFile(fileToLoad){
