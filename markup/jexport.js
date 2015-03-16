@@ -274,7 +274,7 @@
 	function putHTMLasMarkup(markup){
 		var mup= markup;
  
-		// ending tags
+ 		// ending tags
 		mup = mup.replace(new RegExp('<(\/)[^>]+>','g'),"");
 		// para tags
 		mup = mup.replace(new RegExp('<p[^>]*>','g'),"\n");
@@ -289,7 +289,7 @@
 		// h4
 		mup = mup.replace(new RegExp('<h4[^>]*>','g'),"####");
 		//all others
-		mup = mup.replace(new RegExp('<[^>]*>','g'),"");	
+		mup = mup.replace(new RegExp('<[^>]*>(?!>)','g'),"");	
 		editor.importFile("epiceditor",mup);		
 	}
 
