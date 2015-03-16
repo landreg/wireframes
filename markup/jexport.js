@@ -191,13 +191,13 @@
 		jsonObj.article.properties.extlinks[1].url= "http://wwww.link2";
 		jsonObj.article.properties.extlinks[1].title = "The title of a link 2" ;
 		jsonObj.article.properties.extlinks[1].scope = "The title of a link 2" ;	
-		*/
+ */
 		
 		jsonObj.article.properties.content = getFirst() + wrapItem(getHTML(),document.getElementById("UID").value,document.getElementById("TYPE").value); 
 		jsonObj.article.properties.markup = editor.exportFile("epiceditor","text");
 
 		return jsonObj;
-
+ 
  	}
 	
 	function getCSV(){
@@ -272,18 +272,58 @@
 	document.body.removeChild(event.target);
 }
 
+	function putHTMLasMarkup(markup){
+		var mup= markup;
+		// ending tags
+		mup = mup.replace(new RegExp('<(\/)[^>]+>','g'),"");
+		// para tags
+		mup = mup.replace(new RegExp('<p[^>]*>','g'),"\n");
+		// list
+		mup = mup.replace(new RegExp('<li[^>]*>','g'),"*");
+		// h1
+		mup = mup.replace(new RegExp('<h1[^>]*>','g'),"#");
+		// h2
+		mup = mup.replace(new RegExp('<h2[^>]*>','g'),"##");
+		// h3
+		mup = mup.replace(new RegExp('<h3[^>]*>','g'),"###");
+		// h4
+		mup = mup.replace(new RegExp('<h4[^>]*>','g'),"####");
+		//all others
+		mup = mup.replace(new RegExp('<[^>]*>','g'),"");	
+		editor.importFile("epiceditor",mup);		
+	}
+
 	function loadFile(fileToLoad){
 		var fileReader = new FileReader();
+		var ext=getFileExtension(fileToLoad.name);
+ 
 		fileReader.onload = function(fileLoadedEvent) 
 		{
-			var textFromFileLoaded = fileLoadedEvent.target.result;		
- 			putJSON(textFromFileLoaded);
-			
+			var textFromFileLoaded = fileLoadedEvent.target.result;
+			switch (ext){
+				case "json":
+				case "kmj":
+				putJSON(textFromFileLoaded);
+				break;
+				case "html":
+				case "txt":
+				putHTMLasMarkup(textFromFileLoaded);
+				break;
+				default:
+					alert("invalid file type");
+			}
 		};
 		fileReader.readAsText(fileToLoad, "UTF-8");
 		document.getElementById("fileToLoad").files[0] = fileToLoad;
 	}
 	
+	function getFileExtension(filename){
+		var a = filename.split(".");
+		if( a.length === 1 || ( a[0] === "" && a.length === 2 ) ) {
+			return "";
+		}
+		return a.pop();
+	}
 
 	function loadFileAsText()
 	{
