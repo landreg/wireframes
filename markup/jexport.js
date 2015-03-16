@@ -75,7 +75,7 @@
 	
 	}
 	
-	function putKMlink(json){
+	function addKMlink(json){
  
 		try{
 			jsonObj= JSON.parse(json);
@@ -92,7 +92,7 @@
 	}
 	
 	function addExtLink(url,name,scope){
-		extlink={"url":url,"name":name,"scope",scope};
+		extlink={"url":url,"name":name,"scope":scope};
 		extlinks.push(extlink);
 		setextlinks(extlinks);
 	}
@@ -424,7 +424,7 @@
 			  var dt    = e.dataTransfer;
 			  var files = dt.files;
 			  if (files.length > 0) {
-					addKMlink(files[0]);	
+					loadKMlink(files[0]);	
 			  } 
 			  var url   = dt.getData("URL") || dt.getData("text/uri-list");
 			  if  (url.length > 0){
