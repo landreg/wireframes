@@ -1,4 +1,5 @@
-<head/>
+<html>
+<head>
 <script>
 var kmlinks = [];
 function SaveMySelf() {
@@ -56,14 +57,27 @@ function addlink(){
 			
 }
 
+function addEventHandler(obj, evt, handler) {
+		if(obj.addEventListener) {
+			// W3C method
+			obj.addEventListener(evt, handler, false);
+		} else if(obj.attachEvent) {
+			// IE method.
+			obj.attachEvent('on'+evt, handler);
+		} else {
+			// Old school method.
+			obj['on'+evt] = handler;
+    }
+
  
 	
 </script>	
 
-<head>
+</head>
 <body>
 <p>KM LINK:<br><input id="kmlink" type="text"  maxlength="30"></input><button onclick="addlink()">Add</button></p>
 <div id="kmlinks"></div>
 <button onclick="SaveMySelf()">Save</button>
 
 </body>
+</html>

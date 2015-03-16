@@ -1,9 +1,3 @@
-	
-
- 
- 
- 
-		
 	function getHTML(){
 		editor.preview()
 		html = editor.getElement('previewer').body.innerHTML;
@@ -80,6 +74,31 @@
 		putHTML(jsonObj.article.properties.content);
 	
 	}
+	
+	function putKMlink(json){
+ 
+		try{
+			jsonObj= JSON.parse(json);
+
+		}
+		catch(err){
+			alert ("Error"+ err.message);
+			return;
+		}
+		;
+		kmlinks.push({"id":jsonObj.article.properties.id});
+		setkmlinks(kmlinks);
+		
+	}
+	
+	function addExtLink(url,name,scope){
+		extlink={"url":url,"name":name,"scope",scope};
+		extlinks.push(extlink);
+		setextlinks(extlinks);
+	}
+	
+	
+	
 	
 	function setFoci(facet,foci){
 		selList = document.getElementById(facet);
@@ -266,8 +285,7 @@
 		downloadLink.click();
 	}
 
-	function destroyClickedElement(event)
-{
+	function destroyClickedElement(event){
 	document.body.removeChild(event.target);
 }
 
@@ -326,9 +344,28 @@
 				default:
 					alert("invalid file type");
 			}
-		
-		document.getElementById("fileToLoad").files[0] = fileToLoad;
 	}
+	
+	function loadKMlink(fileToLoad){
+		var fileReader = new FileReader();
+		var ext=getFileExtension(fileToLoad.name);
+		fileReader.onload = function(fileLoadedEvent){
+			var textFromFileLoaded = fileLoadedEvent.target.result;
+			addKMlink(textFromFileLoaded);
+		} 
+		switch (ext){
+				case "kmj":
+				fileReader.readAsText(fileToLoad, "UTF-8");
+				break;
+				default:
+					alert("invalid file type");
+		}
+	}
+	
+
+	
+	
+	
 	
 	function getFileExtension(filename){
 		var a = filename.split(".");
@@ -345,8 +382,22 @@
 		
 	}
 	
-	function loadExport(){
-		var drop   = document.getElementById('drop');
+	function addEventHandler(obj, evt, handler) {
+		if(obj.addEventListener) {
+			// W3C method
+			obj.addEventListener(evt, handler, false);
+		} else if(obj.attachEvent) {
+			// IE method.
+			obj.attachEvent('on'+evt, handler);
+		} else {
+			// Old school method.
+			obj['on'+evt] = handler;
+		}
+	}
+	
+	
+	function setArticleDrop(){
+			var drop   = document.getElementById('articledrop');
 			addEventHandler(drop, 'dragover', cancel);
 			addEventHandler(drop, 'dragenter', cancel);
 				
@@ -359,6 +410,34 @@
 			  loadFile(files[0]);
 			  return false;
 			  });
+	}
+	
+	function setKMDrop(){
+			var drop   = document.getElementById('kmdrop');
+			addEventHandler(drop, 'dragover', cancel);
+			addEventHandler(drop, 'dragenter', cancel);
+				
+			addEventHandler(drop, 'drop', function (e) {
+			  e = e || window.event; // get window.event if e argument missing (in IE)   
+			  if (e.preventDefault) { e.preventDefault(); } // stops the browser from redirecting off to the image.
+
+			  var dt    = e.dataTransfer;
+			  var files = dt.files;
+			  if (files.length > 0) {
+					addKMlink(files[0]);	
+			  } 
+			  var url   = dt.getData("URL") || dt.getData("text/uri-list");
+			  if  (url.length > 0){
+					addExtLink(url,"external link","description");
+			  }
+			  
+			  return false;
+			  });
+	}
+	
+	function loadExport(){
+			setArticleDrop();
+			setKMDrop();
 	}			
 	 
 	

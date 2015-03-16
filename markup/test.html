@@ -20,7 +20,7 @@
 		width: 100%;
 	}
 	
-	#drop {
+	.drop{
 	  min-height: 50px;
 	  width: 50px;
 	  border: 1px solid blue;
@@ -87,20 +87,7 @@
 		loadEditor();
 		loadExport();
 		}
-		
-	
-	function addEventHandler(obj, evt, handler) {
-		if(obj.addEventListener) {
-			// W3C method
-			obj.addEventListener(evt, handler, false);
-		} else if(obj.attachEvent) {
-			// IE method.
-			obj.attachEvent('on'+evt, handler);
-		} else {
-			// Old school method.
-			obj['on'+evt] = handler;
-    }
-}
+
 </script>
 
  
@@ -117,7 +104,7 @@
 -->
  
 <p>
-<span id="drop">Drop files here.</span>
+<span id="articledrop" class="drop">Drop files here.</span>
 <button type="button" onclick="clearFields()">Clear</button>
 <input type="file" id="fileToLoad" /> 
 <button onclick="loadFileAsText()">Load</button></p>
@@ -128,6 +115,7 @@
 <p>TITLE:<br><input id="TITLE" type="text"  maxlength="70"></input></p>
 <p>TYPE:<br><input id="TYPE" type="text" value="km_task" ></input></p>
 <p>SCOPE:<textarea id="SCOPE" textarea maxlength="200">SCOPE</textarea></p>
+<div>
 <p>FACET1:<select id="facet1" multiple="multiple" onchange=getFoci("facet1")>
 	<option value="key1">key1</option>
 	<option value="key2">key2</option>
@@ -140,8 +128,13 @@
 </select> 
 <span id="facet2disp"></span>
  </p>
-<button type="button" onclick="popitup('kmlink.html')">kmlink</button><br>
-<button type="button" onclick="popitup('extlink.html')">extlink</button><br>
+</div>
+ <div>
+<p id="kmdrop" class="drop">Drop files/links here.</p>
+<button type="button" onclick="popitup('kmlink.html')">kmlink</button>
+
+<button type="button" onclick="popitup('extlink.html')">extlink</button>
+</div>
 KM LINKS:<div id="KMLINKS"></div>
 EXT LINKS:<div id="EXTLINKS"></div>
  
