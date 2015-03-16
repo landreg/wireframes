@@ -597,6 +597,7 @@ InlineLexer.prototype.output = function(src) {
       continue;
     }
 
+	/* JohnP don't allow inline html
     // tag
     if (cap = this.rules.tag.exec(src)) {
       if (!this.inLink && /^<a /i.test(cap[0])) {
@@ -610,6 +611,7 @@ InlineLexer.prototype.output = function(src) {
         : cap[0];
       continue;
     }
+	*/
 
     // link
     if (cap = this.rules.link.exec(src)) {

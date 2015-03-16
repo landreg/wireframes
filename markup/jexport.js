@@ -47,7 +47,7 @@
 		document.getElementById("TITLE").value="";
 		document.getElementById("SCOPE").value="";
 		document.getElementById("TYPE").value="km_task";
-		editor.importFile("epiceditor","");
+		editor.importFile("epiceditor","edit here");
 		document.getElementById("KMLINKS").innerHTML="";
 		document.getElementById("EXTLINKS").innerHTML="";
 		kmlinks=[];
@@ -55,7 +55,6 @@
 		clearFacet("facet1");
 		clearFacet("facet2");
 		putHTML("");
-	
 	}
 	
 	function putJSON(json){
@@ -274,6 +273,7 @@
 
 	function putHTMLasMarkup(markup){
 		var mup= markup;
+ 
 		// ending tags
 		mup = mup.replace(new RegExp('<(\/)[^>]+>','g'),"");
 		// para tags
@@ -296,7 +296,7 @@
 	function loadFile(fileToLoad){
 		var fileReader = new FileReader();
 		var ext=getFileExtension(fileToLoad.name);
- 
+		clearFields();
 		fileReader.onload = function(fileLoadedEvent) 
 		{
 			var textFromFileLoaded = fileLoadedEvent.target.result;
@@ -313,7 +313,20 @@
 					alert("invalid file type");
 			}
 		};
-		fileReader.readAsText(fileToLoad, "UTF-8");
+		switch (ext){
+				case "json":
+				case "kmj":
+				case "html":
+				fileReader.readAsText(fileToLoad, "UTF-8");
+				break;
+
+				case "txt":
+				fileReader.readAsText(fileToLoad, "ISO-8859-1");
+				break;
+				default:
+					alert("invalid file type");
+			}
+		
 		document.getElementById("fileToLoad").files[0] = fileToLoad;
 	}
 	

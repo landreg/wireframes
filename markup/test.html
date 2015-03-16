@@ -124,10 +124,10 @@
 <br>
 <button type="button" onclick="saveTextAsFile()">Save</button>
 <div class="metadata">
-<p>UID:<br><input id="UID" type="text" ></input></p>
-<p>TITLE:<br><input id="TITLE" type="text" ></input></p>
+<p>UID:<br><input id="UID" type="text"  maxlength="30"></input></p>
+<p>TITLE:<br><input id="TITLE" type="text"  maxlength="70"></input></p>
 <p>TYPE:<br><input id="TYPE" type="text" value="km_task" ></input></p>
-<p>SCOPE:<textarea id="SCOPE" textarea>SCOPE</textarea></p>
+<p>SCOPE:<textarea id="SCOPE" textarea maxlength="200">SCOPE</textarea></p>
 <p>FACET1:<select id="facet1" multiple="multiple" onchange=getFoci("facet1")>
 	<option value="key1">key1</option>
 	<option value="key2">key2</option>
