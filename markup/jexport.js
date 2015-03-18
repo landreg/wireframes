@@ -26,7 +26,7 @@
 	
 	function preview(){
 		var jsonObj = getJSON();
-		putHTML(jsonObj.article.properties.content);
+		putHTML(jsonObj.content);
 	}
 	
 	function clearFacet(facet){
@@ -36,6 +36,44 @@
 
 	}
 	
+	function CSVtoArray(text) {
+    var re_valid = /^\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*(?:,\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*)*$/;
+    var re_value = /(?!\s*$)\s*(?:'([^'\\]*(?:\\[\S\s][^'\\]*)*)'|"([^"\\]*(?:\\[\S\s][^"\\]*)*)"|([^,'"\s\\]*(?:\s+[^,'"\s\\]+)*))\s*(?:,|$)/g;
+    // Return NULL if input string is not well formed CSV string.
+    if (!re_valid.test(text)) return null;
+    var a = [];                     // Initialize array to receive values.
+    text.replace(re_value, // "Walk" the string using replace with callback.
+        function(m0, m1, m2, m3) {
+            // Remove backslash from \' in single quoted values.
+            if      (m1 !== undefined) a.push(m1.replace(/\\'/g, "'"));
+            // Remove backslash from \" in double quoted values.
+            else if (m2 !== undefined) a.push(m2.replace(/\\"/g, '"'));
+            else if (m3 !== undefined) a.push(m3);
+            return ''; // Return empty string.
+        });
+    // Handle special case of empty last value.
+    if (/,\s*$/.test(text)) a.push('');
+    return a;
+};
+	function getKeywords(){
+		var keys = CSVtoArray(document.getElementById("KEYWORDS").value);
+		return keys;
+	}
+	
+	function displayKeywords(keywords){
+		if (keywords==null) {
+			document.getElementById("KEYWORDS").value="";
+			return;
+			}
+		var str ="";
+		for (var a=0;(a<keywords.length);a++){
+				str += '"' + keywords[a] + '"';
+				if ((a+1) < keywords.length) str += ',';
+		}		
+		document.getElementById("KEYWORDS").value=str;
+	}
+	
+	
 	function clearFields(){
 		document.getElementById("UID").value="";
 		document.getElementById("TITLE").value="";
@@ -44,6 +82,7 @@
 		editor.importFile("epiceditor","edit here");
 		document.getElementById("KMLINKS").innerHTML="";
 		document.getElementById("EXTLINKS").innerHTML="";
+		document.getElementById("KEYWORDS").value="";
 		kmlinks=[];
 		extlinks=[];
 		clearFacet("facet1");
@@ -55,23 +94,24 @@
  
 		try{
 			jsonObj= JSON.parse(json);
-
+			if (jsonObj.article) jsonObj = jsonObj.article.properties;	
 		}
 		catch(err){
 			alert ("Error"+ err.message);
 			return;
 		}
-		document.getElementById("UID").value=jsonObj.article.properties.id;
-		document.getElementById("TITLE").value=jsonObj.article.properties.title;
-		document.getElementById("SCOPE").value=jsonObj.article.properties.scope;
-		document.getElementById("TYPE").value = jsonObj.article.properties.type;
-		setkmlinks(jsonObj.article.properties.kmlinks);
-		setextlinks(jsonObj.article.properties.extlinks);
- 		for (x=0;x<jsonObj.article.properties.facets.length;x++){
-			setFoci(jsonObj.article.properties.facets[x].name,jsonObj.article.properties.facets[x].foci);
+		document.getElementById("UID").value=jsonObj.id;
+		document.getElementById("TITLE").value=jsonObj.title;
+		document.getElementById("SCOPE").value=jsonObj.scope;
+		document.getElementById("TYPE").value = jsonObj.type;
+		setkmlinks(jsonObj.kmlinks);
+		setextlinks(jsonObj.extlinks);
+		displayKeywords(jsonObj.keywords);
+ 		for (x=0;x<jsonObj.facets.length;x++){
+			setFoci(jsonObj.facets[x].name,jsonObj.facets[x].foci);
 		}
-		editor.importFile("epiceditor",jsonObj.article.properties.markup);
-		putHTML(jsonObj.article.properties.content);
+		editor.importFile("epiceditor",jsonObj.markup);
+		putHTML(jsonObj.content);
 	
 	}
 	
@@ -86,7 +126,7 @@
 			return;
 		}
 		;
-		kmlinks.push({"id":jsonObj.article.properties.id});
+		kmlinks.push({"id":jsonObj.id});
 		setkmlinks(kmlinks);
 		
 	}
@@ -171,52 +211,55 @@
 	function getJSON(){
  		//html = xhtml.replace (new RegExp('\[\x0A\x0D]','g'),"");
  		var jsonObj = {};
-		jsonObj.article={};
-		jsonObj.article._boost = {name: "sponsor" , "null_value" : 1.0};
-		jsonObj.article.properties = {};
-		jsonObj.article.properties.id =  document.getElementById("UID").value ;
-		jsonObj.article.properties.title = document.getElementById("TITLE").value ;
-		jsonObj.article.properties.scope = document.getElementById("SCOPE").value ;
-		jsonObj.article.properties.type =  document.getElementById("TYPE").value;
- 		jsonObj.article.properties.items  =[];
-		jsonObj.article.properties.items[0] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
- 		jsonObj.article.properties.items[1] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
-		jsonObj.article.properties.lastupdate = new Date();
-		jsonObj.article.properties.popularity = 5;
-		jsonObj.article.properties.keywords = ["one", "two", "three"]; 
-		jsonObj.article.properties.facets = [];
-		jsonObj.article.properties.facets[0] ={};
-		jsonObj.article.properties.facets[0].name = "facet1";
-		jsonObj.article.properties.facets[0].foci = getFoci("facet1");
-		jsonObj.article.properties.facets[1] ={};
-		jsonObj.article.properties.facets[1].name = "facet2";
-		jsonObj.article.properties.facets[1].foci = getFoci("facet2");
-		jsonObj.article.properties.kmlinks = kmlinks;
-		jsonObj.article.properties.extlinks = extlinks;
+ 		jsonObj = {};
+		jsonObj.id =  document.getElementById("UID").value ;
+		jsonObj.title = document.getElementById("TITLE").value ;
+		jsonObj.scope = document.getElementById("SCOPE").value ;
+		jsonObj.type =  document.getElementById("TYPE").value;
+ 		jsonObj.items  =[];
+		jsonObj.items[0] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
+ 		jsonObj.items[1] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
+		jsonObj.lastupdate = new Date();
+		jsonObj.popularity = 5;
+		keys = getKeywords(); 
+		if (keys==null){
+			alert("Contents of keyword box is not valid : information lost");
+			return;
+			}
+		jsonObj.keywords = keys;
+		jsonObj.facets = [];
+		jsonObj.facets[0] ={};
+		jsonObj.facets[0].name = "facet1";
+		jsonObj.facets[0].foci = getFoci("facet1");
+		jsonObj.facets[1] ={};
+		jsonObj.facets[1].name = "facet2";
+		jsonObj.facets[1].foci = getFoci("facet2");
+		jsonObj.kmlinks = kmlinks;
+		jsonObj.extlinks = extlinks;
  
 		/*
-		jsonObj.article.properties.kmlinks[0] ={};
-		jsonObj.article.properties.kmlinks[0].id = "link 1";
-		jsonObj.article.properties.kmlinks[0].title = "The title of a article 1" ;
-		jsonObj.article.properties.kmlinks[0].scope = "The title of a article 1"  ;
-		jsonObj.article.properties.kmlinks[1] ={};
-		jsonObj.article.properties.kmlinks[1].id = "link 1";
-		jsonObj.article.properties.kmlinks[1].title = "The title of a article 1" ;
-		jsonObj.article.properties.kmlinks[1].scope = "The title of a article 1"  ;		
+		jsonObj.kmlinks[0] ={};
+		jsonObj.kmlinks[0].id = "link 1";
+		jsonObj.kmlinks[0].title = "The title of a article 1" ;
+		jsonObj.kmlinks[0].scope = "The title of a article 1"  ;
+		jsonObj.kmlinks[1] ={};
+		jsonObj.kmlinks[1].id = "link 1";
+		jsonObj.kmlinks[1].title = "The title of a article 1" ;
+		jsonObj.kmlinks[1].scope = "The title of a article 1"  ;		
 		
-		jsonObj.article.properties.extlinks = [];
-		jsonObj.article.properties.extlinks[0] ={};
-		jsonObj.article.properties.extlinks[0].url= "http://wwww.link1";
-		jsonObj.article.properties.extlinks[0].title = "The title of a link 1" ;
-		jsonObj.article.properties.extlinks[0].scope = "The title of a link 1" ;	
-		jsonObj.article.properties.extlinks[1] ={};
-		jsonObj.article.properties.extlinks[1].url= "http://wwww.link2";
-		jsonObj.article.properties.extlinks[1].title = "The title of a link 2" ;
-		jsonObj.article.properties.extlinks[1].scope = "The title of a link 2" ;	
+		jsonObj.extlinks = [];
+		jsonObj.extlinks[0] ={};
+		jsonObj.extlinks[0].url= "http://wwww.link1";
+		jsonObj.extlinks[0].title = "The title of a link 1" ;
+		jsonObj.extlinks[0].scope = "The title of a link 1" ;	
+		jsonObj.extlinks[1] ={};
+		jsonObj.extlinks[1].url= "http://wwww.link2";
+		jsonObj.extlinks[1].title = "The title of a link 2" ;
+		jsonObj.extlinks[1].scope = "The title of a link 2" ;	
  */
 		
-		jsonObj.article.properties.content = getFirst() + wrapItem(getHTML(),document.getElementById("UID").value,document.getElementById("TYPE").value); 
-		jsonObj.article.properties.markup = editor.exportFile("epiceditor","text");
+		jsonObj.content = getFirst() + wrapItem(getHTML(),document.getElementById("UID").value,document.getElementById("TYPE").value); 
+		jsonObj.markup = editor.exportFile("epiceditor","text");
 
 		return jsonObj;
  
@@ -236,7 +279,7 @@
 	
 	function getFirst(){
 	 
-	    var title = "<p class=\"km_article_title\">" + document.getElementById("TITLE").value +"</p>\n" ;
+	    var title = "<h1 class=\"km_article_title\">" + document.getElementById("TITLE").value +"</h1>\n" ;
 		var scope =  "<p class=\"km_article_scope\">" + document.getElementById("SCOPE").value +"</p>\n";
 		
 		/*	TODO need to stop HTML injection	
