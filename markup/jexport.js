@@ -94,7 +94,7 @@
  
 		try{
 			jsonObj= JSON.parse(json);
-
+			if (jsonObj.article) jsonObj = jsonObj.article.properties;	
 		}
 		catch(err){
 			alert ("Error"+ err.message);
