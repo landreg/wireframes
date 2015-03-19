@@ -77,9 +77,9 @@
 	function clearFields(){
 		document.getElementById("UID").value="";
 		document.getElementById("TITLE").value="";
-		document.getElementById("SCOPE").value="";
+		document.getElementById("SCOPE").value="Some text describing the scope and content of the article";
 		document.getElementById("TYPE").value="km_task";
-		editor.importFile("epiceditor","edit here");
+		editor.importFile("epiceditor","##Sorry. There is currently no content for this page.");
 		document.getElementById("KMLINKS").innerHTML="";
 		document.getElementById("EXTLINKS").innerHTML="";
 		document.getElementById("KEYWORDS").value="";
@@ -93,8 +93,7 @@
 	function putJSON(json){
  
 		try{
-			jsonObj= JSON.parse(json);
-			if (jsonObj.article) jsonObj = jsonObj.article.properties;	
+			jsonObj= parseJSON(json);
 		}
 		catch(err){
 			alert ("Error"+ err.message);
@@ -102,7 +101,10 @@
 		}
 		document.getElementById("UID").value=jsonObj.id;
 		document.getElementById("TITLE").value=jsonObj.title;
-		document.getElementById("SCOPE").value=jsonObj.scope;
+		if (jsonObj.scope == "SCOPE")
+			document.getElementById("SCOPE").value="Some text describing the scope and content of the article";
+		else	
+			document.getElementById("SCOPE").value=jsonObj.scope;
 		document.getElementById("TYPE").value = jsonObj.type;
 		setkmlinks(jsonObj.kmlinks);
 		setextlinks(jsonObj.extlinks);
@@ -110,15 +112,24 @@
  		for (x=0;x<jsonObj.facets.length;x++){
 			setFoci(jsonObj.facets[x].name,jsonObj.facets[x].foci);
 		}
-		editor.importFile("epiceditor",jsonObj.markup);
+		if (jsonObj.markup=="")	
+			editor.importFile("epiceditor","##Sorry. There is currently no content for this page.");
+		else
+			editor.importFile("epiceditor",jsonObj.markup);
 		putHTML(jsonObj.content);
 	
+	}
+	
+	function parseJSON(json){
+			jsonObj = JSON.parse(json);
+			if (jsonObj.article) jsonObj = jsonObj.article.properties;	
+			return jsonObj;
 	}
 	
 	function addKMlink(json){
  
 		try{
-			jsonObj= JSON.parse(json);
+			jsonObj= parseJSON(json);
 
 		}
 		catch(err){
@@ -481,6 +492,7 @@
 	function loadExport(){
 			setArticleDrop();
 			setKMDrop();
+			clearFields();
 	}			
 	 
 	

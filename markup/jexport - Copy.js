@@ -45,9 +45,9 @@
 	function clearFields(){
 		document.getElementById("UID").value="";
 		document.getElementById("TITLE").value="";
-		document.getElementById("SCOPE").value="";
+		document.getElementById("SCOPE").value="Some text describing the scope and content of the article";
 		document.getElementById("TYPE").value="km_task";
-		editor.importFile("epiceditor","");
+		editor.importFile("epiceditor","##Sorry. This page is currently no content for this page.");
 		document.getElementById("KMLINKS").innerHTML="";
 		document.getElementById("EXTLINKS").innerHTML="";
 		kmlinks=[];
