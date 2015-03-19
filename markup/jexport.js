@@ -143,6 +143,10 @@
 	}
 	
 	function addExtLink(url,name,scope){
+		var uri = url.replace(new RegExp('((http)s*:\/\/)(www.)*','g'),"");
+		var name = uri.replace(new RegExp('\/.*','g'),"");
+		var scope = uri.replace(new RegExp('^.*\/','g'),"");
+		var scope = scope.replace(new RegExp('(\\?.*)','g'),"");
 		extlink={"url":url,"name":name,"scope":scope};
 		extlinks.push(extlink);
 		setextlinks(extlinks);

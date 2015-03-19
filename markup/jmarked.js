@@ -24,7 +24,9 @@ var block = {
   def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,
   table: noop,
   paragraph: /^((?:[^\n]+\n?(?!hr|heading|lheading|blockquote|tag|def))+)\n*/,
-  text: /^[^\n]+/
+  text: /^[^\n]+/,
+  // johnp regex to detect hotdrops
+  hotdrop:/(?:^|\n){hotdrop:[^\n\S]*\n([^}\n]*)([^}]*)*}/
 };
 
 block.bullet = /(?:[*+-]|\d+\.)/;
@@ -613,6 +615,8 @@ InlineLexer.prototype.output = function(src) {
     }
 	*/
 
+	 
+	
     // link
     if (cap = this.rules.link.exec(src)) {
       src = src.substring(cap[0].length);
