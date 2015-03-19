@@ -29,12 +29,7 @@
 		putHTML(jsonObj.content);
 	}
 	
-	function clearFacet(facet){
-		selList = document.getElementById(facet)
-		for (x=0;x<selList.options.length;x++) 
-				selList.options[x].selected = false;			
 
-	}
 	
 	function CSVtoArray(text) {
     var re_valid = /^\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*(?:,\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*)*$/;
@@ -85,8 +80,7 @@
 		document.getElementById("KEYWORDS").value="";
 		kmlinks=[];
 		extlinks=[];
-		clearFacet("facet1");
-		clearFacet("facet2");
+ 
 		putHTML("");
 	}
 	
@@ -109,9 +103,11 @@
 		setkmlinks(jsonObj.kmlinks);
 		setextlinks(jsonObj.extlinks);
 		displayKeywords(jsonObj.keywords);
- 		for (x=0;x<jsonObj.facets.length;x++){
+ 		/*
+		for (x=0;x<jsonObj.facets.length;x++){
 			setFoci(jsonObj.facets[x].name,jsonObj.facets[x].foci);
 		}
+		*/
 		if (jsonObj.markup=="")	
 			editor.importFile("epiceditor","##Sorry. There is currently no content for this page.");
 		else
@@ -153,26 +149,93 @@
 	}
 	
 	
+	var facets={};
+ 
+	function findInArray(a,o){
+		return a.filter(function(entry){
+			return Object.keys(o).every(function(key){ 
+				return entry[key] == o[key];
+			});
+		});
+	}
+ 
 	
-	
-	function setFoci(facet,foci){
-		selList = document.getElementById(facet);
-		var x;
-		for (x=0;x<selList.options.length;x++){
-			if (foci.indexOf(selList[x].value) != -1) 
-				 selList.options[x].selected = true;
-			else
-				selList.options[x].selected = false;			
+	function displayFacet(facetName){
+		var disp = document.getElementById(facetName);
+		if (!disp){
+			disp = document.createElement("p");
+			document.getElementById("dispFacets").appendChild(disp);
 		}	
+		str = facetName +": ";
+		facet =	facets[facetName];
+		for (var i=0;(i<facet.foci.length); i++){
+			str += ": " +facet.foci[i];
+		};
+		disp.innerHTML = str;
+	}
+ 
+	
+	function setFoci(){
+		var facetName = document.getElementById("facet").value;
+		var facet =	facets[facetName];
+		var selList = document.getElementById("foci");		
+		for (x=0;x<selList.options.length;x++){
+			if (selList.options[x].selected) {
+				facet.foci.push(selList[x].value);
+			}			
+		}
+		displayFacet(facetName);
 	}
 	
+	
+	function setupFoci(multiple,str){
+		var el = document.getElementById("foci");
+		var facetName = document.getElementById("facet").value;
+		el.options.length = 0;
+		el.multiple = multiple;
+ 		var options = str.split(',');
+	 
+		
+		for (var opt in options){
+			var o = document.createElement("option");
+			o.value=options[opt];
+			o.innerHTML=options[opt];
+			el.add(o);
+		}
+		
+ 
+		
+	}
+	
+	
+	function getFacet(){
+		var facetName = document.getElementById("facet").value;
+		if (!facets[facetName])
+			facets[facetName] = { "name":facetName, "foci": []};
+		switch (facetName){
+			case "service" :{
+				setupFoci(false,"Registration,Information services,Customer handling processes");
+				break;
+			}
+			case "subject" :{
+				setupFoci(true,"Adverse possession - registered,Adverse possession - unregistered,Objection and dispute,Indemnity,Charges,Easements,Licences,Land charges,Pending land action,Home Rights,Overriding interests,Restrictive covenants,Implied covenants,Personal covenants,Leases [may need to add foci],Leases - concurrent,Leases - reversionary,Leases - shared ownership,Leases - discontinuous,Leasehold covenants,Leasehold reform,Legislation,Mines and Minerals,Copyhold,Index Map,Ordnance Survey");
+				break;		
+			}
+			break;
+			default:{
+				setupFoci("");
+			}
+		}
+
+	}
 	
 	function getFoci(facet){
 		var foci =[];
 		//var str = "" ;
-	 
-		selList = document.getElementById(facet);
-		var x;
+ 
+		var el = document.getElementById(facet);
+		var facet = el.options[el.selectedIndex].value;
+		/*var x;
 		for (x=0;x<selList.options.length;x++){
 			if (selList.options[x].selected) {
 				foci.push(selList[x].value);
@@ -180,6 +243,7 @@
 			}			
 		}
 		//document.getElementById(facet+"disp").innerHTML = str;
+		*/
 		return foci
 	}
 	

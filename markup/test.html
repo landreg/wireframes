@@ -120,18 +120,38 @@
 <p>TYPE:<br><input id="TYPE" type="text" value="km_task" ></input></p>
 <p>SCOPE:<textarea id="SCOPE" textarea maxlength="200">SCOPE</textarea></p>
 <div>
-<p>FACET1:<select id="facet1" multiple="multiple" onchange=getFoci("facet1")>
-	<option value="key1">key1</option>
-	<option value="key2">key2</option>
-	<option value="key3">key3</option>
+<p>FACET:<select id="facet" onchange=getFacet()>
+	<option value="na"></option>
+	<option value="service">Service</option>
+	<option value="subject">Subject Matter</option>
+	<option value="agent">Person/Agent</option>
+	<option value="process">Process</option>
+	<option value="application">Application Type</option>
+	<option value="space">Space/Where</option>
+	<option value="legistlation">Legistlation</option>
+	<option value="purpose">Purpose/Goal</option>
+	<option value="sensitivity">Sensitivity</option>
+	<option value="audience">Audience</option>
+	<option value="type">Item_Type</option>
 </select>
-<span id="facet1disp"></span>	
-  FACET2:<select id="facet2" multiple="multiple" onchange=getFoci("facet2")>
+
+ 
+FOCI:<select id="foci" multiple="multiple" onchange="setFoci()" >
  	<option value="key4">key4</option>
 	<option value="key5">key5</option>
 </select> 
+
+<p id="dispFacets">
+
+</p>
+
 <p>Enter Keywords as a comma deliminated list e.g. "key1",key2","key"
 :<textarea id="KEYWORDS" textarea maxlength="200">KEYWORDS</textarea></p>
+<p>CLUSTER:<select id="cluster">
+	<option value="NA">None</option>
+ 	<option value="RST">Restrictions</option>
+	<option value="CHG">Changes</option>
+</select></p>
 
 <span id="facet2disp"></span>
  </p>
