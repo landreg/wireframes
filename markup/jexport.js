@@ -164,12 +164,14 @@
 		var disp = document.getElementById(facetName);
 		if (!disp){
 			disp = document.createElement("p");
+			disp.id=facetName;
 			document.getElementById("dispFacets").appendChild(disp);
 		}	
 		str = facetName +": ";
 		facet =	facets[facetName];
 		for (var i=0;(i<facet.foci.length); i++){
 			str += ": " +facet.foci[i];
+			
 		};
 		disp.innerHTML = str;
 	}
@@ -178,6 +180,7 @@
 	function setFoci(){
 		var facetName = document.getElementById("facet").value;
 		var facet =	facets[facetName];
+		facet.foci.length =0;
 		var selList = document.getElementById("foci");		
 		for (x=0;x<selList.options.length;x++){
 			if (selList.options[x].selected) {
@@ -302,36 +305,11 @@
 			return;
 			}
 		jsonObj.keywords = keys;
-		jsonObj.facets = [];
-		jsonObj.facets[0] ={};
-		jsonObj.facets[0].name = "facet1";
-		jsonObj.facets[0].foci = getFoci("facet1");
-		jsonObj.facets[1] ={};
-		jsonObj.facets[1].name = "facet2";
-		jsonObj.facets[1].foci = getFoci("facet2");
+		jsonObj.facets = facets;
 		jsonObj.kmlinks = kmlinks;
 		jsonObj.extlinks = extlinks;
  
-		/*
-		jsonObj.kmlinks[0] ={};
-		jsonObj.kmlinks[0].id = "link 1";
-		jsonObj.kmlinks[0].title = "The title of a article 1" ;
-		jsonObj.kmlinks[0].scope = "The title of a article 1"  ;
-		jsonObj.kmlinks[1] ={};
-		jsonObj.kmlinks[1].id = "link 1";
-		jsonObj.kmlinks[1].title = "The title of a article 1" ;
-		jsonObj.kmlinks[1].scope = "The title of a article 1"  ;		
-		
-		jsonObj.extlinks = [];
-		jsonObj.extlinks[0] ={};
-		jsonObj.extlinks[0].url= "http://wwww.link1";
-		jsonObj.extlinks[0].title = "The title of a link 1" ;
-		jsonObj.extlinks[0].scope = "The title of a link 1" ;	
-		jsonObj.extlinks[1] ={};
-		jsonObj.extlinks[1].url= "http://wwww.link2";
-		jsonObj.extlinks[1].title = "The title of a link 2" ;
-		jsonObj.extlinks[1].scope = "The title of a link 2" ;	
- */
+
 		
 		jsonObj.content = getFirst() + wrapItem(getHTML(),document.getElementById("UID").value,document.getElementById("TYPE").value); 
 		jsonObj.markup = editor.exportFile("epiceditor","text");
