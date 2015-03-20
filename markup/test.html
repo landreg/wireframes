@@ -24,6 +24,10 @@
 		width: 100%;
 	}
 	
+	#FACETDISP{
+		background: pink;	
+	}
+	
 	.drop{
 	  min-height: 50px;
 	  width: 50px;
@@ -119,52 +123,29 @@
 <p>TITLE:<br><input id="TITLE" type="text"  maxlength="70"></input></p>
 <p>TYPE:<br><input id="TYPE" type="text" value="km_task" ></input></p>
 <p>SCOPE:<textarea id="SCOPE" textarea maxlength="200">SCOPE</textarea></p>
-<div>
-<p>FACET:<select id="facet" onchange=getFacet()>
-	<option value="na"></option>
-	<option value="service">Service</option>
-	<option value="subject">Subject Matter</option>
-	<option value="agent">Person/Agent</option>
-	<option value="process">Process</option>
-	<option value="application">Application Type</option>
-	<option value="space">Space/Where</option>
-	<option value="legistlation">Legistlation</option>
-	<option value="purpose">Purpose/Goal</option>
-	<option value="sensitivity">Sensitivity</option>
-	<option value="audience">Audience</option>
-	<option value="type">Item_Type</option>
-</select>
-
- 
-FOCI:<select id="foci" multiple="multiple" onchange="setFoci()" >
- 	<option value="key4">key4</option>
-	<option value="key5">key5</option>
-</select> 
-
-<p id="dispFacets">
-
+<p>
+FACET:<select id="facets" onchange="getFacet()"></select>
+FOCI:<select id="foci" multiple="multiple" onchange="getFoci()" ></select> 
 </p>
+<p id="FACETDISP"></p>
 
 <p>Enter Keywords as a comma deliminated list e.g. "key1",key2","key"
 :<textarea id="KEYWORDS" textarea maxlength="200">KEYWORDS</textarea></p>
-<p>CLUSTER:<select id="cluster">
-	<option value="NA">None</option>
- 	<option value="RST">Restrictions</option>
-	<option value="CHG">Changes</option>
+<p>CLUSTER:<select id="CLUSTER">
+	<option value="CHG">None</option>
+	<option value="REG">Registrations</option>
+	<option value="CHG">Charges</option>
 </select></p>
-
-<span id="facet2disp"></span>
- </p>
 </div>
- <div>
+<div>
 <p id="kmdrop" class="drop">Drop files/links here.</p>
 <button type="button" onclick="popitup('kmlink.html')">kmlink</button>
-
 <button type="button" onclick="popitup('extlink.html')">extlink</button>
 </div>
+<div>
 KM LINKS:<div id="KMLINKS"></div>
 EXT LINKS:<div id="EXTLINKS"></div>
- 
+</div> 
 <div>
 Enter the article using markdown notation. Notice the full screen and preview buttons at the bottom of the editor box.
 <div id="epiceditor"></div>

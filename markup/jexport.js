@@ -1,12 +1,46 @@
+	/*  get - get from UI input fields 
+		put - put to UI input fields 
+		view - view in UI
+		set - setUI and globals from JSON
+		
+		read - read from file
+		save - save to file
+		
+	*/
+	
+	var facets={};
+	
+	
+	function clearFields(){
+		/*clear golbals */
+		extlinks=[];
+		facets={};
+		putHTML("");
+		kmlinks=[];
+	
+	
+		/*clear ui*/
+		document.getElementById("UID").value="";
+		document.getElementById("TITLE").value="";
+		document.getElementById("SCOPE").value="Some text describing the scope and content of the article";
+		document.getElementById("TYPE").value="km_task";
+		editor.importFile("epiceditor","##Sorry. There is currently no content for this page.");
+		document.getElementById("KMLINKS").innerHTML="";
+		document.getElementById("EXTLINKS").innerHTML="";
+		document.getElementById("KEYWORDS").value="";		
+		setupFacets();	
+
+	}
+	
+//HTML
+	
 	function getHTML(){
 		editor.preview()
 		html = editor.getElement('previewer').body.innerHTML;
  		editor.edit();
 
 		var rstart = html.replace('<div id="epiceditor-preview">',"");
-		html = rstart.replace(new RegExp('</div>(?!</div>)','g'),"");
-
-  	
+		html = rstart.replace(new RegExp('</div>(?!</div>)','g'),"");  	
 		return html;
 	}
 	
@@ -24,12 +58,35 @@
 		catch(err){};	
 	}
 	
+	function putHTMLasMarkup(markup){
+		var mup= markup;
+ 
+ 		// ending tags
+		mup = mup.replace(new RegExp('<(\/)[^>]+>','g'),"");
+		// para tags
+		mup = mup.replace(new RegExp('<p[^>]*>','g'),"\n");
+		// list
+		mup = mup.replace(new RegExp('<li[^>]*>','g'),"*");
+		// h1
+		mup = mup.replace(new RegExp('<h1[^>]*>','g'),"#");
+		// h2
+		mup = mup.replace(new RegExp('<h2[^>]*>','g'),"##");
+		// h3
+		mup = mup.replace(new RegExp('<h3[^>]*>','g'),"###");
+		// h4
+		mup = mup.replace(new RegExp('<h4[^>]*>','g'),"####");
+		//all others
+		mup = mup.replace(new RegExp('<[^>]*>(?!>)','g'),"");	
+		editor.importFile("epiceditor",mup);		
+	}
+	
+	
 	function preview(){
 		var jsonObj = getJSON();
 		putHTML(jsonObj.content);
 	}
 	
-
+//KEYWORDS
 	
 	function CSVtoArray(text) {
     var re_valid = /^\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*(?:,\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*)*$/;
@@ -55,7 +112,7 @@
 		return keys;
 	}
 	
-	function displayKeywords(keywords){
+	function setKeywords(keywords){
 		if (keywords==null) {
 			document.getElementById("KEYWORDS").value="";
 			return;
@@ -69,58 +126,8 @@
 	}
 	
 	
-	function clearFields(){
-		document.getElementById("UID").value="";
-		document.getElementById("TITLE").value="";
-		document.getElementById("SCOPE").value="Some text describing the scope and content of the article";
-		document.getElementById("TYPE").value="km_task";
-		editor.importFile("epiceditor","##Sorry. There is currently no content for this page.");
-		document.getElementById("KMLINKS").innerHTML="";
-		document.getElementById("EXTLINKS").innerHTML="";
-		document.getElementById("KEYWORDS").value="";
-		kmlinks=[];
-		extlinks=[];
- 
-		putHTML("");
-	}
-	
-	function putJSON(json){
- 
-		try{
-			jsonObj= parseJSON(json);
-		}
-		catch(err){
-			alert ("Error"+ err.message);
-			return;
-		}
-		document.getElementById("UID").value=jsonObj.id;
-		document.getElementById("TITLE").value=jsonObj.title;
-		if (jsonObj.scope == "SCOPE")
-			document.getElementById("SCOPE").value="Some text describing the scope and content of the article";
-		else	
-			document.getElementById("SCOPE").value=jsonObj.scope;
-		document.getElementById("TYPE").value = jsonObj.type;
-		setkmlinks(jsonObj.kmlinks);
-		setextlinks(jsonObj.extlinks);
-		displayKeywords(jsonObj.keywords);
- 		/*
-		for (x=0;x<jsonObj.facets.length;x++){
-			setFoci(jsonObj.facets[x].name,jsonObj.facets[x].foci);
-		}
-		*/
-		if (jsonObj.markup=="")	
-			editor.importFile("epiceditor","##Sorry. There is currently no content for this page.");
-		else
-			editor.importFile("epiceditor",jsonObj.markup);
-		putHTML(jsonObj.content);
-	
-	}
-	
-	function parseJSON(json){
-			jsonObj = JSON.parse(json);
-			if (jsonObj.article) jsonObj = jsonObj.article.properties;	
-			return jsonObj;
-	}
+//Links
+
 	
 	function addKMlink(json){
  
@@ -148,109 +155,6 @@
 		setextlinks(extlinks);
 	}
 	
-	
-	var facets={};
- 
-	function findInArray(a,o){
-		return a.filter(function(entry){
-			return Object.keys(o).every(function(key){ 
-				return entry[key] == o[key];
-			});
-		});
-	}
- 
-	
-	function displayFacet(facetName){
-		var disp = document.getElementById(facetName);
-		if (!disp){
-			disp = document.createElement("p");
-			disp.id=facetName;
-			document.getElementById("dispFacets").appendChild(disp);
-		}	
-		str = facetName +": ";
-		facet =	facets[facetName];
-		for (var i=0;(i<facet.foci.length); i++){
-			str += ": " +facet.foci[i];
-			
-		};
-		disp.innerHTML = str;
-	}
- 
-	
-	function setFoci(){
-		var facetName = document.getElementById("facet").value;
-		var facet =	facets[facetName];
-		facet.foci.length =0;
-		var selList = document.getElementById("foci");		
-		for (x=0;x<selList.options.length;x++){
-			if (selList.options[x].selected) {
-				facet.foci.push(selList[x].value);
-			}			
-		}
-		displayFacet(facetName);
-	}
-	
-	
-	function setupFoci(multiple,str){
-		var el = document.getElementById("foci");
-		var facetName = document.getElementById("facet").value;
-		el.options.length = 0;
-		el.multiple = multiple;
- 		var options = str.split(',');
-	 
-		
-		for (var opt in options){
-			var o = document.createElement("option");
-			o.value=options[opt];
-			o.innerHTML=options[opt];
-			el.add(o);
-		}
-		
- 
-		
-	}
-	
-	
-	function getFacet(){
-		var facetName = document.getElementById("facet").value;
-		if (!facets[facetName])
-			facets[facetName] = { "name":facetName, "foci": []};
-		switch (facetName){
-			case "service" :{
-				setupFoci(false,"Registration,Information services,Customer handling processes");
-				break;
-			}
-			case "subject" :{
-				setupFoci(true,"Adverse possession - registered,Adverse possession - unregistered,Objection and dispute,Indemnity,Charges,Easements,Licences,Land charges,Pending land action,Home Rights,Overriding interests,Restrictive covenants,Implied covenants,Personal covenants,Leases [may need to add foci],Leases - concurrent,Leases - reversionary,Leases - shared ownership,Leases - discontinuous,Leasehold covenants,Leasehold reform,Legislation,Mines and Minerals,Copyhold,Index Map,Ordnance Survey");
-				break;		
-			}
-			break;
-			default:{
-				setupFoci("");
-			}
-		}
-
-	}
-	
-	function getFoci(facet){
-		var foci =[];
-		//var str = "" ;
- 
-		var el = document.getElementById(facet);
-		var facet = el.options[el.selectedIndex].value;
-		/*var x;
-		for (x=0;x<selList.options.length;x++){
-			if (selList.options[x].selected) {
-				foci.push(selList[x].value);
-				//str += selList[x].value + " ";
-			}			
-		}
-		//document.getElementById(facet+"disp").innerHTML = str;
-		*/
-		return foci
-	}
-	
-
 	function popitup(url) {
 		var p1 = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=yes,menubar=yes ';
 		var p2 = 'width=300,height=300,left=200,top=100'; 
@@ -286,6 +190,194 @@
 		document.getElementById("EXTLINKS").innerHTML=str;	
 	}	
 	
+// Facets
+ 
+	function findInArray(a,o){
+		return a.filter(function(entry){
+			return Object.keys(o).every(function(key){ 
+				return entry[key] == o[key];
+			});
+		});
+	}
+ 
+	
+	function displayFacet(facetName){
+		var disp = document.getElementById(facetName);
+		if (!disp){
+			disp = document.createElement("p");
+			disp.id=facetName;
+			document.getElementById("FACETDISP").appendChild(disp);
+		}	
+		str = facetName +": ";
+		facet =	facets[facetName];
+		if (!facet || (facet.foci.length==0)){
+			document.getElementById("FACETDISP").removeChild(disp);	
+			return false;
+			}
+			else{
+			for (var i=0;(i<facet.foci.length); i++){
+				str += ": " +facet.foci[i];
+				disp.innerHTML = str;	
+				};
+			}
+		return true;	
+	}
+ 
+	
+	function getFoci(){
+		var facetName = document.getElementById("facets").value;
+		var facet =	facets[facetName];
+		facet.foci.length =0;
+		var selList = document.getElementById("foci");		
+		for (x=0;x<selList.options.length;x++){
+			if (selList.options[x].selected) {
+				if (selList[x].value!=="remove")
+					facet.foci.push(selList[x].value);					
+			}			
+		}
+		displayFacet(facetName);
+	}
+	
+	function setupSelect(id,multiple,options,selected){
+		var el = document.getElementById(id);
+		el.options.length = 0;
+		el.multiple = multiple;
+		for (var opt in options){
+			var o = document.createElement("option");
+			o.value=options[opt];
+			o.innerHTML=options[opt];
+			el.add(o);
+			if (selected){
+				if (selected.indexOf(options[opt])>=0)
+				o.selected = true;
+			}
+		}
+	
+	}
+	
+	function setupFoci(multiple,choices,selected){
+		setupSelect("foci",multiple,choices,selected);
+	}
+	
+	function setupFacets(){	  
+		var el=document.getElementById("FACETDISP"); 
+		/* need to remove child elements of FACETS div*/		
+		var fc = el.firstElementChild;
+		while (fc) {
+			el.removeChild(fc);
+			fc = el.firstElementChild;
+			}
+		str="Service,Subject Matter,Person/Agent,Process,Application Type,Space/Where,Legistlation,Purpose/Goal,Sensitivity,Audience,Item_Type"; 					
+		
+		//display the facet info
+		var names = str.split(',');
+		var name= names[names.length-1];
+		for (var i in names){
+			if (displayFacet(names[i])) name = names[i];
+		}
+				
+		setupSelect("facets",false,names,[name]);
+		 		
+		//set up foci select for selected facet
+		setupFacetFoci(name);
+	}	
+
+	function getFacet(){
+		setupFacetFoci(document.getElementById("facets").value);
+	}
+	
+	
+	function setupFacetFoci(facetName){		
+		if (!facets[facetName])
+			facets[facetName] = { "name":facetName, "foci": []};
+		var selected = 	facets[facetName].foci;
+		var multiple = false;
+		var choices = "Error - Invalid Facet";
+		switch (facetName){
+			case "Service" :{
+				var choices = "remove,Registration,Information services,Customer handling processes";
+				break;
+			}
+			case "Subject Matter" :{
+				var choices ="Adverse possession - registered,Adverse possession - unregistered,Objection and dispute,Indemnity,Charges,Easements,Licences,Land charges,Pending land action,Home Rights,Overriding interests,Restrictive covenants,Implied covenants,Personal covenants,Leases [may need to add foci],Leases - concurrent,Leases - reversionary,Leases - shared ownership,Leases - discontinuous,Leasehold covenants,Leasehold reform,Legislation,Mines and Minerals,Copyhold,Index Map,Ordnance Survey,,Floor levels,Airspace, tunnels, strata,Boundaries,Title plan,Provisions,Proprietor’s name,IOPN,Address for service,Joint proprietors ,Trusts,Mental capacity,Death,Probate & intestacy,Individual voluntary arrangement,Bankruptcy,Administration,Receivership,Liquidation,Powers of attorney,Transfer for value,Transfer not for value,Transfer of share,Transfer subject to charge,Transfer under power of sale,Transfer of part,Unregistered land,Public sector housing,Right To Buy,Preserved Right To Buy,Price paid ,PPI,Execution,Court order,Bias ,Foreign law,Class of title,The register,Daylist,Commonhold,Unilateral notice,Agreed notice,Home Rights notice,SDLT,Fees,Classification,Notices,Forms,Fraud"; 
+ 				multiple = true;
+				break;		
+			}
+			case "Person/Agent":{
+				var choices = "Registered proprietor,Third party,Conveyancer,Caseworker,Company,Overseas company,Corporation,Receiver,Administrator,Liquidator,Insolvency practitioner/supervisor,Trustee in bankruptcy,Creditor,Attorney,Deputy (MHA),Personal representative,Trustee,Beneficiary,Pension fund trustee,Chargor,Chargee,Bank ,Building society,Local authority,Housing association,Utility company,Developer,Landlord/lessor,Tenant/lessee,RTM company,School/education body,NHS body,Foreign state,Companies House,Court";
+				multiple = true;
+				break;
+			}
+			case "Process":{
+				choices ="Alteration,Registration (substantive),Variation,Change of,Postponement,Discharge,Cancellation,Withdrawal,Removal,Determination,Noting of (death),Electronic applications,Service of notice,Exempt documents,Filing,Sub-division of title,FOIA,Examination of title,Upgrade of title,Mapping,Indexing,Surveys,Job instruction";
+				multiple = true;
+				break;
+			}
+			case "Application Type":{
+				choices ="DLG,FR,DFL,TP,Official copy,SIM,SIF,EBA,EPA,DFA";
+				multiple = true;
+				break;
+			}
+			case "Space/Where":{
+				choices = "England,Wales";
+				multiple = true;
+				break;
+			}
+			case "Legistlation":{
+				choices = "[Section of] Land Registration Act 2002,[Rule from] Land Registration Rules 2003,Other legislation";
+				multiple = true;
+				break;
+			}
+			case "Purpose/Goal":{
+ 				break;			
+			}
+			case "Sensitivity":{
+				break;
+			}
+			case "Audience":{
+				break;
+			}
+			case "Item_Type":{
+				break;
+			}
+			default:
+				break;
+ 			}
+		setupFoci(multiple,choices.split(','),selected);	
+	}
+	
+	function setFacets(obj){
+		facets = obj;
+		setupFacets();
+	}
+	
+// Files io
+	
+	function parseJSON(json){
+			jsonObj = JSON.parse(json);
+			if (jsonObj.article) jsonObj = jsonObj.article.properties;	
+			return jsonObj;
+	}
+	
+	function getFirst(){
+	 
+	 
+		var text = document.getElementById("TITLE").value;
+		text = text.replace(new RegExp('\"','g'),'\\"').replace(new RegExp('\&','g'),"&amp").replace(new RegExp('\<','g'),"&lt");
+	    var title = "<h1 class=\"km_article_title\">" + text +"</h1>\n" ;
+		text = document.getElementById("SCOPE").value;
+		text = text.replace(new RegExp('\"','g'),'\\"').replace(new RegExp('\&','g'),"&amp").replace(new RegExp('\<','g'),"&lt");
+		var scope =  "<p class=\"km_article_scope\">" + text +"</p>\n";
+		
+		// stop HTML injection
+		
+		return  title + scope;	
+ 
+	}
+	 function wrapItem(html,item,type){
+		return "<div class=\"km_article_item " + type + "\" id=\""+item+"\">"+html+"</div>"
+	 }
+	
 	function getJSON(){
  		//html = xhtml.replace (new RegExp('\[\x0A\x0D]','g'),"");
  		var jsonObj = {};
@@ -299,6 +391,7 @@
  		jsonObj.items[1] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
 		jsonObj.lastupdate = new Date();
 		jsonObj.popularity = 5;
+		jsonObj.cluster = document.getElementById("CLUSTER").value;
 		keys = getKeywords(); 
 		if (keys==null){
 			alert("Contents of keyword box is not valid : information lost");
@@ -309,47 +402,43 @@
 		jsonObj.kmlinks = kmlinks;
 		jsonObj.extlinks = extlinks;
  
-
-		
 		jsonObj.content = getFirst() + wrapItem(getHTML(),document.getElementById("UID").value,document.getElementById("TYPE").value); 
 		jsonObj.markup = editor.exportFile("epiceditor","text");
-
 		return jsonObj;
- 
  	}
+	 	
 	
-	function getCSV(){
-		var csv;
-		csv  = '"' + document.getElementById("UID").value + '","' ;
-		csv += document.getElementById("SCOPE").innerHTML + '","' ;
-		csv += document.getElementById("TITLE").value + '","' ;
-		csv += xxhtml + '"';
-		document.getElementById("csv").innerHTML  =csv;
-		return csv;
- 	}
-
+	function setJSON(json){
  
+		try{
+			jsonObj= parseJSON(json);
+		}
+		catch(err){
+			alert ("Error"+ err.message);
+			return;
+		}
+		document.getElementById("UID").value=jsonObj.id;
+		document.getElementById("TITLE").value=jsonObj.title;
+		if (jsonObj.scope == "SCOPE")
+			document.getElementById("SCOPE").value="Some text describing the scope and content of the article";
+		else	
+			document.getElementById("SCOPE").value=jsonObj.scope;
+		document.getElementById("TYPE").value = jsonObj.type;
+		document.getElementById("CLUSTER").value = jsonObj.cluster;
+		setkmlinks(jsonObj.kmlinks);
+		setextlinks(jsonObj.extlinks);
+		setKeywords(jsonObj.keywords);
+		setFacets(jsonObj.facets);
+ 		
+		if (jsonObj.markup=="")	
+			editor.importFile("epiceditor","##Sorry. There is currently no content for this page.");
+		else
+			editor.importFile("epiceditor",jsonObj.markup);
+		putHTML(jsonObj.content);
 	
-	function getFirst(){
-	 
-	    var title = "<h1 class=\"km_article_title\">" + document.getElementById("TITLE").value +"</h1>\n" ;
-		var scope =  "<p class=\"km_article_scope\">" + document.getElementById("SCOPE").value +"</p>\n";
-		
-		/*	TODO need to stop HTML injection	
-		var xhtml = html.replace(new RegExp('\"','g'),'\\"');		
-	
-		var disp = xhtml.replace(new RegExp('\&','g'),"&amp");	
-		var xdisp = disp.replace(new RegExp('\<','g'),"&lt");
-		*/	
-		return  title +scope;	
- 
 	}
 	
-	 function wrapItem(html,item,type){
-	 return "<div class=\"km_article_item " + type + "\" id=\""+item+"\">"+html+"</div>"
-	 }
-	 
-	
+
 /*
 */
 	function saveTextAsFile(){
@@ -389,27 +478,7 @@
 	document.body.removeChild(event.target);
 }
 
-	function putHTMLasMarkup(markup){
-		var mup= markup;
- 
- 		// ending tags
-		mup = mup.replace(new RegExp('<(\/)[^>]+>','g'),"");
-		// para tags
-		mup = mup.replace(new RegExp('<p[^>]*>','g'),"\n");
-		// list
-		mup = mup.replace(new RegExp('<li[^>]*>','g'),"*");
-		// h1
-		mup = mup.replace(new RegExp('<h1[^>]*>','g'),"#");
-		// h2
-		mup = mup.replace(new RegExp('<h2[^>]*>','g'),"##");
-		// h3
-		mup = mup.replace(new RegExp('<h3[^>]*>','g'),"###");
-		// h4
-		mup = mup.replace(new RegExp('<h4[^>]*>','g'),"####");
-		//all others
-		mup = mup.replace(new RegExp('<[^>]*>(?!>)','g'),"");	
-		editor.importFile("epiceditor",mup);		
-	}
+
 
 	function loadFile(fileToLoad){
 		var fileReader = new FileReader();
@@ -421,7 +490,7 @@
 			switch (ext){
 				case "json":
 				case "kmj":
-				putJSON(textFromFileLoaded);
+				setJSON(textFromFileLoaded);
 				break;
 				case "html":
 				case "txt":
@@ -546,11 +615,4 @@
 				  if (e.preventDefault) { e.preventDefault(); }
 				  return false;
 				}	
- 
-
- 
-	
-	
-	
-	
  

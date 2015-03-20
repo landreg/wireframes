@@ -26,7 +26,7 @@ var block = {
   paragraph: /^((?:[^\n]+\n?(?!hr|heading|lheading|blockquote|tag|def))+)\n*/,
   text: /^[^\n]+/,
   // johnp regex to detect hotdrops
-  hotdrop:/(?:^|\n){hotdrop:[^\n\S]*\n([^}\n]*)([^}]*)*}/
+  hotdrop:/^(?:^|\n){hotdrop:[^\n\S]*\n([^}\n]*)([^}]*)*}/
 };
 
 block.bullet = /(?:[*+-]|\d+\.)/;
@@ -161,6 +161,20 @@ Lexer.prototype.token = function(src, top, bq) {
     , l;
 
   while (src) {
+	// johnp hotdrop
+	if (cap = this.rules.hotdrop.exec(src)) {
+      src = src.substring(cap[0].length);
+      if (cap[1].length > 1) {
+        this.tokens.push({
+			type: 'hotdrop',
+			title: cap[1],
+			text: cap[2]
+        });
+ 
+      }
+    }
+ 
+  
     // newline
     if (cap = this.rules.newline.exec(src)) {
       src = src.substring(cap[0].length);
@@ -787,6 +801,8 @@ Renderer.prototype.blockquote = function(quote) {
   return '<blockquote>\n' + quote + '</blockquote>\n';
 };
 
+
+
 Renderer.prototype.html = function(html) {
   return html;
 };
@@ -803,6 +819,22 @@ Renderer.prototype.heading = function(text, level, raw) {
     + level
     + '>\n';
 };
+//johnp hotdrop
+Renderer.prototype.hotdrop = function(title,text){
+	return '<div class="panel panel-default">'
+	+ '<div class="panel-heading">'
+	+ '<h4 class="panel-title">'
+	+ '<a id="' + title + '" data-toggle="collapse"' + 'href="#collapseOne">' + title + '</a>'
+	+ '</h4>'
+	+ '</div>'
+	+ '<div id="collapseOne" class="panel-collapse collapse">'
+	+ '<p>'
+	+ text
+	+ '</p>'
+	+ '</div>' +'</div>' +'</div>';
+
+}
+
 
 Renderer.prototype.hr = function() {
   return this.options.xhtml ? '<hr/>\n' : '<hr>\n';
@@ -981,6 +1013,10 @@ Parser.prototype.tok = function() {
         this.token.depth,
         this.token.text);
     }
+	//johnp hotdrop
+	case 'hotdrop':{
+		return this.renderer.hotdrop(this.token.title,this.token.text);
+	}
     case 'code': {
       return this.renderer.code(this.token.text,
         this.token.lang,
