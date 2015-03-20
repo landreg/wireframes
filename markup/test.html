@@ -1,11 +1,15 @@
 <html>
 <head>
 
-<!--
--->
+<link href="dist/css/bootstrap.min.css" rel="stylesheet"> 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="dist/js/bootstrap.min.js"></script>
+
+
 <style>
- 
-	#UID {
+ 	#UID {
 		width:50%;
 	}
 	#SCOPE{
@@ -29,26 +33,24 @@
 	}
 	
 	.drop{
-	  min-height: 50px;
-	  width: 50px;
+	  height: 100px;
+	  width: 100px;
 	  border: 1px solid blue;
 	  margin: 10px;
 	  padding: 10px;
 	}
-	
 </style>
+
 <link rel="stylesheet" type="text/css" href="../stylesheets/guidance.css" title="best">
 <link rel="stylesheet" type="text/css" href="../stylesheets/hotdrop.css" title="best">
+
 <script src="jmarked.js"       type="text/javascript"></script>
 <script src="jexport.js"       type="text/javascript"></script>
 <script src="epiceditor/js/epiceditor.js"       type="text/javascript"></script>
  
-<link href="dist/css/bootstrap.min.css" rel="stylesheet"> 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="dist/js/bootstrap.min.js"></script>
-		
+
+ 
+	
 <script type="text/javascript">
 	var editor;
 
@@ -117,12 +119,11 @@
 <!--
 -->
  
-<p>
-<span id="articledrop" class="drop">Drop files here.</span>
-<button type="button" onclick="clearFields()">Clear</button>
 <input type="file" id="fileToLoad" /> 
-<button onclick="loadFileAsText()">Load</button></p>
-<br>
+<div id="articledrop" class="drop">Drop files here.</div>
+<button type="button" onclick="clearFields()">Clear</button>
+
+<button onclick="loadFileAsText()">Load</button>
 <button type="button" onclick="saveTextAsFile()">Save</button>
 <div class="metadata">
 <p>UID:<br><input id="UID" type="text"  maxlength="30"></input></p>
