@@ -10,6 +10,13 @@
  * Block-Level Grammar
  */
 
+var hdind = 0;
+
+function hotdropIndex(){
+	hdind++;
+	return hdind;
+} 
+ 
 var block = {
   newline: /^\n+/,
   code: /^( {4}[^\n]+\n*)+/,
@@ -821,17 +828,18 @@ Renderer.prototype.heading = function(text, level, raw) {
 };
 //johnp hotdrop
 Renderer.prototype.hotdrop = function(title,text){
-	return '<div class="panel panel-default">'
-	+ '<div class="panel-heading">'
+	var hdInd = hotdropIndex().toString();
+	return '\n<div class="panel panel-default">\n\n'
+	+ '<div class="panel-heading">\n'
 	+ '<h4 class="panel-title">'
-	+ '<a id="' + title + '" data-toggle="collapse"' + 'href="#collapseOne">' + title + '</a>'
-	+ '</h4>'
-	+ '</div>'
-	+ '<div id="collapseOne" class="panel-collapse collapse">'
+	+ '<a id="' + title + hdInd '" data-toggle="collapse" ' + 'href="#collapse' + hdInd + '">' + title + '</a>'
+	+ '</h4>\n'
+	+ '</div>\n\n'
+	+ '<div id="collapse' + hdInd+'" class="panel-collapse collapse">\n'
 	+ '<p>'
 	+ text
-	+ '</p>'
-	+ '</div>' +'</div>' +'</div>';
+	+ '</p>\n'
+	+ '</div>\n\n' +'</div>\n';
 
 }
 

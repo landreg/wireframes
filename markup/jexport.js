@@ -375,7 +375,11 @@
  
 	}
 	 function wrapItem(html,item,type){
-		return "<div class=\"km_article_item " + type + "\" id=\""+item+"\">"+html+"</div>"
+		var start = "<div class=\"km_article_item " + type + "\" id=\""+item+"\">"
+		+ '<div class="panel-group" id="accordion">';
+		var finish = "</div></div>";
+		
+		return start + html + finish;
 	 }
 	
 	function getJSON(){
