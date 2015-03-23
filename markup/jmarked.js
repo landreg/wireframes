@@ -181,12 +181,13 @@ Lexer.prototype.token = function(src, top, bq) {
 	// johnp hotdrop
 	if (cap = this.rules.hotdrop.exec(src)) {
       src = src.substring(cap[0].length);
-      if (cap[1].length > 1) {
-        this.tokens.push({
+      if ((cap[2].length > 0) && (cap[3].length>0)){
+        var textstr = jmarked(cap[3]);
+		this.tokens.push({
 			type: 'hotdrop',
-			title: cap[1],
-			type: cap[2],
-			text: cap[3]
+			option: cap[1],
+			title: cap[2],
+			text: textstr
         });
  
       }
@@ -831,7 +832,7 @@ Renderer.prototype.heading = function(text, level, raw) {
     + '>\n';
 };
 //johnp hotdrop
-Renderer.prototype.hotdrop = function(title,type,text){
+Renderer.prototype.hotdrop = function(title,option,text){
 	var hdInd = hotdropIndex().toString();
 	var str =  '\n<div class="panel panel-default">\n\n'
 	+ '<div class="panel-heading">\n'
@@ -1033,7 +1034,7 @@ Parser.prototype.tok = function() {
     }
 	//johnp hotdrop
 	case 'hotdrop':{
-		return this.renderer.hotdrop(this.token.title,this.token.text);
+		return this.renderer.hotdrop(this.token.title,this.token.option,this.token.text);
 	}
     case 'code': {
       return this.renderer.code(this.token.text,

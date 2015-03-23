@@ -36,11 +36,12 @@
 	
 	function getHTML(){
 		editor.preview()
-		html = editor.getElement('previewer').body.innerHTML;
+		var html = editor.getElement('previewer').body.innerHTML;
  		editor.edit();
 
 		var rstart = html.replace('<div id="epiceditor-preview">',"");
-		html = rstart.replace(new RegExp('</div>(?!</div>)','g'),"");  	
+ 		rule = new RegExp('(<\/div>)([\s]*$)','g');
+		html = rstart.replace(rule,"");
 		return html;
 	}
 	
