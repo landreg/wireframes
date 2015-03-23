@@ -33,7 +33,7 @@ var block = {
   paragraph: /^((?:[^\n]+\n?(?!hr|heading|lheading|blockquote|tag|def))+)\n*/,
   text: /^[^\n]+/,
   // johnp regex to detect hotdrops
-  hotdrop:/^(?:^|\n){hotdrop:[^\n\S]*\n([^}\n]*)([^}]*)*}/
+  hotdrop:/^(?:^|\n)(?:{hotdrop:)([^}\n\s]*)[^\n\S]*\n([^}\n]*)([^}]*)}/
 };
 
 block.bullet = /(?:[*+-]|\d+\.)/;
@@ -168,21 +168,7 @@ Lexer.prototype.token = function(src, top, bq) {
     , l;
 
   while (src) {
-	// johnp hotdrop
-	if (cap = this.rules.hotdrop.exec(src)) {
-      src = src.substring(cap[0].length);
-      if (cap[1].length > 1) {
-        this.tokens.push({
-			type: 'hotdrop',
-			title: cap[1],
-			text: cap[2]
-        });
- 
-      }
-    }
- 
-  
-    // newline
+      // newline
     if (cap = this.rules.newline.exec(src)) {
       src = src.substring(cap[0].length);
       if (cap[0].length > 1) {
@@ -191,6 +177,24 @@ Lexer.prototype.token = function(src, top, bq) {
         });
       }
     }
+  
+	// johnp hotdrop
+	if (cap = this.rules.hotdrop.exec(src)) {
+      src = src.substring(cap[0].length);
+      if (cap[1].length > 1) {
+        this.tokens.push({
+			type: 'hotdrop',
+			title: cap[1],
+			type: cap[2],
+			text: cap[3]
+        });
+ 
+      }
+	  continue;
+    }
+ 
+  
+
 
     // code
     if (cap = this.rules.code.exec(src)) {
@@ -827,21 +831,27 @@ Renderer.prototype.heading = function(text, level, raw) {
     + '>\n';
 };
 //johnp hotdrop
-Renderer.prototype.hotdrop = function(title,text){
+Renderer.prototype.hotdrop = function(title,type,text){
 	var hdInd = hotdropIndex().toString();
-	return '\n<div class="panel panel-default">\n\n'
+	var str =  '\n<div class="panel panel-default">\n\n'
 	+ '<div class="panel-heading">\n'
 	+ '<h4 class="panel-title">'
 	+ '<a id="' + title + hdInd + '" data-toggle="collapse" ' + 'href="#collapse' + hdInd + '">' + title + '</a>'
 	+ '</h4>\n'
 	+ '</div>\n\n'
 	+ '<div id="collapse' + hdInd + '" class="panel-collapse collapse">\n'
+	+ '<div class="panel-body">'
 	+ '<p>'
 	+ text
 	+ '</p>\n'
-	+ '</div>\n\n' +'</div>\n';
-
+	+ '</div>\n\n' +'</div>\n' +'</div>\n';
+	return str;
 }
+
+
+ 
+
+
 
 
 Renderer.prototype.hr = function() {
