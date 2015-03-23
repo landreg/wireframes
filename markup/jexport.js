@@ -8,13 +8,13 @@
 		
 	*/
 	
-	var facets={};
+	var facets=[];
 	
 	
 	function clearFields(){
 		/*clear golbals */
 		extlinks=[];
-		facets={};
+		facets=[];
 		putHTML("");
 		kmlinks=[];
 	
@@ -200,6 +200,14 @@
 		});
 	}
  
+	function getObjectByAttr(array,attr,value){
+		for (var i=0;(i<array.length);i++){
+			if (array[i].hasOwnProperty(attr) && (array[i][attr] === value)){
+				return array[i];
+			}
+		}
+		return undefined;
+	}
 	
 	function displayFacet(facetName){
 		var disp = document.getElementById(facetName);
@@ -209,12 +217,12 @@
 			document.getElementById("FACETDISP").appendChild(disp);
 		}	
 		str = facetName +": ";
-		facet =	facets[facetName];
+		facet =	getObjectByAttr(facets,"name",facetName);
 		if (!facet || (facet.foci.length==0)){
 			document.getElementById("FACETDISP").removeChild(disp);	
 			return false;
 			}
-			else{
+		else{
 			for (var i=0;(i<facet.foci.length); i++){
 				str += ": " +facet.foci[i];
 				disp.innerHTML = str;	
@@ -226,7 +234,7 @@
 	
 	function getFoci(){
 		var facetName = document.getElementById("facets").value;
-		var facet =	facets[facetName];
+		var facet =	getObjectByAttr(facets,"name",facetName);
 		facet.foci.length =0;
 		var selList = document.getElementById("foci");		
 		for (x=0;x<selList.options.length;x++){
@@ -287,10 +295,13 @@
 	}
 	
 	
-	function setupFacetFoci(facetName){		
-		if (!facets[facetName])
-			facets[facetName] = { "name":facetName, "foci": []};
-		var selected = 	facets[facetName].foci;
+	function setupFacetFoci(facetName){	
+		var facet = getObjectByAttr(facets,name,facetName);
+		if (!facet){
+			facet = { "name":facetName, "foci": []};
+			facets.push(facet);
+			}
+		var selected = 	facet.foci;
 		var multiple = false;
 		var choices = "Error - Invalid Facet";
 		switch (facetName){
@@ -346,8 +357,17 @@
 		setupFoci(multiple,choices.split(','),selected);	
 	}
 	
+	function removeEmptyFacets(obj){
+		for (var i=obj.length-1; (i>=0); i--){
+			if (obj[i].foci.length==0){
+				obj.splice(i,1);				
+			}
+		}
+		return obj;
+	}
+	
 	function setFacets(obj){
-		facets = obj;
+		facets = removeEmptyFacets(obj);
 		setupFacets();
 	}
 	
@@ -401,8 +421,8 @@
 			alert("Contents of keyword box is not valid : information lost");
 			return;
 			}
-		jsonObj.keywords = keys;
-		jsonObj.facets = facets;
+		jsonObj.keywords = keys;	
+		jsonObj.facets = removeEmptyFacets(facets);
 		jsonObj.kmlinks = kmlinks;
 		jsonObj.extlinks = extlinks;
  
