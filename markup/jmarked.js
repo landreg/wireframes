@@ -832,10 +832,10 @@ Renderer.prototype.hotdrop = function(title,text){
 	return '\n<div class="panel panel-default">\n\n'
 	+ '<div class="panel-heading">\n'
 	+ '<h4 class="panel-title">'
-	+ '<a id="' + title + hdInd '" data-toggle="collapse" ' + 'href="#collapse' + hdInd + '">' + title + '</a>'
+	+ '<a id="' + title + hdInd + '" data-toggle="collapse" ' + 'href="#collapse' + hdInd + '">' + title + '</a>'
 	+ '</h4>\n'
 	+ '</div>\n\n'
-	+ '<div id="collapse' + hdInd+'" class="panel-collapse collapse">\n'
+	+ '<div id="collapse' + hdInd + '" class="panel-collapse collapse">\n'
 	+ '<p>'
 	+ text
 	+ '</p>\n'
