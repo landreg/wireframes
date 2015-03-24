@@ -183,10 +183,21 @@ Lexer.prototype.token = function(src, top, bq) {
       src = src.substring(cap[0].length);
       if ((cap[2].length > 0) && (cap[3].length>0)){
         var textstr = jmarked(cap[3]);
+		var rule = new RegExp("^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)","g");
+ 		var capt = rule.exec(cap[2]);
+		var level = 2;
+		var title = cap[2];
+		if (capt){
+			level = capt[1].length;
+			title = capt[2];
+		}
+ 
+		
 		this.tokens.push({
 			type: 'hotdrop',
 			option: cap[1],
-			title: cap[2],
+			level: level,
+			title: title,
 			text: textstr
         });
  
@@ -832,13 +843,13 @@ Renderer.prototype.heading = function(text, level, raw) {
     + '>\n';
 };
 //johnp hotdrop
-Renderer.prototype.hotdrop = function(title,option,text){
+Renderer.prototype.hotdrop = function(title,level,option,text){
 	var hdInd = hotdropIndex().toString();
 	var str =  '\n<div class="panel panel-default">\n\n'
 	+ '<div class="panel-heading">\n'
-	+ '<h4 class="panel-title">'
+	+ '<h' + level +' class="panel-title">'
 	+ '<a id="' + title + hdInd + '" data-toggle="collapse" ' + 'href="#collapse' + hdInd + '">' + title + '</a>'
-	+ '</h4>\n'
+	+ '</h'+ level + '>\n'
 	+ '</div>\n\n'
 	+ '<div id="collapse' + hdInd + '" class="panel-collapse collapse">\n'
 	+ '<div class="panel-body">'
@@ -873,7 +884,8 @@ Renderer.prototype.paragraph = function(text) {
 };
 
 Renderer.prototype.table = function(header, body) {
-  return '<table>\n'
+//johnp add bootstrap classes
+  return '<table class="table table-striped table-bordered">\n'
     + '<thead>\n'
     + header
     + '</thead>\n'
@@ -1034,7 +1046,7 @@ Parser.prototype.tok = function() {
     }
 	//johnp hotdrop
 	case 'hotdrop':{
-		return this.renderer.hotdrop(this.token.title,this.token.option,this.token.text);
+		return this.renderer.hotdrop(this.token.title,this.token.level,this.token.option,this.token.text);
 	}
     case 'code': {
       return this.renderer.code(this.token.text,

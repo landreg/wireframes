@@ -297,7 +297,7 @@
 	
 	
 	function setupFacetFoci(facetName){	
-		var facet = getObjectByAttr(facets,name,facetName);
+		var facet = getObjectByAttr(facets,"name",facetName);
 		if (!facet){
 			facet = { "name":facetName, "foci": []};
 			facets.push(facet);
