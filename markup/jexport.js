@@ -383,7 +383,7 @@
 	function getFirst(){
 	 
 	 
-		var text = document.getElementById("TITLE").value;
+		var text = document.getElementById("TITLE").value.trim();
 		text = text.replace(new RegExp('\"','g'),'\\"').replace(new RegExp('\&','g'),"&amp").replace(new RegExp('\<','g'),"&lt");
 	    var title = "<h1 class=\"km_article_title\">" + text +"</h1>\n" ;
 		text = document.getElementById("SCOPE").value;
@@ -406,14 +406,15 @@
 	function getJSON(){
  		//html = xhtml.replace (new RegExp('\[\x0A\x0D]','g'),"");
  		var jsonObj = {};
+		var uid = document.getElementById("UID").value.trim();
  		jsonObj = {};
-		jsonObj.id =  document.getElementById("UID").value ;
-		jsonObj.title = document.getElementById("TITLE").value ;
+		jsonObj.id = uid;
+		jsonObj.title = document.getElementById("TITLE").value.trim();
 		jsonObj.scope = document.getElementById("SCOPE").value ;
 		jsonObj.type =  document.getElementById("TYPE").value;
  		jsonObj.items  =[];
-		jsonObj.items[0] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
- 		jsonObj.items[1] = {"item":document.getElementById("UID").value, "type":document.getElementById("TYPE").value};
+		jsonObj.items[0] = {"item":uid, "type":document.getElementById("TYPE").value};
+ 		jsonObj.items[1] = {"item":uid, "type":document.getElementById("TYPE").value};
 		jsonObj.lastupdate = new Date();
 		jsonObj.popularity = 5;
 		jsonObj.cluster = document.getElementById("CLUSTER").value;
@@ -427,7 +428,7 @@
 		jsonObj.kmlinks = kmlinks;
 		jsonObj.extlinks = extlinks;
  
-		jsonObj.content = getFirst() + wrapItem(getHTML(),document.getElementById("UID").value,document.getElementById("TYPE").value); 
+		jsonObj.content = getFirst() + wrapItem(getHTML(),uid,document.getElementById("TYPE").value); 
 		jsonObj.markup = editor.exportFile("epiceditor","text");
 		return jsonObj;
  	}
@@ -442,8 +443,8 @@
 			alert ("Error"+ err.message);
 			return;
 		}
-		document.getElementById("UID").value=jsonObj.id;
-		document.getElementById("TITLE").value=jsonObj.title;
+		document.getElementById("UID").value=jsonObj.id.trim();
+		document.getElementById("TITLE").value=jsonObj.title.trim();
 		if (jsonObj.scope == "SCOPE")
 			document.getElementById("SCOPE").value="Some text describing the scope and content of the article";
 		else	
@@ -476,7 +477,7 @@
 		}
  
 		var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
-		var fileNameToSaveAs = document.getElementById("UID").value +".kmj";
+		var fileNameToSaveAs = document.getElementById("UID").value.trim() +".kmj";
 
 		var downloadLink = document.createElement("a");
 		downloadLink.download = fileNameToSaveAs;
