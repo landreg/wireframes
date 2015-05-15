@@ -276,7 +276,7 @@
 			el.removeChild(fc);
 			fc = el.firstElementChild;
 			}
-		str="Service,Subject Matter,Person/Agent,Process,Application Type,Space/Where,Legistlation,Purpose/Goal,Sensitivity,Audience,Item_Type"; 					
+		str="Service,Subject Matter,Person/Agent,Process,Application Type,Space/Where,Legislation,Purpose/Goal,Sensitivity,Audience,Item_Type"; 					
 		
 		//display the facet info
 		var names = str.split(',');
