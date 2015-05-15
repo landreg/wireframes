@@ -311,7 +311,7 @@
 				break;
 			}
 			case "Subject Matter" :{
-				var choices ="Adverse possession - registered,Adverse possession - unregistered,Objection and dispute,Indemnity,Charges,Easements,Licences,Land charges,Pending land action,Home Rights,Overriding interests,Restrictive covenants,Implied covenants,Personal covenants,Leases [may need to add foci],Leases - concurrent,Leases - reversionary,Leases - shared ownership,Leases - discontinuous,Leasehold covenants,Leasehold reform,Legislation,Mines and Minerals,Copyhold,Index Map,Ordnance Survey,,Floor levels,Airspace, tunnels, strata,Boundaries,Title plan,Provisions,Proprietor’s name,IOPN,Address for service,Joint proprietors ,Trusts,Mental capacity,Death,Probate & intestacy,Individual voluntary arrangement,Bankruptcy,Administration,Receivership,Liquidation,Powers of attorney,Transfer for value,Transfer not for value,Transfer of share,Transfer subject to charge,Transfer under power of sale,Transfer of part,Unregistered land,Public sector housing,Right To Buy,Preserved Right To Buy,Price paid ,PPI,Execution,Court order,Bias ,Foreign law,Class of title,The register,Daylist,Commonhold,Restriction,Unilateral notice,Agreed notice,Home Rights notice,SDLT,Fees,Classification,Notices,Forms,Fraud"; 
+				var choices ="Adverse possession - registered,Adverse possession - unregistered,Objection and dispute,Indemnity,Charges,Easements,Licences,Land charges,Pending land action,Home Rights,Overriding interests,Restrictive covenants,Implied covenants,Personal covenants,Leases [may need to add foci],Leases - concurrent,Leases - reversionary,Leases - shared ownership,Leases - discontinuous,Leasehold covenants,Leasehold reform,Legislation,Mines and Minerals,Copyhold,Index Map,Ordnance Survey,,Floor levels,Airspace, tunnels, strata,Boundaries,Title plan,Provisions,ProprietorÂ’s name,IOPN,Address for service,Joint proprietors ,Trusts,Mental capacity,Death,Probate & intestacy,Individual voluntary arrangement,Bankruptcy,Administration,Receivership,Liquidation,Powers of attorney,Transfer for value,Transfer not for value,Transfer of share,Transfer subject to charge,Transfer under power of sale,Transfer of part,Unregistered land,Public sector housing,Right To Buy,Preserved Right To Buy,Price paid ,PPI,Execution,Court order,Bias ,Foreign law,Class of title,The register,Daylist,Commonhold,Restriction,Unilateral notice,Agreed notice,Home Rights notice,SDLT,Fees,Classification,Notices,Forms,Fraud"; 
  				multiple = true;
 				break;		
 			}
@@ -335,7 +335,7 @@
 				multiple = true;
 				break;
 			}
-			case "Legistlation":{
+			case "Legislation":{
 				choices = "[Section of] Land Registration Act 2002,[Rule from] Land Registration Rules 2003,Other legislation";
 				multiple = true;
 				break;
