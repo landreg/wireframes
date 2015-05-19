@@ -276,11 +276,9 @@
 			el.removeChild(fc);
 			fc = el.firstElementChild;
 			}
-<<<<<<< HEAD
-		str="Service,Subject Matter,Person,Process,Application Type,Space/Where,Legistlation,Purpose/Goal,Sensitivity,Audience,Item_Type"; 					
-=======
-		str="Service,Subject Matter,Person/Agent,Process,Application Type,Space/Where,Legislation,Purpose/Goal,Sensitivity,Audience,Item_Type"; 					
->>>>>>> 88ab77eeae7a4d490ccc1d2946a94283474faffb
+ 
+		str="Service,Subject Matter,Person ,Process,Application Type,Space/Where,Legislation,Purpose/Goal,Sensitivity,Audience,Item_Type"; 					
+ 
 		
 		//display the facet info
 		var names = str.split(',');
@@ -411,6 +409,7 @@
  		//html = xhtml.replace (new RegExp('\[\x0A\x0D]','g'),"");
  		var jsonObj = {};
 		var uid = document.getElementById("UID").value.trim();
+		uid = uid.replace(new RegExp(' ','g'),'_"')
  		jsonObj = {};
 		jsonObj.id = uid;
 		jsonObj.title = document.getElementById("TITLE").value.trim();
@@ -418,7 +417,6 @@
 		jsonObj.type =  document.getElementById("TYPE").value;
  		jsonObj.items  =[];
 		jsonObj.items[0] = {"item":uid, "type":document.getElementById("TYPE").value};
- 		jsonObj.items[1] = {"item":uid, "type":document.getElementById("TYPE").value};
 		jsonObj.lastupdate = new Date();
 		jsonObj.popularity = 5;
 		jsonObj.cluster = document.getElementById("CLUSTER").value;
@@ -447,7 +445,7 @@
 			alert ("Error"+ err.message);
 			return;
 		}
-		document.getElementById("UID").value=jsonObj.id.trim();
+		document.getElementById("UID").value=jsonObj.id.trim().replace(new RegExp(' ','g'),'_"');
 		document.getElementById("TITLE").value=jsonObj.title.trim();
 		if (jsonObj.scope == "SCOPE")
 			document.getElementById("SCOPE").value="Some text describing the scope and content of the article";
@@ -481,7 +479,8 @@
 		}
  
 		var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
-		var fileNameToSaveAs = document.getElementById("UID").value.trim() +".kmj";
+		//TODO johnp this trim and replace is happening in various places need to refactor
+		var fileNameToSaveAs = document.getElementById("UID").value.trim().replace(new RegExp(' ','g'),'_"') +".kmj";
 
 		var downloadLink = document.createElement("a");
 		downloadLink.download = fileNameToSaveAs;
