@@ -276,7 +276,7 @@
 			el.removeChild(fc);
 			fc = el.firstElementChild;
 			}
-		str="Service,Subject Matter,Person/Agent,Process,Application Type,Space/Where,Legistlation,Purpose/Goal,Sensitivity,Audience,Item_Type"; 					
+		str="Service,Subject Matter,Person,Process,Application Type,Space/Where,Legistlation,Purpose/Goal,Sensitivity,Audience,Item_Type"; 					
 		
 		//display the facet info
 		var names = str.split(',');
@@ -315,7 +315,7 @@
  				multiple = true;
 				break;		
 			}
-			case "Person/Agent":{
+			case "Person":{
 				var choices = "Registered proprietor,Third party,Conveyancer,Caseworker,Company,Overseas company,Corporation,Receiver,Administrator,Liquidator,Insolvency practitioner/supervisor,Trustee in bankruptcy,Creditor,Attorney,Deputy (MHA),Personal representative,Trustee,Beneficiary,Pension fund trustee,Chargor,Chargee,Bank ,Building society,Local authority,Housing association,Utility company,Developer,Landlord/lessor,Tenant/lessee,RTM company,School/education body,NHS body,Foreign state,Companies House,Court";
 				multiple = true;
 				break;
