@@ -1,5 +1,4 @@
-curl -XPUT http://gl-know-ap33.lnx.lr.net:9200/knowledge_manage/control
-curl -XPUT http://gl-know-ap33.lnx.lr.net:9200/knowledge_manage/control/facets - d ' {"facets": [
+curl -XPUT 'http://gl-know-ap33.lnx.lr.net:9200/knowledge_manage/control/facets' -d '{"facets": [
     {
       "name": "Service",
       "foci": [
@@ -37,7 +36,7 @@ curl -XPUT http://gl-know-ap33.lnx.lr.net:9200/knowledge_manage/control/facets -
 		"Mines and Minerals",
 		"Copyhold",
 		"Index Map",
-		"Ordnance Survey"
+		"Ordnance Survey",
 		"Floor levels",
 		"Airspace",
 		"tunnels",

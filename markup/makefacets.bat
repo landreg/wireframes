@@ -1,0 +1,1 @@
+curl -H "Content-Type: application/json" -XPUT 'http://gl-know-ap33.lnx.lr.net:9200/knowledge_config/control/facets' -d @facets.json
