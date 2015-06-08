@@ -89,7 +89,8 @@
     var form = document.createElement("form");
     form.setAttribute("method", method);
     form.setAttribute("action", path);
-
+    form.setAttribute("target", "formresult");
+    
     for(var key in params) {
         if(params.hasOwnProperty(key)) {
             var hiddenField = document.createElement("input");
@@ -102,18 +103,19 @@
     }
 
     document.body.appendChild(form);
+    //window.open(test.html, 'formresult', 'scrollbars=no,menubar=no,height=600,width=800,resizable=yes,toolbar=no,status=no');
     form.submit();
-    document.body.removecChild(form);
+    document.body.removeChild(form);
 }
     function preview(){
- 
- 
         
-        url = "http://localhost:5001/preview"
+        url = "http://localhost:5001/preview";
         
-        data = { "kmj" : JSON.stringify(getJSON(),null,2) } 
+        kmj = getJSON();
+        kmj['content'] = "";
+        data = { "kmj" : JSON.stringify(kmj,null,2) }; 
         
-        post(url, data) 
+        post(url, data, "post") ;
         
     }
     
