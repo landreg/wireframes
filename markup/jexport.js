@@ -110,7 +110,8 @@
  
         
         url = "http://localhost:5001/preview"
-        
+        url = "http://gl-know-ap33.lnx.lr.net/preview"
+		
         data = { "kmj" : JSON.stringify(getJSON(),null,2) } 
         
         post(url, data) 
